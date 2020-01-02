@@ -1,5 +1,5 @@
 <?php
-
+ 
 require_once "view/view.php";
 
 class CommentView extends View{
