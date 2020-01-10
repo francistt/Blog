@@ -63,9 +63,9 @@ private function chapter($uri){
 }
 private function bio(){}
 private function home(){
-	$chapitre = new Chapter(["lastChapter"=>true]);
-	$this->html = file_get_contents("template/home.html");
-	$this->title = "Billet simple pour l'Alaska : un roman de Jean Forteroche";
-	$this->lastChapter = $chapitre->lastChapter;
+	$chapitre 			= new Chapter(["lastChapter"=>true]);
+	$this->html 		= file_get_contents("template/home.html");
+	$this->title 		= "Billet simple pour l'Alaska : un roman de Jean Forteroche";
+	$this->lastChapter 	= $chapitre->lastChapter;
 }
 }

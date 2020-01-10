@@ -80,7 +80,6 @@ class Security{
 
 	private function createSession($key)
 
-
 	// Nous interceptons le gestionnaire 'files' natif, mais ceci
 	// fonctionnera de la même façon avec les autres gestionnaires internes
 	// comme 'sqlite', 'memcache' ou 'memcached'

@@ -33,7 +33,7 @@ $secure  = new Security([
 ]);
 
 
-// var_dump($secure->session::write());
+// var_dump($secure->session::read());
 
 // on récupère la barre d'adresse dans une variable $uri sous la transforme d'un tableau 
 $uri = $secure->safeUri();
