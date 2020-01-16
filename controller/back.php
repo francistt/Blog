@@ -63,6 +63,6 @@ class Back{
 	 public function eraseComment(){
    }
     private function login(){
-    $this->html = file_get_contents("template/login.html");
+    //$this->html = file_get_contents("template/login.html");
    }
 }
