@@ -8,7 +8,7 @@ public $data;
 	function __construct($data,$slug){
 		global $secure;
 		parent::__construct(null, null);
-		if ($secure->safeUri()[0] === "admin") $slug = null;
+		if ($secure->uri[0] === "admin") $slug = null;
 		$newData = [];
 		foreach ($data as $key => $value) {
 			/*
