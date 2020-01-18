@@ -26,7 +26,7 @@ class Security{
 		return array_slice($this->uri, 1);
 	}
 
-	public function cryptedPassword(){
-		return hash ( "sha256" , $this->post["password"] );
+	public function crypt($password){
+		return hash ( "sha256" , $password );
 	}
 }

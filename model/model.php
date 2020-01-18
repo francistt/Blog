@@ -7,9 +7,10 @@ class model
 	public function __construct()
 	{
 		global $config;
-		    try {
+		try {
       $this->db = new PDO('mysql:host=localhost;dbname='.$config["base"].';charset=utf8', $config["user"], $config["password"]);
       $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
+      if ($config["debug"]) $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch(Exception $e){
       die('Erreur : '.$e->getMessage());

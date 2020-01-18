@@ -1,0 +1,909 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"sess",
+				"session"
+			],
+			[
+				"session",
+				"session_start"
+			],
+			[
+				"conta",
+				"container"
+			],
+			[
+				"create",
+				"createElement\t( localName: DOMString ): Element Document"
+			],
+			[
+				"pla",
+				"playPause"
+			],
+			[
+				"clas",
+				"class"
+			],
+			[
+				"getEl",
+				"getElementById\t( elementId: DOMString ): Element Document"
+			],
+			[
+				"sa",
+				"safeData"
+			],
+			[
+				"pu",
+				"public"
+			],
+			[
+				"ex",
+				"explode"
+			],
+			[
+				"player",
+				"playerCase"
+			],
+			[
+				"ar",
+				"aroundPlayer"
+			],
+			[
+				"getIt",
+				"getItemsPostion"
+			],
+			[
+				"ob",
+				"obstacles"
+			],
+			[
+				"obs",
+				"obstaclesList"
+			],
+			[
+				"ne",
+				"newValue\t: DOMString StorageEvent"
+			],
+			[
+				"Dom",
+				"DOM"
+			],
+			[
+				"th",
+				"thing"
+			],
+			[
+				"head",
+				"header\tTag"
+			],
+			[
+				"extr",
+				"extraPath"
+			],
+			[
+				"base",
+				"basePath"
+			],
+			[
+				"s",
+				"source"
+			],
+			[
+				"va",
+				"var_dump"
+			],
+			[
+				"C",
+				"ChapitreModel"
+			],
+			[
+				"con",
+				"content"
+			],
+			[
+				"ur",
+				"uri"
+			],
+			[
+				"arr",
+				"array_slice"
+			],
+			[
+				"re",
+				"retour"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"make",
+				"makeHtml"
+			],
+			[
+				"pri",
+				"private"
+			],
+			[
+				"str_re",
+				"str_replace"
+			],
+			[
+				"ba",
+				"background-color\tproperty"
+			],
+			[
+				"Jea",
+				"JeanPierre"
+			],
+			[
+				"cret",
+				"createElement\t( localName: DOMString ): Element Document"
+			],
+			[
+				"row",
+				"rowConversion"
+			],
+			[
+				"wi",
+				"width\t = 'initial' Style CSS"
+			],
+			[
+				"class",
+				"className\t: DOMString Element"
+			],
+			[
+				"getE",
+				"getElementsByTagName\t( localName: DOMString ): HTMLCollection Document"
+			],
+			[
+				"hea",
+				"header"
+			],
+			[
+				"onscr",
+				"onscroll\t: EventHandler Window"
+			],
+			[
+				"max",
+				"max-height\tproperty"
+			],
+			[
+				"t",
+				"tbody\tTag"
+			],
+			[
+				"background-c",
+				"background-color\tproperty"
+			],
+			[
+				"i",
+				"italic\tfont-style"
+			],
+			[
+				"font",
+				"font-variant\tproperty"
+			],
+			[
+				"back",
+				"background-image\tproperty"
+			],
+			[
+				"min",
+				"min-width\tproperty"
+			],
+			[
+				"flex-",
+				"flex-direction\tproperty"
+			],
+			[
+				"pa",
+				"paths"
+			],
+			[
+				"fil",
+				"files\t: FileList DataTransfer"
+			],
+			[
+				"forE",
+				"forEach\t( callbackfn: Function, thisArg?: any ): Array Array"
+			],
+			[
+				"conso",
+				"console"
+			],
+			[
+				"console",
+				"console_log"
+			],
+			[
+				"Eva",
+				"evaluationList"
+			],
+			[
+				"requi",
+				"require"
+			],
+			[
+				"bac",
+				"background-color\tproperty"
+			],
+			[
+				"al",
+				"align-items\tproperty"
+			],
+			[
+				"w",
+				"width\t = 'initial' Style CSS"
+			],
+			[
+				"sty",
+				"style\t Style CSS"
+			],
+			[
+				"fle",
+				"flex-wrap\tproperty"
+			],
+			[
+				"cre",
+				"createElement\t( localName: DOMString ): Element Document"
+			],
+			[
+				"d",
+				"document\t: Document Window"
+			],
+			[
+				"app",
+				"appendChild\t( node: Node ): Node Node"
+			],
+			[
+				"ga",
+				"GamePlay"
+			],
+			[
+				"nu",
+				"numberOfCases"
+			],
+			[
+				"gl",
+				"glob"
+			],
+			[
+				"cons",
+				"construct"
+			],
+			[
+				"dat",
+				"data"
+			],
+			[
+				"dé",
+				"développement"
+			],
+			[
+				"lo",
+				"log\t( x: number ): number Math"
+			],
+			[
+				"inde",
+				"indexOf\t( searchString: string, position?: int ): int String"
+			],
+			[
+				"no",
+				"nodemon"
+			],
+			[
+				"se",
+				"set"
+			],
+			[
+				"doc",
+				"document"
+			],
+			[
+				"ti",
+				"titre"
+			],
+			[
+				"fon",
+				"font-family\tproperty"
+			],
+			[
+				"st",
+				"style\tTag"
+			],
+			[
+				"h",
+				"html\thtml"
+			],
+			[
+				"vis",
+				"visitorsList_datepickerInit"
+			],
+			[
+				"te",
+				"template_"
+			],
+			[
+				"str",
+				"stripeStep_initialize"
+			],
+			[
+				"number",
+				"number_of_ticket"
+			],
+			[
+				"visi",
+				"visitor"
+			],
+			[
+				"ini",
+				"initOrder_finalize"
+			],
+			[
+				"fir",
+				"firstStep"
+			],
+			[
+				"ma",
+				"maVue"
+			],
+			[
+				"fo",
+				"foreach\tforeach …"
+			],
+			[
+				"fi",
+				"figure\tTag"
+			],
+			[
+				"background",
+				"background-position\tproperty"
+			],
+			[
+				"cl",
+				"clear"
+			],
+			[
+				"tepl",
+				"template"
+			],
+			[
+				"c",
+				"console"
+			],
+			[
+				"da",
+				"DataManager"
+			],
+			[
+				"crea",
+				"createElement"
+			],
+			[
+				"sele",
+				"selection"
+			],
+			[
+				"DOM",
+				"DOMlist"
+			],
+			[
+				"tra",
+				"transition-duration\tproperty"
+			],
+			[
+				"DOMmod",
+				"DOMmodalContent"
+			],
+			[
+				"moda",
+				"modalReady"
+			],
+			[
+				"def",
+				"definePosition"
+			],
+			[
+				"remo",
+				"removeDOMelement"
+			],
+			[
+				"DO",
+				"DOMresume"
+			],
+			[
+				"mod",
+				"modalContent"
+			],
+			[
+				"get",
+				"getModels"
+			],
+			[
+				"fade",
+				"fadeIn"
+			],
+			[
+				"im",
+				"ImageSlider"
+			],
+			[
+				"set",
+				"step"
+			],
+			[
+				"sli",
+				"slideText"
+			],
+			[
+				"dom",
+				"domSlider"
+			],
+			[
+				"co",
+				"collectedData"
+			],
+			[
+				"he",
+				"header\tTag"
+			],
+			[
+				"arra",
+				"array_slice"
+			],
+			[
+				"hydr",
+				"hydrateFromArray"
+			],
+			[
+				"me",
+				"method_exists"
+			],
+			[
+				"li",
+				"link\tTag"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"pad",
+				"padding-top\tproperty"
+			],
+			[
+				"un",
+				"undefined"
+			],
+			[
+				"ch",
+				"changeBrand"
+			],
+			[
+				"bran",
+				"brand"
+			],
+			[
+				"makeL",
+				"makeLiResume"
+			],
+			[
+				"cla",
+				"class"
+			],
+			[
+				"brand",
+				"brands"
+			],
+			[
+				"yellow",
+				"yellowPosition"
+			],
+			[
+				"sc",
+				"screenSize"
+			],
+			[
+				"innerH",
+				"innerHeight"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/clients/digitronic"
+	],
+	"file_history":
+	[
+		"/E/apps/dev/UwAmp/bin/apache/logs/access.log",
+		"/E/apps/dev/UwAmp/bin/apache/conf/httpd_uwamp.conf",
+		"/D/eleves/Blog/controller/session.php",
+		"/C/Users/Lionel/Desktop/index.js",
+		"/D/eleves/christophe-p4/index.php",
+		"/D/eleves/christophe-p4/config.php",
+		"/D/eleves/christophe-p4/controllers/security.php",
+		"/D/clients/digitronic/demo/js/searchModal.js",
+		"/D/eleves/christophe-p4/models/model.php",
+		"/D/eleves/petersonP6/components/case/case.js",
+		"/D/eleves/petersonP6/classes/gameplay.js",
+		"/D/eleves/petersonP6/components/player/player.js",
+		"/D/eleves/petersonP6/index.html",
+		"/D/eleves/petersonP6/classes/weapon.js",
+		"/D/clients/digitronic/demo/css/style.css",
+		"/D/eleves/Blog/view/view.php",
+		"/D/clients/digitronic/demo/index.html",
+		"/D/eleves/gabrielle-p4/index.php",
+		"/D/eleves/gabrielle-p4/controller/front.php",
+		"/D/eleves/Blog/index.php",
+		"/D/eleves/Blog/controller/security.php",
+		"/D/eleves/gabrielle-p4/controller/chapitre.php",
+		"/D/eleves/gabrielle-p4/model/chapitreModel.php",
+		"/D/eleves/gabrielle-p4/model/model.php",
+		"/C/Users/Lionel/Desktop/Projet 1/P1_Bendjebbour_Youssef_CodeSource/assets/style/style.css",
+		"/D/eleves/gabrielle-p4/controller/security.php",
+		"/C/Users/Lionel/Desktop/projet_5/projet.js",
+		"/C/Users/Lionel/Desktop/projet_5/index.html",
+		"/C/Users/Lionel/Desktop/Model.php",
+		"/C/Users/Lionel/Desktop/ArticlesModel.php",
+		"/D/eleves/projetBlog2/index.php",
+		"/D/eleves/florian/controller/chapitre.php",
+		"/D/eleves/florian/controller/front.php",
+		"/D/eleves/florian/model/chapitreModel.php",
+		"/D/eleves/florian/model/model.php",
+		"/C/Users/Lionel/Desktop/cyprien",
+		"/D/eleves/projetBlog2/model/chapitreModel.php",
+		"/D/eleves/florian/index.php",
+		"/D/eleves/florian/controller/article.php",
+		"/C/Users/Lionel/Downloads/blog_forteroche.sql",
+		"/D/eleves/gabrielle-p4/Controller/controlleur.php",
+		"/C/Users/Lionel/Desktop/.git/config",
+		"/D/clients/digitronic/www/app/controllers/Front.php",
+		"/C/Users/Lionel/Desktop/P4_BUSILA_Cyprien/P4_code/model/frontend/PostManager.php",
+		"/C/Users/Lionel/Desktop/P4_BUSILA_Cyprien/P4_code/controller/backend.php",
+		"/C/Users/Lionel/Desktop/P4_BUSILA_Cyprien/P4_code/index.php",
+		"/D/eleves/projetBlog2/template/addChapter.html",
+		"/D/eleves/projetBlog2/model/model.php",
+		"/D/eleves/projetBlog2/controller/back.php",
+		"/D/eleves/projetBlog2/controller/chapitre.php",
+		"/C/Users/Lionel/Desktop/P4_BUSILA_Cyprien/P4_export_SQL/db5000248723_hosting-data_io.sql",
+		"/C/Users/Lionel/Desktop/Nouveau dossier/view.php",
+		"/C/Users/Lionel/Desktop/Nouveau dossier/index.html",
+		"/C/Users/Lionel/Desktop/Nouveau dossier/front.php",
+		"/C/Users/Lionel/Desktop/Nouveau dossier/index.php",
+		"/D/clients/le terroir/agility/Views/HTMLview.php",
+		"/C/Users/Lionel/Desktop/P4_BUSILA_Cyprien/P4_code/model/Manager.php",
+		"/D/clients/digitronic/www/index.php",
+		"/D/clients/digitronic/www/app/templates/admin.html",
+		"/D/clients/digitronic/www/app/translations/fr.json",
+		"/D/clients/le terroir/site/www/app/php/template/front/main_template.html",
+		"/D/clients/le terroir/site/www/app/php/template/front/singlePost.html",
+		"/D/clients/le terroir/site/www/app/php/template/front/home.html",
+		"/D/clients/le terroir/site/www/app/php/translations/fr.json",
+		"/D/clients/le terroir/site/www/app/php/controllers/Front.php",
+		"/D/clients/digitronic/css/style.css",
+		"/E/serveurLocal/www/controller/security.php",
+		"/E/serveurLocal/www/controller/encryptedSessionHandler.php",
+		"/E/serveurLocal/www/controller/back.php",
+		"/C/Users/Lionel/Desktop/FrontController.php",
+		"/C/Users/Lionel/Desktop/Christophe 9 janvier/controllers et model.php",
+		"/E/serveurLocal/www/index.php",
+		"/E/serveurLocal/www/controller/user.php",
+		"/E/serveurLocal/www/www/index.php",
+		"/D/eleves/petersonP6/README.md",
+		"/D/eleves/petersonP6/index.js",
+		"/C/Users/Lionel/Desktop/Janvier Pelletier.txt",
+		"/D/clients/digitronic/index.html",
+		"/D/clients/digitronic/js/hamburger.js",
+		"/D/clients/digitronic/js/index.js",
+		"/C/Users/Lionel/Desktop/Livrables_P4/express_food.sql",
+		"/D/projets/generateurCR-OC/templates/compteRendu.html",
+		"/D/projets/generateurCR-OC/data/sentences.json",
+		"/D/projets/generateurCR-OC/data/daFront_p4.json",
+		"/D/projets/generateurCR-OC/data/dwj_p4.json",
+		"/D/clients/digitronic/css/contact.css",
+		"/D/clients/digitronic/css/header.css",
+		"/D/clients/digitronic/css/main.css",
+		"/D/clients/digitronic/css/infos.css",
+		"/D/clients/digitronic/.gitignore",
+		"/D/clients/digitronic/reprog.html",
+		"/D/clients/digitronic/css/reprog.css",
+		"/D/clients/digitronic/js/lib/index.html",
+		"/D/cles/planethoster - versionning Gitlab/id_rsa.pub",
+		"/C/Users/Lionel/AppData/Roaming/Sublime Merge/Packages/User/Preferences.sublime-settings",
+		"/D/clients/digitronic/package.json",
+		"/D/eleves/christophe-p4/templates/chapitre.html",
+		"/D/eleves/christophe-p4/templates/generic.html",
+		"/D/eleves/christophe-p4/templates/featuredChapter.html",
+		"/D/eleves/christophe-p4/templates/index.html",
+		"/D/le terroir/site/www/lib/Agility/core/Views/HTMLview.php",
+		"/D/eleves/christophe-p4/controllers/front.php",
+		"/C/Users/Lionel/Desktop/Loic/css/services.css",
+		"/C/Users/Lionel/Desktop/Loic/css/style.css",
+		"/D/projets/generateurCR-OC/components/evaluationsList/evaluationsList.js",
+		"/D/projets/generateurCR-OC/data/cpmDev_p6.json",
+		"/C/Users/Lionel/AppData/Roaming/Sublime Text 3/Packages/User/Base File.sublime-settings",
+		"/D/projets/generateurCR-OC/data/paths.json",
+		"/D/projets/generateurCR-OC/data/constants.json",
+		"/D/projets/generateurCR-OC/templates/index.html",
+		"/D/projets/generateurCR-OC/app.js",
+		"/C/Users/Lionel/Desktop/Loic/index.html",
+		"/C/Users/Lionel/Desktop/Loic/css/projets.css",
+		"/C/Users/Lionel/Desktop/Loic/style.css",
+		"/D/projets/generateurCR-OC/generateurCR-OC.sublime-workspace",
+		"/D/eleves/petersonP6/components/case/case.css",
+		"/D/eleves/projetBlog2/controller/commentaires.php",
+		"/D/eleves/projetBlog2/model/commentaireModel.php",
+		"/D/eleves/projetBlog2/template/fullChapitre.html",
+		"/D/eleves/projetBlog2/view/view.php",
+		"/D/eleves/Loic/index.html",
+		"/D/eleves/Loic/style.css",
+		"/C/Users/Lionel/Desktop/Sonia Panisello.txt",
+		"/C/Users/Lionel/Desktop/Christophe/templates/menu.html",
+		"/D/projets/generateurCR-OC/data/cpmDevP6.json",
+		"/D/projets/generateurCR-OC/package.json",
+		"/D/clients/digitronic/css/nav.css",
+		"/C/Users/Lionel/Desktop/Christophe/exemple morceau controlleur.php"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"o: Object",
+			"/",
+			"--arme2",
+			"_arme2",
+			"arme2",
+			"obstacleList",
+			"\"\"+",
+			"[type]",
+			"weapon",
+			"/",
+			"\\\"",
+			"donneesRead",
+			"source",
+			"/",
+			"argument",
+			"\n",
+			"   ",
+			"  ",
+			"` = '",
+			"' ,",
+			"\n            ",
+			"aaaa",
+			"contenu",
+			"\".$update[\"",
+			"\"'",
+			"\n            ",
+			"contenu",
+			"id",
+			"edit",
+			"->",
+			"\"\"",
+			"updateOrAdd",
+			"Add",
+			"add",
+			"$",
+			"updateOrAdd",
+			"$",
+			"updateOrAdd",
+			"add",
+			"{{ ",
+			" class=\"tab\"",
+			"ref",
+			"nOfCases",
+			"succedd",
+			"data",
+			"    \"",
+			"\",",
+			"    \"",
+			" class=\"form-control\"",
+			"||",
+			">=",
+			"transparent",
+			"opened",
+			":",
+			"h3",
+			"h6",
+			"td",
+			"%23",
+			"%3C",
+			"%3E",
+			"infos",
+			"tD",
+			"<address>",
+			"inter",
+			"td",
+			" N.m",
+			"<i",
+			"id=\"",
+			" class=\"form-control\" ",
+			"                </div>",
+			"                <div>",
+			"tbody",
+			"tr",
+			"mergeWithTemplate",
+			"}",
+			"{",
+			"img",
+			"projets",
+			":project",
+			":path",
+			"\"",
+			"template",
+			"soutenances",
+			"names",
+			"evaluationList"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "francis.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 190.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
