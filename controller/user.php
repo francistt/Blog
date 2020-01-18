@@ -9,7 +9,7 @@ class User{
   // private $token;
   // private $model;
 
-  function __construct()
+  public function __construct()
   {
     global $session, $secure;
 
@@ -35,5 +35,8 @@ class User{
       $this->id   = $session->get("id");
       $this->name = $session->get("name");
     }
+  }
+
+  public function deconnexion(){
   }
 }

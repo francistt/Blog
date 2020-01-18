@@ -2,9 +2,11 @@
 
 class SessionManager{
   private $data;
-  public function __construct(){
+  private $duration;
+  public function __construct($duration){
     session_start();
-    $this->data = (!empty($_SESSION)) ? $_SESSION : null;
+    $this->duration = $duration;
+    $this->data     = (!empty($_SESSION)) ? $_SESSION : null;
     if ($this->data !== null) $this->updateValidity(true);
   }
 
@@ -63,11 +65,10 @@ class SessionManager{
    * @return void
    */
   public function updateValidity($check = false){
-    global $config;
     $now = filter_input ( INPUT_SERVER , 'REQUEST_TIME', FILTER_SANITIZE_NUMBER_INT );
     if ($check) {
       if (isset($this->data['lastActivity']) && 
-         ($now - $this->data['lastActivity']) > $config['sessionDuration']) {
+         ($now - $this->data['lastActivity']) > $this->duration) {
           session_unset();
           session_destroy();
           session_start();

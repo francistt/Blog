@@ -8,99 +8,99 @@ require_once "view/view.php";
 class Chapter
 {
 
-	public $html;
-	public $id;
-	public $lastChapter;
-	public $title;
-	
-	/**
-	 * [__construct description]
-	 * @param Array $argument soit un tableau avec comme clé un id, un slug, ou list
-	 */
-	function __construct($argument)
-	{
-		global $secure;
-		extract($argument);
-		if (isset($secure->post->titre)) $this->saveOrUpdate($argument); //a revoir plus tard
-		else {
-			if (isset($list)) $this->listOfChapters(); //a revoir plus tard
-			else $this->singleChapter($argument);
-		}
-		$this->lastChapter = $this->lastChapterHtml();
-	}
+  public $html;
+  public $id;
+  public $lastChapter;
+  public $title;
+  
+  /**
+   * [__construct description]
+   * @param Array $argument soit un tableau avec comme clé un id, un slug, ou list
+   */
+  function __construct($argument)
+  {
+    global $secure;
+    extract($argument);
+    if (isset($secure->post->titre)) $this->saveOrUpdate($argument); //a revoir plus tard
+    else {
+      if (isset($list)) $this->listOfChapters(); //a revoir plus tard
+      else $this->singleChapter($argument);
+    }
+    $this->lastChapter = $this->lastChapterHtml();
+  }
 
-	private function singleChapter($args){
-		$dataChapter = new ChapterModel($args);
-		if (isset($dataChapter->error)){
-			die("// a completer");
+  private function singleChapter($args){
+    $dataChapter = new ChapterModel($args);
+    if (isset($dataChapter->error)){
+      die("// a completer");
 
-		}
-		foreach ($dataChapter as $key => $value) {
-			$this->$key = $value;
-		}
-		$vue = new View(
-			[
-				"{{ content }}" => $this->content,
-				"{{ date }}" 	=> $this->date,
-				"{{ title }}" 	=> $this->title
-			],
-			"singleChapter"
-		);
-		$this->html = $vue->html;
-	}
+    }
+    foreach ($dataChapter as $key => $value) {
+      $this->$key = $value;
+    }
+    $vue = new View(
+      [
+        "{{ content }}" => $this->content,
+        "{{ date }}"    => $this->date,
+        "{{ title }}"   => $this->title
+      ],
+      "singleChapter"
+    );
+    $this->html = $vue->html;
+  }
 
-	private function listOfChapters(){
-		die("listOfChapters");
-	}
+  private function listOfChapters(){
+    die("listOfChapters");
+  }
 
-	private function saveOrUpdate(){
-		die("saveOrUpdate");
-	}
+  private function saveOrUpdate(){
+    die("saveOrUpdate");
+  }
 
-	function update($id){
-		die("update");
-		$model = new ChapterModel(["id" => $id]);
-		// $model = new ChapterModel(["slug"=>"un-super-chapitre"]);
-		$this->title = $model->title;
+  function update($id){
+    die("update");
+    $model = new ChapterModel(["id" => $id]);
+    // $model = new ChapterModel(["slug"=>"un-super-chapitre"]);
+    $this->title = $model->title;
 
-		$vue = new View(
-			[
-				"{{ title }}" 	=> $model->title,
-				"{{ content }}" => $model->content,
-			],
-			"templateUpdate.html"
-		);
+    $vue = new View(
+      [
+        "{{ title }}"   => $model->title,
+        "{{ content }}" => $model->content,
+      ],
+      "templateUpdate.html"
+    );
 
-		$this->html = $vue->html;
-	}
+    $this->html = $vue->html;
+  }
 
-	function createChapter(){
-		die("createChapter");
-		//si pas donnée post -> on affiche une page où il va pouvoir saisir
+  function createChapter(){
+    die("createChapter");
+    //si pas donnée post -> on affiche une page où il va pouvoir saisir
 
-		//si données en post -> on enregistre
-		$enregistrement = new ChapterModel([
-			"save" => [
-				"id"    => 17,
-				"title" => "lkjkljkljklj"
-			]
-		]);
-	}
-	private function lastChapterHtml(){
-		$list = new ChapterModel(["list" => 3]);
-		$lastView = new View($list->slugList,"lastChapter");
-		//transmettre les données de la liste à une vue
-		
-		return $lastView->html;
-	}
+    //si données en post -> on enregistre
+    $enregistrement = new ChapterModel([
+      "save" => [
+        "id"    => 17,
+        "title" => "lkjkljkljklj"
+      ]
+    ]);
+  }
+  private function lastChapterHtml(){
+    $list     = new ChapterModel(["list" => 3]);
+    $lastView = new View($list->slugList,"lastChapter");
+    //transmettre les données de la liste à une vue
+    
+    return $lastView->html;
+  }
 
 
-	// function convertTitleToSlug($title){
-	// 	// $title = "la vie est géniale"
-	//  // la-vie-est-geniale
+  // function convertTitleToSlug($title){
+  //  // $title = "la vie est géniale"
+  //  // la-vie-est-geniale
 
-	// $title = implode("-", explode(" ", $title));
-	// $title = implode("e", explode("é", $title));
-	// return $title;
-	// }
+  // $title = implode("-", explode(" ", $title));
+  // $title = implode("e", explode("é", $title));
+  // return $title;
+  // }
 }
