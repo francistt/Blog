@@ -17,10 +17,10 @@ require_once "controller/security.php";
 
 
 $config	 = [
-	'basePath' => "git/blog", // chemin (sous dossier) à inclure dans l'url 
+	'basePath' => "blog", // chemin (sous dossier) à inclure dans l'url 
 	'base'     => "blog", // nom de la base de donnée
 	'user'     => "root", // utilisateur pour la base
-	'password' => ""      // mot de passe pour se connecter
+	'password' => "root"  // mot de passe pour se connecter
 ]; 
 
 //configuration Lionel
