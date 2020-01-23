@@ -1,0 +1,13 @@
+body {
+    display: flex;
+}
+
+main {
+    width: 100%;
+    border: 1px solid #7d518b;
+    padding: 1rem;
+}
+
+nav p a{
+  color:red;
+}
