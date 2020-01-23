@@ -38,5 +38,7 @@ class User{
   }
 
   public function deconnexion(){
+    global $session;
+    $session->killSession();
   }
 }

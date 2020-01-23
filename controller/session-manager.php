@@ -69,11 +69,15 @@ class SessionManager{
     if ($check) {
       if (isset($this->data['lastActivity']) && 
          ($now - $this->data['lastActivity']) > $this->duration) {
-          session_unset();
-          session_destroy();
-          session_start();
+          $this->killSession();
       }
     }
     $this->setOne('lastActivity', $now);
+  }
+
+  public function killSession(){
+    session_unset();
+    session_destroy();
+    session_start();
   }
 }

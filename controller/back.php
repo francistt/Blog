@@ -16,9 +16,19 @@ class Back extends Page{
       $todo = $this->defineTodo($uri, "accueil", $this);
       $this->$todo();
     }
+    $vue = new View(
+      [
+        "{{ title }}"   => $this->title,
+        "{{ username }}"=> $this->user->name,
+        "{{ content }}" => $this->html,
+      ],
+      "admin"
+    );
+    $this->html = $vue->html;
   }
 
   private function accueil(){
+    $this->title = "accueil";
     $this->html = file_get_contents("template/home.html"); 
   }
 
@@ -32,5 +42,13 @@ class Back extends Page{
 
   private function login(){
     $this->html = file_get_contents("template/login.html");
+  }
+
+  private function logout(){
+    $this->user->deconnexion();
+    header('Location:./login');
+  }
+
+  private function moderateComent(){
   }
 }
