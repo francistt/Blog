@@ -13,6 +13,7 @@ class Back extends Page{
     $this->user = new User();
     if ($this->user->name === null) $this->login(); //si l'utilisateur n'a pas de nom c'est que l'authentification à échoué alors on affiche la page de login
     else {
+      $this->template = "mainAdmin";
       $todo = $this->defineTodo($uri, "accueil", $this);
       $this->$todo();
     }
@@ -22,7 +23,7 @@ class Back extends Page{
         "{{ username }}"=> $this->user->name,
         "{{ content }}" => $this->html,
       ],
-      "admin"
+    $this->template
     );
     $this->html = $vue->html;
   }
@@ -45,7 +46,8 @@ class Back extends Page{
   }
 
   private function login(){
-    $this->html = file_get_contents("template/login.html");
+    $this->title = "interface";
+    $this->template = "login";
   }
 
   private function logout(){
