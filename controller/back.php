@@ -29,15 +29,19 @@ class Back extends Page{
 
   private function accueil(){
     $this->title = "accueil";
-    $this->html = file_get_contents("template/home.html"); 
+    $this->html  = file_get_contents("template/home.html"); 
   }
 
   private function addChapter(){
-    $this->html="ajouteChapitre test"; 
+    $this->html = file_get_contents("template/addChapter.html"); 
   }
 
   private function editChapter(){
-    $this->html="modifieChapitre test"; 
+    $this->html = file_get_contents("template/editChapter.html");
+  }
+
+  private function moderateComment(){
+    $this->html = file_get_contents("template/moderateComment.html");
   }
 
   private function login(){
@@ -47,8 +51,5 @@ class Back extends Page{
   private function logout(){
     $this->user->deconnexion();
     header('Location:./login');
-  }
-
-  private function moderateComent(){
   }
 }

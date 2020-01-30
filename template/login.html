@@ -2,12 +2,21 @@
 <html>
 <head>
 	<title>login</title>
+	<link rel="stylesheet" type="text/css" href="http://{{ base }}public/css/login.css">
 </head>
 <body>
-<form action="" method="POST">
-	<input type="text" name="user">
-	<input type="text" name="password">
-	<input type="submit" name="">
+	<div id="container">
+		<form action="" method="POST">
+			<h1>Interface d'administration</h1>
+			<label for="pseudo">Pseudo :</label>
+			<input type="text" name="user">
+			<br />
+			<label for="pass">Mot de passe :</label>
+			<input type="text" name="password">
+			<br />
+			<input type="submit" name="">
+		</form>
+	</div>
 </form>
 </body>
 </html>

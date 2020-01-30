@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ title }} edition de chapitre</title>
+  <link rel="stylesheet" type="text/css" href="http://{{ base }}public/css/admin.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+<nav>
+  <p>Bienvenue {{ username }}</p>
+  <h2>Chapitres</h2>
+  <ul>
+    <li>
+      <a href="http://{{ base }}add-chapter">ajouter un chapitre</a>
+    </li>
+    <li>
+      <a href="http://{{ base }}edit-chapter">modifier un chapitre</a>
+    </li>
+  </ul>
+  <h2>Commentaires</h2>
+  <ul>
+    <li>
+      <a href="http://{{ base }}moderate-comment">modérer un commentaire</a>
+    </li>
+  </ul>
+ <a href="http://{{ base }}logout"><input type="submit" value="deconnexion"></a></h2>
+</nav>
+<main>
+  <h1>edition de chapitre</h1>
+  {{ content }}
+</main>
+</nav>
+</body>
+</html>

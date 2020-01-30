@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav>
-  <p>Bienvenue {{ username }} <a href="http://{{ base }}logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
+  <p>Bienvenue {{ username }}</p>
   <h2>Chapitres</h2>
   <ul>
     <li>
@@ -23,6 +23,7 @@
       <a href="http://{{ base }}moderate-comment">modérer un commentaire</a>
     </li>
   </ul>
+  <a href="http://{{ base }}logout"><input type="submit" value="deconnexion"></a>
 </nav>
 <main>
   {{ content }}

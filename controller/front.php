@@ -5,9 +5,8 @@ require_once "controller/comment.php";
 /**
  * 
  */
-class Front 
-{
-
+class Front{
+  
   public $html;
   private $title;
   function __construct($uri)
@@ -31,8 +30,8 @@ class Front
   $chapitre   = new Chapter(["lastChapter"=>true]);
   $vue = new View(
     [
-      "{{ content }}"   => $this->html,
-      "{{ title }}"     => $this->title,
+      "{{ content }}"     => $this->html,
+      "{{ title }}"       => $this->title,
       "{{ lastChapter }}" => $chapitre->lastChapter,
     ],
     "main"
@@ -40,21 +39,23 @@ class Front
   $this->html = $vue->html;
   }
 
-  private function contact(){}
+  private function contact(){
+    
+  }
   private function chapter($uri){
     $slug = $uri[0];
     $chapitre = new Chapter(["slug" => $slug]);
-    $this->html = $chapitre->html;
-    $this->title = $chapitre->title;
+    $this->html        = $chapitre->html;
+    $this->title       = $chapitre->title;
     $this->lastChapter = $chapitre->lastChapter;
     $commentData = [
       "chapitre" => $chapitre->id,
-      "slug" => $slug
+      "slug"     => $slug
     ];
     if (isset ($uri[1])){
       if ($uri[1] === "moderate"){
         $commentData["moderate"] = [
-          "id"  => $uri[3],
+          "id"    => $uri[3],
           "state" => $uri[2]
         ];
       }
@@ -63,11 +64,11 @@ class Front
     $this->html .= $commentaire->html;
   }
   private function bio(){
-    $this->html = file_get_contents("template/bio.html");
+    $this->html   = file_get_contents("template/bio.html");
     $this->title  = "Biographie de Jean Forteroche";
   }
   private function home(){
-    $this->html = file_get_contents("template/home.html");
+    $this->html   = file_get_contents("template/home.html");
     $this->title  = "Billet simple pour l'Alaska : un roman de Jean Forteroche";
   }
 }

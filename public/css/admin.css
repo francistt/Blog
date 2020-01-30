@@ -3,11 +3,31 @@ body {
 }
 
 main {
+    background-color: #f4f4f4;
     width: 100%;
     border: 1px solid #7d518b;
     padding: 1rem;
 }
 
 nav p a{
-  color:red;
+  color:#2ebaae;
+}
+nav {
+    background-color: lightblue;
+}
+a:visited
+{
+    color: black;
+}
+input[type=submit] {
+    background-color: #f4f4f4;
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+}
+input[type=submit]:hover {
+    background-color: white;
+    color: #53af57;
+    border: 1px solid #53af57;
 }
