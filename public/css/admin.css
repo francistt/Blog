@@ -19,14 +19,14 @@ a:visited
 {
     color: black;
 }
-input[type=submit] {
+input[type=submit], button {
     background-color: #f4f4f4;
     padding: 14px 20px;
     margin: 8px 0;
     cursor: pointer;
     width: 100%;
 }
-input[type=submit]:hover {
+input[type=submit]:hover, button:hover {
     background-color: white;
     color: #53af57;
     border: 1px solid #53af57;
