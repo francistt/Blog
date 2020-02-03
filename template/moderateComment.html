@@ -1,3 +1,6 @@
-
-	<p>{{ comment }}</p>
-	<a href="single.html"><input type="submit" value="moderer"></a>
+<li>
+  <span>{{ author }}</span> le <span>{{ date }}</span>
+  <p>{{ comment }}</p>
+  <button onclick="valideCommentaire( {{ id }}, {{ etat }} )">supprimer</button>
+  <button onclick="supprimeCommentaire( {{ id }}, {{ etat }} )">valider</button>
+</li>
