@@ -11,7 +11,8 @@ class Back extends Page{
 
   public function __construct($uri){
     $this->user = new User();
-    if ($this->user->name === null) $this->login(); //si l'utilisateur n'a pas de nom c'est que l'authentification à échoué alors on affiche la page de login
+    if ($this->user->name === null) 
+    $this->login(); //si l'utilisateur n'a pas de nom c'est que l'authentification à échoué alors on affiche la page de login
     else {
       $this->template = "mainAdmin";
       $todo = $this->defineTodo($uri, "accueil", $this);
@@ -22,6 +23,7 @@ class Back extends Page{
         "{{ title }}"   => $this->title,
         "{{ username }}"=> $this->user->name,
         "{{ content }}" => $this->html,
+
       ],
     $this->template
     );
@@ -38,7 +40,7 @@ class Back extends Page{
   }
 
   private function editChapter(){
-    $this->html = file_get_contents("template/editChapter.html");
+    $this->chapter = file_get_contents("template/editChapter.html");
   }
 
   private function moderateComment(){
