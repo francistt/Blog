@@ -31,3 +31,15 @@ input[type=submit]:hover, button:hover {
     color: #53af57;
     border: 1px solid #53af57;
 }
+
+ack {
+    display: block;
+    padding: 1rem;
+    color: white;
+}
+ack.error{
+    background-color: red;
+}
+ack.success{
+    background-color: #CDDC39;
+}
