@@ -13,7 +13,7 @@ class View
 
 	{
 		global $config;
-		$this->base = $_SERVER["SERVER_NAME"]."/".$config["basePath"]."/";
+		$this->base = $_SERVER["SERVER_NAME"]."/".$config["basePath"];
 		if ($data === null) return;
 
 		//définir si data est un objet ou un tableau normal
@@ -34,11 +34,20 @@ class View
 
 	private function makeHTML($simpleData, $template){
 		$simpleData["{{ base }}"] = $this->base;
+		if ( isset ($simpleData["ack"])) {
+			$simpleData["{{ ack }}"] = $this->generateAck($simpleData["ack"]);
+			unset($simpleData["ack"]);
+		}
 		return str_replace(
 			array_keys($simpleData),
 			$simpleData,
-			file_get_contents("template/$template.html"));
+			file_get_contents("template/$template.html")
+		);
+	}
 
+	private function generateAck($ack){
+		if ($ack["msg"] === "") return "";
+		return '<ack class="'.$ack["class"].'">'.$ack['msg'].'</ack>';
 	}
 }
 

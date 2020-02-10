@@ -1,7 +1,12 @@
 <?php
 
 class Page{
-  public $html;
+  public    $ack = [
+    "msg"   => "",
+    "class" => null
+  ];
+  public    $html;
+  public    $title;
   protected $uri;
 
   // public function __construct(){

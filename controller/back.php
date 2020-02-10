@@ -20,10 +20,10 @@ class Back extends Page{
     }
     $vue = new View(
       [
-        "{{ title }}"   => $this->title,
-        "{{ username }}"=> $this->user->name,
-        "{{ content }}" => $this->html,
-
+        "ack"             => $this->ack,
+        "{{ content }}"  => $this->html,
+        "{{ title }}"    => $this->title,
+        "{{ username }}" => $this->user->name,
       ],
     $this->template
     );
@@ -36,10 +36,12 @@ class Back extends Page{
   }
 
   private function addChapter(){
+    $this->title = "titre à modifier 1";
     $this->html = file_get_contents("template/addChapter.html"); 
   }
 
   private function editChapter(){
+    $this->title = "titre à modifier 2";
     $this->chapter = file_get_contents("template/editChapter.html");
   }
 
@@ -50,6 +52,11 @@ class Back extends Page{
   private function login(){
     $this->title = "interface";
     $this->template = "login";
+    global $secure;
+    if( $secure->post !== null ) $this->ack = [
+      "msg"   => "mauvais mot de passe ou mauvais utilisateur",
+      "class" => "error"
+    ];
   }
 
   private function logout(){
