@@ -32,7 +32,6 @@ class Security{
 	private function securizeUri($extraPath){
 		$this->uri = strtolower(filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_LOW));
 		if ($extraPath !== ""){
-			$extraPath .= "/";
 			$this->uri = explode($extraPath, $this->uri);
 			$this->uri = implode("", $this->uri);
 		}
