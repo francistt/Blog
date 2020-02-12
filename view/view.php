@@ -13,7 +13,7 @@ class View
 
 	{
 		global $config;
-		$this->base = $_SERVER["SERVER_NAME"]."/".$config["basePath"];
+		$this->base = $config["basePath"];
 		if ($data === null) return;
 
 		//définir si data est un objet ou un tableau normal
