@@ -20,7 +20,7 @@ class Back extends Page{
     }
     $vue = new View(
       [
-        "ack"             => $this->ack,
+        "ack"            => $this->ack,
         "{{ content }}"  => $this->html,
         "{{ title }}"    => $this->title,
         "{{ username }}" => $this->user->name,
@@ -54,7 +54,7 @@ class Back extends Page{
     $this->template = "login";
     global $secure;
     if( $secure->post !== null ) $this->ack = [
-      "msg"   => "mauvais mot de passe ou mauvais utilisateur",
+      "msg"   => "Mauvais identifiant ou mot de passe",
       "class" => "error"
     ];
   }
