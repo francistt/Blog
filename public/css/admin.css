@@ -33,6 +33,12 @@ input[type=submit]:hover, button:hover {
 }
 
 ack {
+    text-align: center;
+    width: 107%;
+    padding: 30px;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     display: block;
     padding: 1rem;
     color: white;

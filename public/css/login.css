@@ -15,7 +15,6 @@ form {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 #container h1{
-    width: 38%;
     margin: 0 auto;
     padding-bottom: 10px;
 }
@@ -42,4 +41,10 @@ input[type=submit]:hover {
     background-color: white;
     color: #53af57;
     border: 1px solid #53af57;
+}
+a {
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+    padding: 14px 25px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
