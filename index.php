@@ -14,14 +14,14 @@ $config  = [
 ]; 
 
 // configuration Lionel
-// $config  = [
-// 'basePath'        => "",
-// 'base'            => "francis-blog",
-// 'user'            => "root",
-// 'password'        => "root",
-// 'sessionDuration' => 1800,
-// 'debug'           => true
-// ]; 
+$config  = [
+'basePath'        => "",
+'base'            => "francis-blog",
+'user'            => "root",
+'password'        => "root",
+'sessionDuration' => 1800,
+'debug'           => true
+]; 
 
 if ($config["debug"]) {
   error_reporting(E_ALL | E_STRICT);

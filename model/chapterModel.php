@@ -32,11 +32,15 @@ class ChapterModel extends Model{
 			$request = $this->query($sql,true);
 			$this->slugList = $request["data"];
 		}
-		/*if (isset($lastChapter)) {
-			$sql= "SELECT * FROM `chapters` ORDER BY date DESC limit 1";
-			$request = $this->query($sql);
+		if (isset($featured)) {
+			// $sql= "SELECT * FROM `chapters` ORDER BY date DESC limit 1";
+			$sql= "SELECT title AS '{{ title }}', date AS '{{ date }}', slug AS '{{ slug }}', content AS '{{ content }}' FROM `chapters` ORDER BY date DESC limit 1";
+			$request		= $this->query($sql);
+			$this->data	= $request["data"];
+			$sql				= "SELECT title, id, slug FROM `chapters` ORDER BY date DESC limit 1";
+			$request		= $this->query($sql);
 			$this->checkSucced($request,"hydrate");
-		}*/
+		}
 		if (isset($save)){
 			//requete pour enregister les données
 		}

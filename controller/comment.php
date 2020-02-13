@@ -9,6 +9,7 @@ require_once "view/commentView.php";
 class Comment
 {
 	public $html;
+	public $numberOfComments;
 	private $slug;
 
 	/**
@@ -21,6 +22,7 @@ class Comment
 		if (isset($argument["chapitre"])){
 			$this->listerLesCommentaires($dataCommentaires->data);
 		}
+		$this->numberOfComments = count($dataCommentaires->data);
 	}
 	private function listerLesCommentaires($data){
 

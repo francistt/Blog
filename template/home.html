@@ -1,23 +1,21 @@
 							<div class="post">
 								<header>
 									<div class="title">
-										<h2><a href="single.html">Billet simple pour l'Alaska</a></h2>
-										<p>Découvrez l'Alaska sous une autre aurore</p>
+										<h2><a href="{{ base }}/chapitre/{{ slug }}">{{ title }}</a></h2>
 									</div>
 									<div class="meta">
-										<time class="published" datetime="20-11-01">1 Janvier 2020</time>
+										<time class="published" datetime="{{ date }}">{{ date }}</time>
 										<a href="{{ base }}/bio" class="author"><span class="name">Jean Forteroche</span><img src="public/images/jeanmini.jpg" alt="" /></a>
 									</div>
 								</header>
-								<a href="single.html" class="image featured"><img src="public/images/pic01.png" alt="" /></a>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.Vivamus porttitor magna enim, ac accumsan tortor cursus at</p>
+								<a href="{{ base }}/chapitre/{{ slug }}" class="image featured"><img src="public/images/pic01.png" alt="" /></a>
+								{{ content }}
 								<footer>
 									<ul class="actions">
-										<li><a href="http://{{ base }}/chapitre/{{ slug }}" class="button large">Continuer à lire</a></li>
+										<li><a href="{{ base }}/chapitre/{{ slug }}" class="button large">Continuer à lire</a></li>
 									</ul>
 									<ul class="stats">
-										<li><a href="#" class="icon solid fa-heart">28</a></li>
-										<li><a href="#" class="icon solid fa-comment">128</a></li>
+										<li><a href="{{ base }}/chapitre/{{ slug }}#comments" class="icon solid fa-comment">{{ numberOfComments }}</a></li>
 									</ul>
 								</footer>
 							</div>

@@ -23,8 +23,11 @@ class Chapter
     extract($argument);
     if (isset($secure->post->titre)) $this->saveOrUpdate($argument); //a revoir plus tard
       if (isset($list)) $this->listOfChapters(); //a revoir plus tard
-      else $this->singleChapter($argument);
-    $this->lastChapter = $this->lastChapterHtml();
+      else {
+        if (isset($featured)) $this->featured();
+        else $this->singleChapter($argument);
+      }
+    $this->lastChapters = $this->lastChapterHtml();
   }
 
   private function singleChapter($args){
@@ -90,6 +93,13 @@ class Chapter
     //transmettre les données de la liste à une vue
     
     return $lastView->html;
+  }
+  private function featured(){
+    $featured    = new ChapterModel(["featured" => true]);
+    $this->id    = $featured->id;
+    $this->title = $featured->title;
+    $this->data  = $featured->data;
+    $this->slug  = $featured->slug;
   }
 
 

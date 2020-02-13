@@ -27,16 +27,16 @@ class Front{
         $this->home();
         break;
     }
-  $chapitre   = new Chapter(["lastChapter"=>true]);
-  $vue = new View(
-    [
-      "{{ content }}"     => $this->html,
-      "{{ title }}"       => $this->title,
-      "{{ lastChapter }}" => $chapitre->lastChapter,
-    ],
-    "main"
-  );
-  $this->html = $vue->html;
+    $chapitre   = new Chapter(["lastChapter"=>true]);
+    $vue = new View(
+      [
+        "{{ content }}"     => $this->html,
+        "{{ title }}"       => $this->title,
+        "{{ lastChapter }}" => $chapitre->lastChapter,
+      ],
+      "main"
+    );
+    $this->html = $vue->html;
   }
 
   private function contact(){
@@ -63,12 +63,22 @@ class Front{
     $commentaire = new Comment($commentData);
     $this->html .= $commentaire->html;
   }
+  
   private function bio(){
     $this->html   = file_get_contents("template/bio.html");
     $this->title  = "Biographie de Jean Forteroche";
   }
+
   private function home(){
-    $this->html   = file_get_contents("template/home.html");
-    $this->title  = "Billet simple pour l'Alaska : un roman de Jean Forteroche";
+    $chapitre = new Chapter(["featured" => true]);
+    $comments = new Comment([
+      "chapitre" => $chapitre->id,
+      "slug"     => $chapitre->slug
+    ]);
+
+    $chapitre->data["{{ numberOfComments }}"] = $comments->numberOfComments;
+    $featuredView = new View($chapitre->data,"home");
+    $this->html   = $featuredView->html;
+    $this->title  = $chapitre->title;
   }
 }
