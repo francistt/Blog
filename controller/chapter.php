@@ -12,6 +12,8 @@ class Chapter
   public $id;
   public $lastChapter;
   public $title;
+  public $slug;
+  public $date;
   
   /**
    * [__construct description]
@@ -39,11 +41,17 @@ class Chapter
     foreach ($dataChapter as $key => $value) {
       $this->$key = $value;
     }
+    if (!isset($this->slug)){
+      global $secure;
+      $this->slug = end($secure->uri);
+    }
     $vue = new View(
       [
         "{{ content }}" => $this->content,
-        "{{ date }}"    => $this->date,
-        "{{ title }}"   => $this->title
+        "{{ dateText }}"    => $this->date,
+        "{{ dateSEO }}"    => $this->date,
+        "{{ title }}"   => $this->title,
+        "{{ slug }}"    => $this->slug
       ],
       "singleChapter"
     );

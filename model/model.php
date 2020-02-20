@@ -24,15 +24,15 @@ class model
   		else $data= $resultat->fetch();
  		$resultat->closeCursor();
  		return [
-		"succeed" => TRUE,
-		"data" => $data
-		];
+  		"succeed" => TRUE,
+  		"data" => $data
+  		];
 		}
 		catch(Exception $e) {
-		return [
-		"succeed" => FALSE,
-		"data" => $e
-		];
+  		return [
+  		"succeed" => FALSE,
+  		"data" => $e
+  		];
 		}
 	}
 	public function hydrate($modelData)
