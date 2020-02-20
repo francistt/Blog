@@ -25,7 +25,6 @@ class Comment
 		$this->numberOfComments = count($dataCommentaires->data);
 	}
 	private function listerLesCommentaires($data){
-
 		$commentaireVue = new CommentView($data,$this->slug);
 		$vue = new View(
 			[

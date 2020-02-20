@@ -27,7 +27,7 @@ class Chapter
         if (isset($featured)) $this->featured();
         else $this->singleChapter($argument);
       }
-    $this->lastChapters = $this->lastChapterHtml();
+    $this->lastChapter = $this->lastChapterHtml();
   }
 
   private function singleChapter($args){
