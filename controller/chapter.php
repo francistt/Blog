@@ -24,11 +24,11 @@ class Chapter
     global $secure;
     extract($argument);
     if (isset($secure->post->titre)) $this->saveOrUpdate($argument); //a revoir plus tard
-      if (isset($list)) $this->listOfChapters(); //a revoir plus tard
-      else {
-        if (isset($featured)) $this->featured();
-        else $this->singleChapter($argument);
-      }
+    if (isset($list)) $this->listOfChapters(); //a revoir plus tard
+    else {
+      if (isset($featured)) $this->featured();
+      else $this->singleChapter($argument);
+    }
     $this->lastChapter = $this->lastChapterHtml();
   }
 
@@ -45,10 +45,18 @@ class Chapter
       global $secure;
       $this->slug = end($secure->uri);
     }
+
+    $dateText = IntlDateFormatter::formatObject(
+      new DateTime($this->date), 
+      "eeee dd MMMM yyyy", //UCI standard formatted string
+      'fr_FR'
+      );
+
+
     $vue = new View(
       [
         "{{ content }}" => $this->content,
-        "{{ dateText }}"=> $this->date,
+        "{{ dateText }}"=> $dateText,
         "{{ dateSEO }}" => $this->date,
         "{{ title }}"   => $this->title,
         "{{ slug }}"    => $this->slug

@@ -50,7 +50,7 @@ class View
 		return '<ack class="'.$ack["class"].'">'.$ack['msg'].'</ack>';
 	}
 }
-	$datetime = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+	// $datetime = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
 
 // "j'ai une belle maison"
 // "j'ai une belle voiture"

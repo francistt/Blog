@@ -1,4 +1,8 @@
 body {
+    display: block;
+}
+
+admin {
     display: flex;
 }
 
