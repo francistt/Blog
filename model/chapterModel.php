@@ -34,7 +34,7 @@ class ChapterModel extends Model{
 		}
 		if (isset($featured)) {
 			// $sql= "SELECT * FROM `chapters` ORDER BY date DESC limit 1";
-			$sql= "SELECT title AS '{{ title }}', DATE_FORMAT(date, '%Y-%m-%d') AS '{{ date }}', slug AS '{{ slug }}', content AS '{{ content }}' FROM `chapters` ORDER BY date DESC limit 1";
+			$sql= "SELECT title AS '{{ title }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', slug AS '{{ slug }}', content AS '{{ content }}' FROM `chapters` ORDER BY date DESC limit 1";
 			$request		= $this->query($sql);
 			$this->data	= $request["data"];
 			$sql				= "SELECT title, id, slug FROM `chapters` ORDER BY date DESC limit 1";

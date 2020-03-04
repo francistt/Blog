@@ -40,6 +40,7 @@ class Front{
   }
 
   private function contact(){
+    $this->html   = file_get_contents("template/contact.html");
     
   }
   private function chapter($uri){

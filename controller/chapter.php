@@ -48,8 +48,8 @@ class Chapter
     $vue = new View(
       [
         "{{ content }}" => $this->content,
-        "{{ dateText }}"    => $this->date,
-        "{{ dateSEO }}"    => $this->date,
+        "{{ dateText }}"=> $this->date,
+        "{{ dateSEO }}" => $this->date,
         "{{ title }}"   => $this->title,
         "{{ slug }}"    => $this->slug
       ],

@@ -37,11 +37,11 @@ class Back extends Page{
 
   private function addChapter(){
     $this->title = "titre à modifier 1";
-    $this->html = file_get_contents("template/addChapter.html"); 
+    $this->html  = file_get_contents("template/addChapter.html"); 
   }
 
   private function editChapter(){
-    $this->title = "titre à modifier 2";
+    $this->title   = "titre à modifier 2";
     $this->chapter = file_get_contents("template/editChapter.html");
   }
 
@@ -50,7 +50,7 @@ class Back extends Page{
   }
 
   private function login(){
-    $this->title = "interface";
+    $this->title    = "interface";
     $this->template = "login";
     global $secure;
     if( $secure->post !== null ) $this->ack = [
