@@ -48,7 +48,7 @@ class Chapter
 
     $dateText = IntlDateFormatter::formatObject(
       new DateTime($this->date), 
-      "eeee dd MMMM yyyy", //UCI standard formatted string
+      "dd.MM.yyyy", //UCI standard formatted string
       'fr_FR'
       );
 

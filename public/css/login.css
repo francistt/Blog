@@ -36,6 +36,7 @@ input[type=submit] {
     margin: 8px 0;
     cursor: pointer;
     width: 100%;
+    line-height: 0;
 }
 input[type=submit]:hover {
     background-color: white;
@@ -44,8 +45,10 @@ input[type=submit]:hover {
 }
 a {
     background-color: #f4f4f4;
-    padding: 14px 20px;
     margin: 8px 0;
     cursor: pointer;
-    width: 100%;
+
+}
+#footer {
+    text-align: center;
 }
