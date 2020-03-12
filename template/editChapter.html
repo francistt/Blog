@@ -1,9 +1,13 @@
   <h1>modification de chapitre</h1>
 
+<form action="" method="POST">
   <main>
-    {{ lastChapter }}
-  </main>
+    <textarea name="chapitre" id="chapitre" cols="150" rows="10">{{ lastChapter }}</textarea>
     
-  <button onclick="editerChapitre( {{ id }}, {{ etat }} )">editer</button>
-  <button onclick="validerChapitre( {{ id }}, {{ etat }} )">valider</button>
-  <button onclick="supprimerChapitre( {{ id }}, {{ etat }} )">supprimer</button>
+  </main>
+  {{ ack }}
+  <input type="submit" name="valider" value="valider">
+  <input type="submit" name="supprimer" value="supprimer">
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>tinymce.init({selector:'textarea'});</script>
+</form>

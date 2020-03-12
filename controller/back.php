@@ -41,8 +41,9 @@ class Back extends Page{
   }
 
   private function editChapter(){
-    $this->title   = "titre à modifier 2";
-    $this->chapter = file_get_contents("template/editChapter.html");
+    $chapter = new Chapter(["editChapter"=>true]);
+    $this->html = $chapter->html;
+    $this->title = $chapter->title;
   }
 
   private function moderateComment(){
@@ -62,5 +63,11 @@ class Back extends Page{
   private function logout(){
     $this->user->deconnexion();
     header('Location:./login');
+  }
+
+  private function listChapters(){
+    $chapters = new Chapter(["list"=>true]);
+    $this->title = "choisir le chapitre à modifier";
+    $this->html = $chapters->html;
   }
 }

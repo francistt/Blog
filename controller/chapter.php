@@ -14,6 +14,7 @@ class Chapter
   public $title;
   public $slug;
   public $date;
+  public $ack = null;
   
   /**
    * [__construct description]
@@ -21,16 +22,23 @@ class Chapter
    */
   function __construct($argument)
   {
-    global $secure;
-    extract($argument);
-    if (isset($secure->post->titre)) $this->saveOrUpdate($argument); //a revoir plus tard
-    if (isset($list)) $this->listOfChapters(); //a revoir plus tard
-    else {
-      if (isset($featured)) $this->featured();
-      else $this->singleChapter($argument);
-    }
+    $this->defineToDo($argument);    
     $this->lastChapter = $this->lastChapterHtml();
   }
+
+  private function defineToDo($args){
+    extract($args);
+    global $secure; //a revoir plus tard
+    if ($secure->post !== null) $this->saveOrUpdate($secure->post);
+
+    if (isset($list))        return $this->listOfChapters();
+    if (isset($featured))    return $this->featured();
+    if (isset($editChapter)) return $this->editChapter();
+
+    $this->singleChapter($argument);
+
+  }
+
 
   private function singleChapter($args){
     $dataChapter = new ChapterModel($args);
@@ -67,11 +75,20 @@ class Chapter
   }
 
   private function listOfChapters(){
-    die("listOfChapters");
+    $list     = new ChapterModel(["list" => 100]);
+    $vue = new View(
+      $list->slugList,
+      "listOfChapters"
+    );
+    $this->html = $vue->html;
   }
 
-  private function saveOrUpdate(){
-    die("saveOrUpdate");
+  private function saveOrUpdate($dataPost){
+    if ($dataPost["valider"] === "valider") return $this->updatePostContent($dataPost);
+    if ($dataPost["supprimerConfirmation"] === "oui") return $this->deleteChapter();
+    if ($dataPost["supprimer"] === "supprimer") {
+      $this->ack = file_get_contents("template/confirmationSupression.html"); 
+    }
   }
 
   function update($id){
@@ -127,4 +144,20 @@ class Chapter
   // $title = implode("e", explode("é", $title));
   // return $title;
   // }
+  // 
+  private function editChapter(){
+
+    $this->title   = "titre à modifier 2";
+
+    $vue = new View(
+      [
+        "{{ ack }}" => $this->ack,
+        "{{ lastChapter }}" => "klmkdlmkflmsdkflmsdkldskfk"
+
+      ],
+      "editChapter"
+    );
+
+    $this->html = $vue->html;
+  }
 }
