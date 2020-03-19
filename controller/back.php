@@ -16,7 +16,7 @@ class Back extends Page{
     else {
       $this->template = "mainAdmin";
       $todo = $this->defineTodo($uri, "accueil", $this);
-      $this->$todo();
+      $this->$todo($uri);
     }
     $vue = new View(
       [
@@ -37,12 +37,12 @@ class Back extends Page{
 
   private function addChapter(){
     //$chapter     = new Chapter(["addChapter"=>true]);
-    $this->title = "titre à modifier 1";
+    $this->title = "ajouter un chapitre";
     $this->html  = file_get_contents("template/addChapter.html"); 
   }
 
-  private function editChapter(){
-    $chapter     = new Chapter(["editChapter"=>true]);
+  private function editChapter($uri){
+    $chapter     = new Chapter(["editChapter"=>$uri[1]]);
     $this->html  = $chapter->html;
     $this->title = $chapter->title;
   }

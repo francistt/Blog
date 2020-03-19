@@ -29,11 +29,11 @@ class Chapter
   private function defineToDo($args){
     extract($args);
     global $secure; //a revoir plus tard
-    if ($secure->post !== null) $this->saveOrUpdate($secure->post);
+    if ($secure->post !== null) $this->saveOrUpdate($secure->post, $args);
 
     if (isset($list))        return $this->listOfChapters();
     if (isset($featured))    return $this->featured();
-    if (isset($editChapter)) return $this->editChapter();
+    if (isset($editChapter)) return $this->editChapter($args);
     //if (isset($addChapter))  return $this->addChapter();
 
     $this->singleChapter($args);
@@ -85,12 +85,11 @@ class Chapter
     $this->html = $vue->html;
   }
 
-  private function saveOrUpdate($dataPost){
+  private function saveOrUpdate($dataPost, $args){
+    // die(var_dump($dataPost));
     if ($dataPost["valider"] === "valider") return $this->updatePostContent($dataPost);
-    if ($dataPost["supprimerConfirmation"] === "oui") return $this->deleteChapter();
-    if ($dataPost["supprimer"] === "supprimer") {
-      $this->ack = file_get_contents("template/confirmationSupression.html"); 
-    }
+    if ($dataPost["supprimerConfirmation"] === "oui") $this->delete = true;
+    if ($dataPost["supprimer"] === "supprimer") $this->deleteConfirmation = true;
   }
 
   function update($id){
@@ -147,19 +146,29 @@ class Chapter
   // return $title;
   // }
   // 
-  private function editChapter(){
+  private function editChapter($args){
 
-    $this->title   = "titre à modifier 2";
+    if ($this->deleteConfirmation) return $this->deleteConfirm($args);
+    if ($this->delete) return $this->deleteChapter();
+
+    $dataChapter = new ChapterModel(["slug"=>$args["editChapter"]]);
+    $this->title   = "edition du chapite ".$dataChapter->title;
+
 
     $vue = new View(
       [
         "{{ ack }}" => $this->ack,
-        "{{ lastChapter }}" => "klmkdlmkflmsdkflmsdkldskfk"
-
+        // "{{ boutons }}" => $boutons,
+        "{{ lastChapter }}" => $dataChapter->content
       ],
       "editChapter"
     );
 
     $this->html = $vue->html;
+  }
+
+  private function deleteConfirm(){
+    $this->html = file_get_contents("template/confirmationSupression.html"); 
+    $this->title   = "voulez vous supprimer ";
   }
 }
