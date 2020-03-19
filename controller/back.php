@@ -36,13 +36,14 @@ class Back extends Page{
   }
 
   private function addChapter(){
+    //$chapter     = new Chapter(["addChapter"=>true]);
     $this->title = "titre à modifier 1";
     $this->html  = file_get_contents("template/addChapter.html"); 
   }
 
   private function editChapter(){
-    $chapter = new Chapter(["editChapter"=>true]);
-    $this->html = $chapter->html;
+    $chapter     = new Chapter(["editChapter"=>true]);
+    $this->html  = $chapter->html;
     $this->title = $chapter->title;
   }
 
@@ -66,8 +67,8 @@ class Back extends Page{
   }
 
   private function listChapters(){
-    $chapters = new Chapter(["list"=>true]);
+    $chapters    = new Chapter(["list"=>true]);
     $this->title = "choisir le chapitre à modifier";
-    $this->html = $chapters->html;
+    $this->html  = $chapters->html;
   }
 }

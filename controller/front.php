@@ -108,4 +108,7 @@ class Front{
       return false;
     }
   }
+    private function test(){
+    $chapters = new Chapter(["list"=>true]);
+  }
 }

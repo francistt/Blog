@@ -7,7 +7,11 @@
 
 <body>
     <form method="post" action="mail.php">
-        <label>Tape ton message ici pour m'écrire</label>
+        <label>Nom</label>
+        <input type="text" name="nom" required>
+        <label>Email</label>
+        <input type="email" name="email" required>
+        <label>message</label>
         <textarea rows="10" cols="30" name="message" placeholder="votre message"></textarea>
         <br/>
         <input type="submit" value="Envoyer">

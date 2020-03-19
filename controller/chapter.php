@@ -34,9 +34,9 @@ class Chapter
     if (isset($list))        return $this->listOfChapters();
     if (isset($featured))    return $this->featured();
     if (isset($editChapter)) return $this->editChapter();
+    //if (isset($addChapter))  return $this->addChapter();
 
     $this->singleChapter($argument);
-
   }
 
 
@@ -75,9 +75,11 @@ class Chapter
   }
 
   private function listOfChapters(){
-    $list     = new ChapterModel(["list" => 100]);
-    $vue = new View(
+    $list = new ChapterModel(["list" => 100]);
+     //$featured = new ChapterModel(["content" => 100]);
+    $vue  = new View(
       $list->slugList,
+      //$content->data,
       "listOfChapters"
     );
     $this->html = $vue->html;
