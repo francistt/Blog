@@ -22,7 +22,9 @@ class Front{
       case 'bio':
         $this->bio();
         break;
-      
+      case 'test':
+        $this->test();
+        break;
       default:
         $this->home();
         break;
@@ -110,5 +112,7 @@ class Front{
   }
     private function test(){
     $chapters = new Chapter(["list"=>true]);
-  }
+    $this->html   = $chapters->html;
+    $this->title  = "liste des chapitres";
+  } 
 }

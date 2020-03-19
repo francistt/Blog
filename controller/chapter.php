@@ -36,7 +36,7 @@ class Chapter
     if (isset($editChapter)) return $this->editChapter();
     //if (isset($addChapter))  return $this->addChapter();
 
-    $this->singleChapter($argument);
+    $this->singleChapter($args);
   }
 
 
