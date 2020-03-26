@@ -8,13 +8,15 @@ require_once "view/view.php";
 class Chapter
 {
 
-  public $html;
-  public $id;
-  public $lastChapter;
-  public $title;
-  public $slug;
-  public $date;
-  public $ack = null;
+  public  $html;
+  public  $id;
+  public  $lastChapter;
+  public  $title;
+  public  $slug;
+  public  $date;
+  public  $ack                = null;
+  private $deleteConfirmation = false;
+  private $delete             = false;
   
   /**
    * [__construct description]
@@ -92,24 +94,16 @@ class Chapter
     if ($dataPost["supprimer"] === "supprimer") $this->deleteConfirmation = true;
   }
 
-  function update($id){
-    die("update");
-    $model = new ChapterModel(["id" => $id]);
-    // $model = new ChapterModel(["slug"=>"un-super-chapitre"]);
-    $this->title = $model->title;
-
-    $vue = new View(
-      [
-        "{{ title }}"   => $model->title,
-        "{{ content }}" => $model->content,
-      ],
-      "templateUpdate.html"
-    );
-
-    $this->html = $vue->html;
+  private function updatePostContent($dataPost){
+    $dataPost["slug"] = $this->makeSlug($dataPost["titre"]);
+    $model = new ChapterModel(["update" => $dataPost]);
+    if (!$model->succeed) $this->ack= [
+      "msg" =>"erreur d'enregistrement",
+      "class" => "error"
+    ];
   }
 
-  function createChapter(){
+  private function createChapter(){
     die("createChapter");
     //si pas donnée post -> on affiche une page où il va pouvoir saisir
 
@@ -153,11 +147,13 @@ class Chapter
     $dataChapter = new ChapterModel(["slug"=>$args["editChapter"]]);
     $this->title   = "edition du chapite ".$dataChapter->title;
 
+    // die(var_dump($dataChapter));
 
     $vue = new View(
       [
         "{{ ack }}" => $this->ack,
-        // "{{ boutons }}" => $boutons,
+        "{{ id }}" => $dataChapter->id,
+        "{{ titre }}" => $dataChapter->title,
         "{{ lastChapter }}" => $dataChapter->content
       ],
       "editChapter"
@@ -170,5 +166,11 @@ class Chapter
     $this->html = file_get_contents("template/confirmationSupression.html"); 
     $this->title   = "voulez vous supprimer ";
     
+  }
+
+  private function makeSlug($title){
+    $title = strtolower($title);
+    $title = str_replace(" ", "-", $title);
+    return $title;
   }
 }

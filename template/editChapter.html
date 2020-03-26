@@ -2,7 +2,9 @@
 
 <form action="" method="POST">
   <main>
+    <input type="text" name="titre" id="titre" value="{{ titre }}">
     <textarea name="chapitre" id="chapitre" cols="150" rows="10">{{ lastChapter }}</textarea>
+    <input type="hidden" name="id" id="id" value="{{ id }}" >
   </main>
   {{ ack }}
   <input type="submit" name="valider" value="valider">
