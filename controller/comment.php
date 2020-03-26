@@ -35,8 +35,8 @@ class Comment
 		// die(var_dump($vue));
 		$this->html = $vue->html;
 	}
-	//private function editComment($data){
-	//	if ($this->deleteConfirmation) return $this->deleteConfirm($data);
-   	//	if ($this->delete) return $this->deleteComment();
-	//}
+	private function deleteComment($data){
+		if ($this->deleteConfirmation) return $this->deleteConfirm($data);
+   		if ($this->delete) return $this->deleteComment();
+	}
 }

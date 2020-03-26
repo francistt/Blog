@@ -50,12 +50,11 @@ class ChapterModel extends Model{
 				'content' => $content,	
 			));
 		}
-		if (isset($update)){
-			//requete pour mettre à jour les données
-			 
+		if (isset($delete)){
         $req = $sql->prepare('DELETE FROM chapters WHERE id = ?');
         $req->execute(array($id));
-        return $suppr;
+        //return $suppr;
 		}
 	}
 }
+			//requete pour mettre à jour les données
