@@ -147,7 +147,6 @@ class Chapter
   // }
   // 
   private function editChapter($args){
-
     if ($this->deleteConfirmation) return $this->deleteConfirm($args);
     if ($this->delete) return $this->deleteChapter();
 
@@ -170,5 +169,6 @@ class Chapter
   private function deleteConfirm(){
     $this->html = file_get_contents("template/confirmationSupression.html"); 
     $this->title   = "voulez vous supprimer ";
+    
   }
 }

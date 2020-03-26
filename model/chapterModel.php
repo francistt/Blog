@@ -35,17 +35,27 @@ class ChapterModel extends Model{
 		if (isset($featured)) {
 			// $sql= "SELECT * FROM `chapters` ORDER BY date DESC limit 1";
 			$sql= "SELECT title AS '{{ title }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', slug AS '{{ slug }}', content AS '{{ content }}' FROM `chapters` ORDER BY date DESC limit 1";
-			$request		= $this->query($sql);
+			$request = $this->query($sql);
 			$this->data	= $request["data"];
-			$sql				= "SELECT title, id, slug FROM `chapters` ORDER BY date DESC limit 1";
-			$request		= $this->query($sql);
+			$sql = "SELECT title, id, slug FROM `chapters` ORDER BY date DESC limit 1";
+			$request = $this->query($sql);
 			$this->checkSucced($request,"hydrate");
 		}
 		if (isset($save)){
 			//requete pour enregister les données
+			$req = $sql->prepare('INSERT INTO chapters (numeroChapitre, title, content)');
+			$req->execute(array(
+				'numeroChapitre' => $numeroChapitre,
+				'title' => $title,
+				'content' => $content,	
+			));
 		}
 		if (isset($update)){
 			//requete pour mettre à jour les données
+			 
+        $req = $sql->prepare('DELETE FROM chapters WHERE id = ?');
+        $req->execute(array($id));
+        return $suppr;
 		}
 	}
 }

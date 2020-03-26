@@ -9,44 +9,62 @@
 </head>
 <body>
 	<div id="container">
-	{{ ack }}
-	<br/>
+		{{ ack }}
+		<br/>
 		<form action="" method="POST">
 			<h1>Interface d'administration</h1>
 			<label for="pseudo">Pseudo :</label>
 			<input type="text" name="user">
 			<br />
-			<label for="pass">Mot de passe :</label>
-			<input type="text" name="password" type="password">
-			<br />
+			<label>Mot de passe :</label>
+			<input type="password" name="password" id="password"><br>
+			<label for="checkbox">
+				<input type="checkbox" name="case" id="checkbox">
+				Afficher le mot de passe
+			</label>
+			
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					var checkbox = $("#checkbox");
+					var password = $("#password");
+					checkbox.click(function() {
+						if(checkbox.prop("checked")) {
+							password.attr("type", "text");
+						} else {
+							password.attr("type", "password");
+						}
+					});
+				});
+			</script>
 			<input type="submit" name="">
 			<br/>
 			<br/>
 		</form>
 	</div>
 	<!-- Footer -->
-          <section id="footer">
-            <a href="{{ base }}/" class="button large">retour à l'accueil</a>
-          </br>
-          </br>
-            <ul class="icons">
-              <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-              <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-              <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-              <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-            </ul>
-            <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
-          </section>
-      </div>
+	<section id="footer">
+		<a href="{{ base }}/" class="button large">retour à l'accueil</a>
+	</br>
+</br>
+<ul class="icons">
+	<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+	<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+	<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+	<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+</ul>
+<p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+</section>
+</div>
 
-    <!-- Scripts -->
-      <script src="public/js/jquery.min.js"></script>
-      <script src="public/js/browser.min.js"></script>
-      <script src="public/js/breakpoints.min.js"></script>
-      <script src="public/js/util.js"></script>
-      <script src="public/js/main.js"></script>
+<!-- Scripts -->
+<script src="public/js/jquery.min.js"></script>
+<script src="public/js/browser.min.js"></script>
+<script src="public/js/breakpoints.min.js"></script>
+<script src="public/js/util.js"></script>
+<script src="public/js/main.js"></script>
 
-  </body>
+</body>
 </html>
 
 </body>

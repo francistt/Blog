@@ -22,8 +22,10 @@ class Back extends Page{
       [
         "ack"            => $this->ack,
         "{{ content }}"  => $this->html,
+        //"{{ commentaires }}"  => $this->comment,
         "{{ title }}"    => $this->title,
         "{{ username }}" => $this->user->name,
+
       ],
     $this->template
     );
@@ -47,8 +49,13 @@ class Back extends Page{
     $this->title = $chapter->title;
   }
 
-  private function moderateComment(){
-    $this->html = file_get_contents("template/moderateComment.html");
+  private function moderateComments($data){
+    //die(var_dump($data));
+    $comments = new Comment(["moderateComments"=>true]);
+    $this->html  = $comment->html;
+    $this->title = $comment->title;
+
+    //$this->html = file_get_contents("template/moderateComments.html");
   }
 
   private function login(){

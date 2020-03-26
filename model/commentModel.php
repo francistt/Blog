@@ -15,7 +15,7 @@ public $data;
 			$request->execute($newValue);
 		}
 		if (isset($args["chapitre"])){
-			$sql= "SELECT ID, author AS '{{ author }}', comment AS '{{ comment }}', date AS '{{ date }}', state FROM comments WHERE idPost= ".$args['chapitre'];
+			$sql= "SELECT ID, author AS '{{ author }}', comment AS '{{ comment }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', state FROM comments WHERE idPost= ".$args['chapitre'];
 			$request = $this->query($sql,TRUE); //fonction dans la classe Model
 			$this->data = $request["data"];
 		}

@@ -1,0 +1,12 @@
+<h1>moderation de commentaire</h1>
+
+<form action="" method="POST">
+  <main>
+    <textarea name="chapitre" id="chapitre" cols="150" rows="10">{{ commentaires }}</textarea>
+  </main>
+  {{ ack }}
+  <input type="submit" name="valider" value="valider">
+  <input type="submit" name="supprimer" value="supprimer">
+  <script src="https://cdn.tiny.cloud/1/vv094536he8x8yzcxmhw9qgquh8rvvnp9qekgcpm9rultedk/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>tinymce.init({selector:'textarea'});</script>
+</form>
