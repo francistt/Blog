@@ -14,14 +14,14 @@ $config  = [
 ]; 
 
 // configuration Lionel
-$config  = [
-'basePath'        => "",
-'base'            => "francis-blog",
-'user'            => "root",
-'password'        => "root",
-'sessionDuration' => 1800,
-'debug'           => true
-];
+//$config  = [
+//'basePath'        => "",
+//'base'            => "francis-blog",
+//'user'            => "root",
+//'password'        => "root",
+//'sessionDuration' => 1800,
+//'debug'           => true
+//];
 
 if ($config["debug"]) {
   error_reporting(E_ALL | E_STRICT);
@@ -32,18 +32,18 @@ $session = new SessionManager($config["sessionDuration"]);
 
 $secure  = new Security([
   "post" => [
-    'user'                  => FILTER_SANITIZE_STRING,
-    'password'              => FILTER_SANITIZE_STRING,
-    'nom'                   => FILTER_SANITIZE_STRING,
-    'email'                 => FILTER_SANITIZE_STRING,
-    'message'               => FILTER_SANITIZE_STRING,
-    'valider'               => FILTER_SANITIZE_STRING,
-    'supprimer'             => FILTER_SANITIZE_STRING,
-    'supprimerConfirmation' => FILTER_SANITIZE_STRING,
     'annulerSuppression'    => FILTER_SANITIZE_STRING,
     'chapitre'              => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'email'                 => FILTER_SANITIZE_STRING,
+    'id'                    => FILTER_SANITIZE_NUMBER_INT,
+    'message'               => FILTER_SANITIZE_STRING,
+    'nom'                   => FILTER_SANITIZE_STRING,
+    'password'              => FILTER_SANITIZE_STRING,
+    'supprimer'             => FILTER_SANITIZE_STRING,
+    'supprimerConfirmation' => FILTER_SANITIZE_STRING,
     'titre'                 => FILTER_SANITIZE_STRING,
-    'id'                    => FILTER_SANITIZE_NUMBER_INT
+    'user'                  => FILTER_SANITIZE_STRING,
+    'valider'               => FILTER_SANITIZE_STRING
   ],
   "uri" => $config["basePath"]
 ]);

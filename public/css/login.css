@@ -52,3 +52,6 @@ a {
 #footer {
     text-align: center;
 }
+<input [type=checkbox] {
+    display: none;
+}

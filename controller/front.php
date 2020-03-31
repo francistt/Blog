@@ -14,22 +14,22 @@ class Front{
     global $config;
     switch ($uri[0]) {
       case 'contact':
-        $this->contact();
-        break;
+      $this->contact();
+      break;
       case 'chapitre':
-        $this->chapter(array_slice($uri, 1));
-        break;
+      $this->chapter(array_slice($uri, 1));
+      break;
       case 'bio':
-        $this->bio();
-        break;
+      $this->bio();
+      break;
       case 'chapitrelist':
-        $this->chapitrelist();
-        break;
+      $this->chapitrelist();
+      break;
       default:
-        $this->home();
-        break;
+      $this->home();
+      break;
     }
-    $chapitre   = new Chapter(["lastChapter"=>true]);
+    $chapitre = new Chapter(["lastChapter"=>true]);
     $vue = new View(
       [
         "{{ content }}"     => $this->html,
@@ -93,7 +93,6 @@ class Front{
       "chapitre" => $chapitre->id,
       "slug"     => $chapitre->slug
     ]);
-
     $chapitre->data["{{ numberOfComments }}"] = $comments->numberOfComments;
     $featuredView = new View($chapitre->data,"home");
     $this->html   = $featuredView->html;
@@ -110,7 +109,7 @@ class Front{
       return false;
     }
   }
-    private function chapitrelist(){
+  private function chapitrelist(){
     $chapters = new Chapter(["list"=>true]);
     $this->html   = $chapters->html;
     $this->title  = "liste des chapitres";

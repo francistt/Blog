@@ -8,8 +8,8 @@ require_once "view/commentView.php";
  */
 class Comment
 {
-	public $html;
-	public $numberOfComments;
+	public  $html;
+	public  $numberOfComments;
 	private $slug;
 
 	/**
@@ -24,6 +24,7 @@ class Comment
 		}
 		$this->numberOfComments = count($dataCommentaires->data);
 	}
+
 	private function listerLesCommentaires($data){
 		$commentaireVue = new CommentView($data, $this->slug);
 		$vue = new View(
@@ -32,11 +33,15 @@ class Comment
 			],
 			"commentaireBase"
 		);
-		// die(var_dump($vue));
+		//die(var_dump($vue));
 		$this->html = $vue->html;
 	}
+	
 	private function deleteComment($data){
 		if ($this->deleteConfirmation) return $this->deleteConfirm($data);
-   		if ($this->delete) return $this->deleteComment();
+		if ($this->delete) return $this->deleteComment();
+	}
+
+	private function moderateComment($data){
 	}
 }

@@ -1,6 +1,7 @@
 <?php
 
-class Page{
+class Page
+{
   public    $ack = [
     "msg"   => "",
     "class" => null

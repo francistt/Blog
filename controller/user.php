@@ -2,7 +2,8 @@
 
 require_once "model/userModel.php";
 
-class User{
+class User
+{
   
   public  $id   = null;
   public  $name = null;
@@ -14,31 +15,31 @@ class User{
     global $session, $secure;
 
     if (isset($secure->post["user"])) { // il y a des données c'est que l'on essaye de se connecter
-      $model = new UserModel([
-        "identification"=>[
-          "login"    => $secure->post["user"],
-          "password" => $secure->crypt($secure->post["password"])
-        ]
+    $model = new UserModel([
+      "identification"=>[
+        "login"    => $secure->post["user"],
+        "password" => $secure->crypt($secure->post["password"])
+      ]
+    ]);
+    if ($model->data) {
+      $this->id   = $model->data["id"];
+      $this->name = $model->data["prenom"].' '.$model->data["nom"];
+      $session->set([
+        "id"   => $this->id,
+        "name" => $this->name
       ]);
-      if ($model->data) {
-        $this->id   = $model->data["id"];
-        $this->name = $model->data["prenom"].' '.$model->data["nom"];
-        $session->set([
-          "id"   => $this->id,
-          "name" => $this->name
-        ]);
-        $session->updateValidity();
-      }
+      $session->updateValidity();
     }
+  }
     else { // il y a des données on vérifie donc qu'il y a bien une session d'active
-      if ( ! $session->hasData() ) return;
-      $this->id   = $session->get("id");
-      $this->name = $session->get("name");
-    }
+    if ( ! $session->hasData() ) return;
+    $this->id   = $session->get("id");
+    $this->name = $session->get("name");
   }
+}
 
-  public function deconnexion(){
-    global $session;
-    $session->killSession();
-  }
+public function deconnexion(){
+  global $session;
+  $session->killSession();
+}
 }

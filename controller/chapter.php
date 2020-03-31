@@ -2,21 +2,18 @@
 
 require_once "model/chapterModel.php";
 require_once "view/view.php";
-/**
- * 
- */
+
 class Chapter
 {
-
+  public  $ack                = null;
+  public  $date;
+  private $deleteConfirmation = false;
+  private $delete             = false;
   public  $html;
   public  $id;
   public  $lastChapter;
-  public  $title;
   public  $slug;
-  public  $date;
-  public  $ack                = null;
-  private $deleteConfirmation = false;
-  private $delete             = false;
+  public  $title;
   
   /**
    * [__construct description]
@@ -60,7 +57,7 @@ class Chapter
       new DateTime($this->date), 
       "dd.MM.yyyy", //UCI standard formatted string
       'fr_FR'
-      );
+    );
 
 
     $vue = new View(
@@ -95,6 +92,7 @@ class Chapter
   }
 
   private function updatePostContent($dataPost){
+    //die("update".var_dump($dataPost));
     $dataPost["slug"] = $this->makeSlug($dataPost["titre"]);
     $model = new ChapterModel(["update" => $dataPost]);
     if (!$model->succeed) $this->ack= [
@@ -115,6 +113,7 @@ class Chapter
       ]
     ]);
   }
+
   private function lastChapterHtml(){
     $list     = new ChapterModel(["list" => 3]);
     $lastView = new View($list->slugList,"lastChapter");
@@ -122,6 +121,7 @@ class Chapter
     
     return $lastView->html;
   }
+
   private function featured(){
     $featured    = new ChapterModel(["featured" => true]);
     $this->id    = $featured->id;
@@ -129,7 +129,6 @@ class Chapter
     $this->data  = $featured->data;
     $this->slug  = $featured->slug;
   }
-
 
   // function convertTitleToSlug($title){
   //  // $title = "la vie est géniale"
@@ -146,9 +145,7 @@ class Chapter
 
     $dataChapter = new ChapterModel(["slug"=>$args["editChapter"]]);
     $this->title   = "edition du chapite ".$dataChapter->title;
-
     // die(var_dump($dataChapter));
-
     $vue = new View(
       [
         "{{ ack }}" => $this->ack,
@@ -158,14 +155,12 @@ class Chapter
       ],
       "editChapter"
     );
-
     $this->html = $vue->html;
   }
 
   private function deleteConfirm(){
     $this->html = file_get_contents("template/confirmationSupression.html"); 
-    $this->title   = "voulez vous supprimer ";
-    
+    $this->title   = "voulez vous supprimer ";    
   }
 
   private function makeSlug($title){

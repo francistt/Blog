@@ -1,7 +1,8 @@
 <?php
 
 
-class Security{
+class Security
+{
 	public $cookies = null;
 	public $get     = null;
 	public $post    = null;
