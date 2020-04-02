@@ -38,7 +38,7 @@ private function accueil(){
 }
 
 private function addChapter(){
-    //$chapter     = new Chapter(["addChapter"=>true]);
+  $chapter     = new Chapter(["addChapter"=>true]);
   $this->title = "ajouter un chapitre";
   $this->html  = file_get_contents("template/addChapter.html"); 
 }
@@ -49,14 +49,6 @@ private function editChapter($uri){
   $this->title = $chapter->title;
 }
 
-private function moderateComments($data){
-    //die(var_dump($data));
-  //$comments = new Comment(["moderateComments"=>ID]);
-  //$this->html  = $comment->html;
-  //$this->title = $comment->title;
-
-    //$this->html = file_get_contents("template/moderateComments.html");
-}
 
 private function login(){
   $this->title    = "interface";
@@ -82,9 +74,19 @@ private function listChapters(){
 
 
 
-private function listerLesCommentaires(){
-  $comments    = new Comment(["list"=>true]);
+private function listComments($id){
+  //die(var_dump($id));
+  $comments    = new Comment(["moderateComments"=>id]);
   $this->title = "choisir le commentaire à modérer";
   $this->html  = $comments->html;
+}
+
+private function moderateComments($data){
+    //die(var_dump($data));
+  //$comments = new Comment(["moderateComments"=>ID]);
+  //$this->html  = $comment->html;
+  //$this->title = $comment->title;
+
+    //$this->html = file_get_contents("template/moderateComments.html");
 }
 }

@@ -29,11 +29,10 @@ class Chapter
     extract($args);
     global $secure; //a revoir plus tard
     if ($secure->post !== null) $this->saveOrUpdate($secure->post, $args);
-
     if (isset($list))        return $this->listOfChapters();
     if (isset($featured))    return $this->featured();
     if (isset($editChapter)) return $this->editChapter($args);
-    //if (isset($addChapter))  return $this->addChapter();
+    if (isset($addChapter))  return $this->addChapter();
 
     $this->singleChapter($args);
   }
@@ -58,7 +57,6 @@ class Chapter
       "dd.MM.yyyy", //UCI standard formatted string
       'fr_FR'
     );
-
 
     $vue = new View(
       [
@@ -167,5 +165,11 @@ class Chapter
     $title = strtolower($title);
     $title = str_replace(" ", "-", $title);
     return $title;
+  }
+
+  private function addChapter(){
+  }
+
+  private function deleteChapter(){
   }
 }

@@ -43,10 +43,10 @@ public $data;
 			$button = $this->makeButton('admin/moderate/'.$state.'/'.$id, "valider");
 			return $button . $this->makeButton('admin/delete/'.$id, "supprimer");
 		}
-		return $this->makeButton('chapitre/'.$slug.'/moderate/'.$state.'/'.$id, "signaler");
+		return $this->makeButton('/'.$slug.'/moderate/'.$state.'/'.$id, "signaler");
 	}
 
 	private function makeButton($route, $text){
-		return '<a href={{ base }}'.$this->base.$route.'" class="button">'.$text.'</a>';
+		return '<a href={{ base }}'.$this->base.$route.' class="button">'.$text.'</a>';
 	}
 }
