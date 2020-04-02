@@ -19,5 +19,10 @@ public $data;
 			$request = $this->query($sql,TRUE); //fonction dans la classe Model
 			$this->data = $request["data"];
 		}
+		if (isset($args["listModerate"])){
+			$sql= "SELECT ID, author AS '{{ author }}', comment AS '{{ comment }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', state FROM comments WHERE idPost= ".$args['chapitre'];
+			$request = $this->query($sql,TRUE); //fonction dans la classe Model
+			$this->data = $request["data"];
+		}
 	}
 }

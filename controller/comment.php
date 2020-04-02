@@ -22,6 +22,7 @@ class Comment
 		if (isset($argument["chapitre"])){
 			$this->listerLesCommentaires($dataCommentaires->data);
 		}
+		if (isset($argument["listModerate"])) $this->listeModeration();
 		$this->numberOfComments = count($dataCommentaires->data);
 	}
 
@@ -43,5 +44,13 @@ class Comment
 	}
 
 	private function moderateComment($data){
+	}
+
+	private function listeModeration(){
+		$commentaireVue = new CommentView($data, $this->slug);
+		//die(var_dump($vue));
+		$this->html = $commentaireVue->html;
+	}
+
 	}
 }
