@@ -47,6 +47,6 @@ public $data;
 	}
 
 	private function makeButton($route, $text){
-		return '<a href={{ base }}'.$this->base.$route.' class="button">'.$text.'</a>';
+		return '<a href={{ base }}'.$route.' class="button">'.$text.'</a>';
 	}
 }

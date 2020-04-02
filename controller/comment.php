@@ -51,6 +51,4 @@ class Comment
 		//die(var_dump($vue));
 		$this->html = $commentaireVue->html;
 	}
-
-	}
 }
