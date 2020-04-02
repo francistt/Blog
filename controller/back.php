@@ -74,9 +74,9 @@ private function listChapters(){
 
 
 
-private function listComments($id){
+private function listComments(){
   //die(var_dump($id));
-  $comments    = new Comment(["moderateComments"=>id]);
+  $comments    = new Comment(["listModerate"=>true]);
   $this->title = "choisir le commentaire à modérer";
   $this->html  = $comments->html;
 }

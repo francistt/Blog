@@ -62,6 +62,11 @@ class Front{
   }
   private function chapter($uri){
     $slug = $uri[0];
+
+    global $secure;
+    if ($secure->post !== null) {
+      if ($secure->post["commentAction"] === "signaler") $chapitre = new Comment(["moderate" => $secure->post]);
+    }
     $chapitre = new Chapter(["slug" => $slug]);
     $this->html        = $chapitre->html;
     $this->title       = $chapitre->title;

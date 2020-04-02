@@ -14,14 +14,14 @@ $config  = [
 ]; 
 
 // configuration Lionel
-//$config  = [
-//'basePath'        => "",
-//'base'            => "francis-blog",
-//'user'            => "root",
-//'password'        => "root",
-//'sessionDuration' => 1800,
-//'debug'           => true
-//];
+$config  = [
+'basePath'        => "",
+'base'            => "francis-blog",
+'user'            => "root",
+'password'        => "root",
+'sessionDuration' => 1800,
+'debug'           => true
+];
 
 if ($config["debug"]) {
   error_reporting(E_ALL | E_STRICT);
@@ -34,6 +34,8 @@ $secure  = new Security([
   "post" => [
     'annulerSuppression'    => FILTER_SANITIZE_STRING,
     'chapitre'              => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'commentAction'         => FILTER_SANITIZE_STRING,
+    'commentState'          => FILTER_SANITIZE_NUMBER_INT,
     'email'                 => FILTER_SANITIZE_STRING,
     'id'                    => FILTER_SANITIZE_NUMBER_INT,
     'message'               => FILTER_SANITIZE_STRING,

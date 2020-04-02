@@ -40,13 +40,20 @@ public $data;
 	private function generateButton($state, $id, $slug){
 		if ($state === "3") return "";
 		if ($slug === null) {
-			$button = $this->makeButton('admin/moderate/'.$state.'/'.$id, "valider");
-			return $button . $this->makeButton('admin/delete/'.$id, "supprimer");
+			$button = $this->makeButton($id, "valider", $state);
+			return $button . $this->makeButton($id, "supprimer", $state);
 		}
-		return $this->makeButton('/'.$slug.'/moderate/'.$state.'/'.$id, "signaler");
+		return $this->makeButton($id, "signaler", $state);
 	}
 
-	private function makeButton($route, $text){
-		return '<a href={{ base }}'.$route.' class="button">'.$text.'</a>';
+	private function makeButton($id, $text, $state){
+		// return '<a href={{ base }}'.$route.' class="button">'.$text.'</a>';
+		return '
+			<form action="" method="post">
+				<input type="hidden" name="id" value="'.$id.'">
+				<input type="hidden" name="commentState" value="'.$state.'">
+				<input type="submit" name="commentAction" value="'.$text.'">
+			</form>
+		';
 	}
 }
