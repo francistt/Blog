@@ -21,7 +21,7 @@ function __construct($args){
 	if ( isset($featured) ) return $this->readFeaturedPost($featured);
 	if ( isset($id)       ) return $this->readChapterFromId($id);
 	if ( isset($list)     ) return $this->getListChapters($list);
-	if ( isset($save)     ) return $this->saveComment($update);
+	if ( isset($save)     ) return $this->saveContent($update);
 	if ( isset($slug)     ) return $this->readChapterFromSlug($slug);
 	if ( isset($update)   ) return $this->updatePost($update);
 	//if ( isset($create)   ) return $this->creatChapter($update);
@@ -55,8 +55,9 @@ function __construct($args){
 		$this->slugList = $request["data"];
 	}
 
-	private function saveComment($update){
+	private function saveContent($update){
 			//requete pour enregister les données
+		die("save");
 		$req = $sql->prepare('INSERT INTO chapters (numeroChapitre, title, content)');
 		$req->execute(array(
 			'numeroChapitre' => $numeroChapitre,
@@ -72,11 +73,15 @@ function __construct($args){
 	}
 
 	private function updatePost($update){
-		$sql = "UPDATE `chapters` SET `title` = ':titre', `content` = ':chapitre', `date` = NOW, `slug` = ':slug' WHERE `chapters`.`id` = ':id'";
+		$sql = "UPDATE `chapters` SET `title` = ':titre', `content` = ':chapitre', `date` = NOW(), `slug` = ':slug' WHERE `chapters`.`id` = ':id'";
 
 		try{
 			$request = $this->db->prepare($sql);
-			$request->execute($update);
+			$request->bindParam(':titre', $update["titre"]);
+			$request->bindParam(':slug', $update["slug"]);
+			$request->bindParam(':id', $update["id"]);
+			$request->execute();
+			die(var_dump($request).var_dump($update));
 			$this->succeed = true;
 		}
 		catch (Exception $e) {

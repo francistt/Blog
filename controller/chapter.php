@@ -21,6 +21,7 @@ class Chapter
    */
   function __construct($argument)
   {
+    var_dump($argument);
     $this->defineToDo($argument);    
     $this->lastChapter = $this->lastChapterHtml();
   }
@@ -83,8 +84,8 @@ class Chapter
   }
 
   private function saveOrUpdate($dataPost, $args){
-    // die(var_dump($dataPost));
     if ($dataPost["valider"] === "valider") return $this->updatePostContent($dataPost);
+    if ($dataPost["valider"] === "ajouter") return $this->addChapter($dataPost);
     if ($dataPost["supprimerConfirmation"] === "oui") $this->delete = true;
     if ($dataPost["supprimer"] === "supprimer") $this->deleteConfirmation = true;
   }
@@ -168,6 +169,7 @@ class Chapter
   }
 
   private function addChapter(){
+    var_dump("------ addChapter");
   }
 
   private function deleteChapter(){
