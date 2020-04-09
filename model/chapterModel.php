@@ -77,11 +77,16 @@ function __construct($args){
 
 		try{
 			$request = $this->db->prepare($sql);
+<<<<<<< Updated upstream
 			$request->bindParam(':titre', $update["titre"]);
 			$request->bindParam(':slug', $update["slug"]);
 			$request->bindParam(':id', $update["id"]);
 			$request->execute();
 			die(var_dump($request).var_dump($update));
+=======
+			$request->execute($update);
+			//die($request);
+>>>>>>> Stashed changes
 			$this->succeed = true;
 		}
 		catch (Exception $e) {
