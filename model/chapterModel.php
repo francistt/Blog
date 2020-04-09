@@ -24,6 +24,7 @@ function __construct($args){
 	if ( isset($save)     ) return $this->saveComment($update);
 	if ( isset($slug)     ) return $this->readChapterFromSlug($slug);
 	if ( isset($update)   ) return $this->updatePost($update);
+	//if ( isset($create)   ) return $this->creatChapter($update);
 	}
 
 	private function deletePost($update){
@@ -82,4 +83,8 @@ function __construct($args){
 			$this->succeed = false;
 		}
 	}
+
+    //private function creatChapter($update){
+	//	$sql = "INSERT INTO `chapters`(`id`, `numeroChapitre`, `title`, `content`, `date`, `slug`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6])
+	//}
 }

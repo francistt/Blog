@@ -71,22 +71,24 @@ private function listChapters(){
   $this->html  = $chapters->html;
 }
 
-
-
-
 private function listComments(){
+  global $secure;
+    if ($secure->post !== null){
+    if ($secure->post["commentAction"] === "supprimer") $chapitre = new Comment(["delete" => $secure->post]);
+    if ($secure->post["commentAction"] === "valider") $chapitre = new Comment(["moderate" => $secure->post]);
+}
+
   //die(var_dump($id));
   $comments    = new Comment(["listModerate"=>true]);
   $this->title = "choisir le commentaire à modérer";
   $this->html  = $comments->html;
 }
 
-private function moderateComments($data){
+//private function moderateComments($data){
     //die(var_dump($data));
   //$comments = new Comment(["moderateComments"=>ID]);
   //$this->html  = $comment->html;
   //$this->title = $comment->title;
 
     //$this->html = file_get_contents("template/moderateComments.html");
-}
 }

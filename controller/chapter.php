@@ -28,7 +28,7 @@ class Chapter
   private function defineToDo($args){
     extract($args);
     global $secure; //a revoir plus tard
-    if ($secure->post !== null) $this->saveOrUpdate($secure->post, $args);
+    if ($secure->post !== null)     $this->saveOrUpdate($secure->post, $args);
     if (isset($list))        return $this->listOfChapters();
     if (isset($featured))    return $this->featured();
     if (isset($editChapter)) return $this->editChapter($args);

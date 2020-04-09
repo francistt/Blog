@@ -8,6 +8,8 @@ public $data;
 		parent::__construct();
 		if (isset($args["moderate"])){
 
+			//die (var_dump($args["moderate"]));
+
 			if (!isset($args["moderate"]['commentState'])) return;
 			if (!isset($args["moderate"]['id'])) return;
 
@@ -32,6 +34,22 @@ public $data;
 			$this->data = $request["data"];
 		}
 
+		if (isset($args["delete"])){
 
+			//die (var_dump($args["moderate"]));
+
+			if (!isset($args["delete"]['commentState'])) return;
+			if (!isset($args["delete"]['id'])) return;
+
+			$state = $args["delete"]['commentState']-1;
+			if ($state > 3) return;
+
+			$newValue = [
+			"id" => $args["delete"]['id'],
+			"state" => $state
+			];
+			$request = $this->db->prepare ("UPDATE comments SET state = :state WHERE id = :id");
+			$request->execute($newValue);
+		}
 	}
 }

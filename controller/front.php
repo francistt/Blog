@@ -64,7 +64,7 @@ class Front{
     $slug = $uri[0];
 
     global $secure;
-    if ($secure->post !== null) {
+    if ($secure->post !== null){
       if ($secure->post["commentAction"] === "signaler") $chapitre = new Comment(["moderate" => $secure->post]);
     }
     $chapitre = new Chapter(["slug" => $slug]);
@@ -115,6 +115,7 @@ class Front{
     }
   }
   private function chapitrelist(){
+    //return $this->getListChapters($list);
     $chapters = new Chapter(["list"=>true]);
     $this->html   = $chapters->html;
     $this->title  = "liste des chapitres";
