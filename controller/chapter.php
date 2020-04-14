@@ -31,6 +31,7 @@ class Chapter
     global $secure; //a revoir plus tard
     if ($secure->post !== null)     $this->saveOrUpdate($secure->post, $args);
     if (isset($list))        return $this->listOfChapters();
+    if (isset($listFront))   return $this->listOfChaptersFront();
     if (isset($featured))    return $this->featured();
     if (isset($editChapter)) return $this->editChapter($args);
     if (isset($addChapter))  return $this->addChapter();
@@ -114,7 +115,7 @@ class Chapter
   }
 
   private function lastChapterHtml(){
-    $list     = new ChapterModel(["list" => 5]);
+    $list     = new ChapterModel(["list" => 3]);
     $lastView = new View($list->slugList,"lastChapter");
     //transmettre les données de la liste à une vue
     return $lastView->html;
@@ -168,9 +169,19 @@ class Chapter
   }
 
   private function addChapter(){
-   var_dump("------ addChapter");
+   //var_dump("------ addChapter");
   }
 
   private function deleteChapter(){
+  }
+  private function listOfChaptersFront(){
+    $list = new ChapterModel(["list" => 100]);
+     //$featured = new ChapterModel(["content" => 100]);
+    $vue  = new View(
+      $list->slugList,
+      //$content->data,
+      "listOfChaptersFront"
+    );
+    $this->html = $vue->html;
   }
 }

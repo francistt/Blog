@@ -116,7 +116,7 @@ class Front{
   }
   private function chapitrelist(){
     //return $this->getListChapters($list);
-    $chapters = new Chapter(["list"=>true]);
+    $chapters = new Chapter(["listFront"=>true]);
     $this->html   = $chapters->html;
     $this->title  = "liste des chapitres";
   } 
