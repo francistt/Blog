@@ -41,15 +41,18 @@ public $data;
 			if (!isset($args["delete"]['commentState'])) return;
 			if (!isset($args["delete"]['id'])) return;
 
-			$state = $args["delete"]['commentState']-1;
-			if ($state > 3) return;
+			//$state = $args["delete"]['commentState']-1;
+			//if ($state > 3) return;
 
 			$newValue = [
 			"id" => $args["delete"]['id'],
-			"state" => $state
+			//"state" => $state
 			];
-			$request = $this->db->prepare ("UPDATE comments SET state = :state WHERE id = :id");
+			$request = $this->db->prepare ("DELETE FROM `comments` WHERE id = :id");
 			$request->execute($newValue);
 		}
 	}
 }
+
+
+

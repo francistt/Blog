@@ -39,6 +39,7 @@ $secure  = new Security([
     'email'                 => FILTER_SANITIZE_STRING,
     'id'                    => FILTER_SANITIZE_NUMBER_INT,
     'message'               => FILTER_SANITIZE_STRING,
+    'numeroChapitre'        => FILTER_SANITIZE_NUMBER_INT,
     'nom'                   => FILTER_SANITIZE_STRING,
     'password'              => FILTER_SANITIZE_STRING,
     'supprimer'             => FILTER_SANITIZE_STRING,

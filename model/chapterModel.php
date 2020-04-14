@@ -72,21 +72,16 @@ function __construct($args){
 		$this->checkSucced($request,"hydrate");
 	}
 
-	private function updatePost($update){
-		$sql = "UPDATE `chapters` SET `title` = ':titre', `content` = ':chapitre', `date` = NOW(), `slug` = ':slug' WHERE `chapters`.`id` = ':id'";
+private function updatePost($update){
+		$sql = "UPDATE `chapters` SET `title` = ':titre',`numeroChapitre` = ':numeroChapitre', `content` = ':chapitre', `date` = NOW(), `slug` = ':slug' WHERE `chapters`.`id` = ':id'";
 
 		try{
 			$request = $this->db->prepare($sql);
-<<<<<<< Updated upstream
-			$request->bindParam(':titre', $update["titre"]);
-			$request->bindParam(':slug', $update["slug"]);
-			$request->bindParam(':id', $update["id"]);
+			//$request->bindParam(':titre', $update["titre"]);
+			//$request->bindParam(':slug', $update["slug"]);
+			//$request->bindParam(':id', $update["id"]);
 			$request->execute();
-			die(var_dump($request).var_dump($update));
-=======
-			$request->execute($update);
-			//die($request);
->>>>>>> Stashed changes
+			//die(var_dump($request).var_dump($update));
 			$this->succeed = true;
 		}
 		catch (Exception $e) {

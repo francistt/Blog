@@ -21,7 +21,7 @@ class Chapter
    */
   function __construct($argument)
   {
-    var_dump($argument);
+    //var_dump($argument);
     $this->defineToDo($argument);    
     $this->lastChapter = $this->lastChapterHtml();
   }
@@ -114,10 +114,9 @@ class Chapter
   }
 
   private function lastChapterHtml(){
-    $list     = new ChapterModel(["list" => 3]);
+    $list     = new ChapterModel(["list" => 5]);
     $lastView = new View($list->slugList,"lastChapter");
     //transmettre les données de la liste à une vue
-    
     return $lastView->html;
   }
 
@@ -169,7 +168,7 @@ class Chapter
   }
 
   private function addChapter(){
-    var_dump("------ addChapter");
+   var_dump("------ addChapter");
   }
 
   private function deleteChapter(){

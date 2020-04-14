@@ -43,12 +43,15 @@ class Comment
 		if ($this->delete) return $this->deleteComment();
 	}
 
-	private function moderateComment($data){
-	}
-
 	private function listeModeration($data){
 		$commentaireVue = new CommentView($data, $this->slug);
 		//die(var_dump($vue));
 		$this->html = $commentaireVue->html;
 	}
+
+	private function insertComment($data){
+    }
+	private function moderateComment($data){
+	}
+
 }
