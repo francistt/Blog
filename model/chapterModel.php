@@ -17,19 +17,19 @@ class ChapterModel extends Model{
 function __construct($args){
 	parent::__construct();
 	extract($args);
-	if ( isset($delete)   ) return $this->deletePost($update);
+	if ( isset($delete)   ) return $this->deletePost($delete);
 	if ( isset($featured) ) return $this->readFeaturedPost($featured);
 	if ( isset($id)       ) return $this->readChapterFromId($id);
 	if ( isset($list)     ) return $this->getListChapters($list);
-	if ( isset($save)     ) return $this->saveContent($update);
+	if ( isset($save)     ) return $this->saveContent($save);
 	if ( isset($slug)     ) return $this->readChapterFromSlug($slug);
 	if ( isset($update)   ) return $this->updatePost($update);
-	if ( isset($create)   ) return $this->creatChapter($update);
+	if ( isset($create)   ) return $this->creatChapter($create);
 	}
 
-	private function deletePost($update){
-		$req = $sql->prepare('DELETE FROM chapters WHERE id = ?');
-		$req->execute(array($id));
+	private function deletePost($slug){
+		$req = $this->db->prepare('DELETE FROM chapters WHERE slug = ?');
+		$req->execute([$slug]);
         //return $suppr;
 	}
 
@@ -55,15 +55,10 @@ function __construct($args){
 		$this->slugList = $request["data"];
 	}
 
-	private function saveContent($update){
+	private function saveContent($dataPost){
 			//requete pour enregister les données
-		die("save");
-		$req = $sql->prepare('INSERT INTO chapters (numeroChapitre, title, content)');
-		$req->execute(array(
-			'numeroChapitre' => $numeroChapitre,
-			'title' => $title,
-			'content' => $content,	
-		));
+		$req = $this->db->prepare("INSERT INTO `chapters` (`numeroChapitre`, `title`, `content`, `date`, `slug`) VALUES (:numeroChapitre,:title,:content,NOW(),:slug)");
+		$req->execute($dataPost);
 	}
 
 	private function readChapterFromSlug($slug){
