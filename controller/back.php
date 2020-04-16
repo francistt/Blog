@@ -49,7 +49,6 @@ private function editChapter($uri){
   $this->title = $chapter->title;
 }
 
-
 private function login(){
   $this->title    = "interface";
   $this->template = "login";
@@ -83,6 +82,8 @@ private function listComments(){
   $this->title = "choisir le commentaire à modérer";
   $this->html  = $comments->html;
 }
+
+
 
 //private function moderateComments($data){
     //die(var_dump($data));

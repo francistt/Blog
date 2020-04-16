@@ -5,23 +5,23 @@ require_once "controller/security.php";
 require_once "controller/session-manager.php";
 
 $config  = [
-  'basePath'        => "/blog",    // chemin (sous dossier) à inclure dans l'url 
-  'base'            => "blog",     // nom de la base de donnée
-  'user'            => "root",     // utilisateur pour la base
-  'password'        => "root",     // mot de passe pour se connecter
-  'sessionDuration' => 1800,
-  'debug'           => true
-]; 
+//  'basePath'        => "/blog",    // chemin (sous dossier) à inclure dans l'url 
+// 'base'            => "blog",     // nom de la base de donnée
+//  'user'            => "root",     // utilisateur pour la base
+//  'password'        => "root",     // mot de passe pour se connecter
+//  'sessionDuration' => 1800,
+//  'debug'           => true
+//]; 
 
 //configuration Lionel
 // $config  = [
-//'basePath'        => "",
-//'base'            => "francis-blog",
-//'user'            => "root",
-//'password'        => "root",
-//'sessionDuration' => 1800,
-//'debug'           => true
-//];
+'basePath'        => "",
+'base'            => "francis-blog",
+'user'            => "root",
+'password'        => "root",
+'sessionDuration' => 1800,
+'debug'           => true
+];
 
 if ($config["debug"]) {
   error_reporting(E_ALL | E_STRICT);
