@@ -34,7 +34,7 @@ class Chapter
     if (isset($listFront))   return $this->listOfChaptersFront();
     if (isset($featured))    return $this->featured();
     if (isset($editChapter)) return $this->editChapter($args);
-    if (isset($addChapter))  return $this->addChapter();
+    // if (isset($addChapter))  return $this->addChapter();
 
     $this->singleChapter($args);
   }
@@ -86,7 +86,7 @@ class Chapter
 
   private function saveOrUpdate($dataPost, $args){
     if ($dataPost["valider"] === "valider") return $this->updatePostContent($dataPost);
-    if ($dataPost["valider"] === "ajouter") return $this->addChapter($dataPost);
+    if ($dataPost["valider"] === "ajouter") return $this->insertChapter($dataPost);
     if ($dataPost["supprimerConfirmation"] === "oui") $this->delete = true;
     if ($dataPost["supprimer"] === "supprimer") $this->deleteConfirmation = true;
   }
@@ -99,19 +99,6 @@ class Chapter
       "msg" =>"erreur d'enregistrement",
       "class" => "error"
     ];
-  }
-
-  private function createChapter(){
-    die("createChapter");
-    //si pas donnée post -> on affiche une page où il va pouvoir saisir
-
-    //si données en post -> on enregistre
-    $enregistrement = new ChapterModel([
-      "save" => [
-        "id"    => 17,
-        "title" => "lkjkljkljklj"
-      ]
-    ]);
   }
 
   private function lastChapterHtml(){
@@ -139,6 +126,7 @@ class Chapter
   // }
   // 
   private function editChapter($args){
+    var_dump($this);
     if ($this->deleteConfirmation) return $this->deleteConfirm($args);
     if ($this->delete) return $this->deleteChapter();
 
@@ -163,16 +151,40 @@ class Chapter
   }
 
   private function makeSlug($title){
+    var_dump($title);
     $title = strtolower($title);
     $title = str_replace(" ", "-", $title);
+    $title = str_replace("'", "-", $title);
+    $title = str_replace("ê", "e", $title);
+    $title = str_replace("é", "e", $title);
+    $title = str_replace("è", "e", $title);
+    $title = str_replace("à", "a", $title);
+
+    var_dump($title);
     return $title;
   }
 
   private function addChapter(){
-   //var_dump("------ addChapter");
+   var_dump("------ addChapter");
+  }
+
+  private function insertChapter($dataPost){
+   // die("------ insertChapter".var_dump($dataPost));
+    $enregistrement = new ChapterModel([
+      "save" => [
+        "numeroChapitre" => $dataPost["numeroChapitre"], 
+        "title"          => $dataPost["titre"],
+        "content"        => $dataPost["chapitre"],
+        "slug"           => $this->makeSlug($dataPost["titre"])
+      ]
+    ]);
   }
 
   private function deleteChapter(){
+    global $secure;
+    $model = new ChapterModel(["delete" => end($secure->uri)]);
+    global $config;
+    header("Location: ".$config['basePath']."/admin");
   }
   private function listOfChaptersFront(){
     $list = new ChapterModel(["list" => 100]);
