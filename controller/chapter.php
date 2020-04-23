@@ -126,7 +126,7 @@ class Chapter
   // }
   // 
   private function editChapter($args){
-    var_dump($this);
+    //var_dump($this);
     if ($this->deleteConfirmation) return $this->deleteConfirm($args);
     if ($this->delete) return $this->deleteChapter();
 
@@ -137,6 +137,7 @@ class Chapter
       [
         "{{ ack }}" => $this->ack,
         "{{ id }}" => $dataChapter->id,
+        "{{ numeroChapitre }}" => $dataChapter->numeroChapitre,
         "{{ titre }}" => $dataChapter->title,
         "{{ lastChapter }}" => $dataChapter->content
       ],
@@ -150,17 +151,31 @@ class Chapter
     $this->title   = "voulez vous supprimer ";    
   }
 
-  private function makeSlug($title){
-    var_dump($title);
-    $title = strtolower($title);
-    $title = str_replace(" ", "-", $title);
-    $title = str_replace("'", "-", $title);
-    $title = str_replace("ê", "e", $title);
-    $title = str_replace("é", "e", $title);
-    $title = str_replace("è", "e", $title);
-    $title = str_replace("à", "a", $title);
 
-    var_dump($title);
+
+
+
+
+
+
+  private function makeSlug($title){
+    //var_dump($title);
+    $title = preg_replace("#'#", " ", $title);
+    $title = preg_replace('#Ç#', 'C', $title);
+    $title = preg_replace('#ç#', 'c', $title);
+    //$title = preg_replace('#&egrave;|&eacute;|&ecirc;|&euml;#', 'e', $title);
+    $title = preg_replace('#è|é|ê|ë#', 'e', $title);
+    $title = preg_replace('#È|É|Ê|Ë#', 'E', $title);
+    $title = preg_replace('#à|á|â|ã|ä|å#', 'a', $title);
+    $title = preg_replace('#@|À|Á|Â|Ã|Ä|Å#', 'A', $title);
+    $title = preg_replace('#ì|í|î|ï#', 'i', $title);
+    $title = preg_replace('#Ì|Í|Î|Ï#', 'I', $title);
+    $title = preg_replace('#ð|ò|ó|ô|õ|ö#', 'o', $title);
+    $title = preg_replace('#Ò|Ó|Ô|Õ|Ö#', 'O', $title);
+    $title = preg_replace('#ù|ú|û|ü#', 'u', $title);
+    $title = preg_replace('#Ù|Ú|Û|Ü#', 'U', $title);
+
+    //die (var_dump($title));
     return $title;
   }
 
@@ -184,7 +199,7 @@ class Chapter
     global $secure;
     $model = new ChapterModel(["delete" => end($secure->uri)]);
     global $config;
-    header("Location: ".$config['basePath']."/admin");
+    header("Location: ".$config['basePath']."/admin/listChapters");
   }
   private function listOfChaptersFront(){
     $list = new ChapterModel(["list" => 100]);

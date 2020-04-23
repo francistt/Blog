@@ -84,7 +84,15 @@ function __construct($args){
 		}
 	}
 
-    private function creatChapter($update){
-	    $sql = "INSERT INTO `chapters`(`id`, `numeroChapitre`, `title`, `content`, `date`, `slug`) VALUES (:id, :numeroChapitre, :title, :chapitre, NOW(), :slug)";
+
+
+
+
+
+    private function creatChapter($create){
+	    $req = $this->db->prepare("INSERT INTO `chapters`(`id`, `numeroChapitre`, `title`, `content`, `date`, `slug`) VALUES (:id, :numeroChapitre, :title, :chapitre, NOW(), :slug)");
+	    $req->execute([$create]);
 	}
 }
+
+//UPDATE `chapters` SET `content` = 'Phasellus in nunc orci. Vivamus ut dui ex. Proin mollis dolor id massa ultricies tempor. Nam quis tortor euismod, aliquet tortor non, porta velit. Vivamus semper euismod nunc, fermentum tempus felis vestibulum a. Suspendisse ac sem rutrum, condimentum lacus semper, interdum ipsum.VVV' WHERE `chapters`.`id` = 3
