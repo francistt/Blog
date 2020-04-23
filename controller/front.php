@@ -65,6 +65,7 @@ class Front{
 
     global $secure;
     if ($secure->post !== null){
+      if ($secure->post["commentAction"] === "Ajouter")  $chapitre = new Comment(["add" => $secure->post]);
       if ($secure->post["commentAction"] === "signaler") $chapitre = new Comment(["moderate" => $secure->post]);
     }
     $chapitre = new Chapter(["slug" => $slug]);

@@ -50,9 +50,15 @@ public $data;
 
 
 
-		if (isset($args["createComment"])){
-	    $sql = $this->db->prepare ("INSERT INTO `comments` (`ID`, `author`, `comment`, `date`, `idPost`, `state`) VALUES (:id, :author, :comment, NOW(), :idPost, :state)");
-	    $sql->execute($createComment);
+		if (isset($args["add"])){
+			$newData = [
+
+				"idPost"	=> $args["add"]["id"], 
+				"author"	=> $args["add"]["author"],
+				"comment"	=> $args["add"]["comment"]
+			];
+	    $sql = $this->db->prepare ("INSERT INTO `comments` (`author`, `comment`, `date`, `idPost`, `state`) VALUES (:author, :comment, NOW(), :idPost, 0)");
+	    $sql->execute($newData);
 		}
 	}
 }

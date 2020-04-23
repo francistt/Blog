@@ -65,7 +65,7 @@ class Chapter
         "{{ content }}" => $this->content,
         "{{ dateText }}"=> $dateText,
         "{{ dateSEO }}" => $this->date,
-        "{{ title }}"   => $this->title,
+        "{{ title }}"   => htmlspecialchars_decode($this->title),
         "{{ slug }}"    => $this->slug
       ],
       "singleChapter"
@@ -111,7 +111,7 @@ class Chapter
   private function featured(){
     $featured    = new ChapterModel(["featured" => true]);
     $this->id    = $featured->id;
-    $this->title = $featured->title;
+    $this->title = htmlspecialchars_decode($featured->title);
     $this->data  = $featured->data;
     $this->slug  = $featured->slug;
   }
@@ -135,11 +135,11 @@ class Chapter
     // die(var_dump($dataChapter));
     $vue = new View(
       [
-        "{{ ack }}" => $this->ack,
-        "{{ id }}" => $dataChapter->id,
+        "{{ ack }}"            => $this->ack,
+        "{{ id }}"             => $dataChapter->id,
         "{{ numeroChapitre }}" => $dataChapter->numeroChapitre,
-        "{{ titre }}" => $dataChapter->title,
-        "{{ lastChapter }}" => $dataChapter->content
+        "{{ titre }}"          => htmlspecialchars_decode($dataChapter->title),
+        "{{ lastChapter }}"    => $dataChapter->content
       ],
       "editChapter"
     );
@@ -159,8 +159,10 @@ class Chapter
 
 
   private function makeSlug($title){
-    //var_dump($title);
-    $title = preg_replace("#'#", " ", $title);
+    $title = html_entity_decode($title, ENT_QUOTES, "UTF-8");
+    $title = trim($title);
+    $title = str_replace("'" , "-", $title);
+    $title = str_replace(" " , "-", $title);
     $title = preg_replace('#Ç#', 'C', $title);
     $title = preg_replace('#ç#', 'c', $title);
     //$title = preg_replace('#&egrave;|&eacute;|&ecirc;|&euml;#', 'e', $title);
@@ -174,8 +176,7 @@ class Chapter
     $title = preg_replace('#Ò|Ó|Ô|Õ|Ö#', 'O', $title);
     $title = preg_replace('#ù|ú|û|ü#', 'u', $title);
     $title = preg_replace('#Ù|Ú|Û|Ü#', 'U', $title);
-
-    //die (var_dump($title));
+    $title = strtolower($title);
     return $title;
   }
 
@@ -185,14 +186,17 @@ class Chapter
 
   private function insertChapter($dataPost){
    // die("------ insertChapter".var_dump($dataPost));
+    $slug = $this->makeSlug($dataPost["titre"]);
     $enregistrement = new ChapterModel([
       "save" => [
         "numeroChapitre" => $dataPost["numeroChapitre"], 
         "title"          => $dataPost["titre"],
         "content"        => $dataPost["chapitre"],
-        "slug"           => $this->makeSlug($dataPost["titre"])
+        "slug"           => $slug
       ]
     ]);
+    global $config;
+    header("Location: ".$config['basePath']."/admin/edit-chapter/".$slug);    
   }
 
   private function deleteChapter(){

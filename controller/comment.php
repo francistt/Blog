@@ -20,17 +20,18 @@ class Comment
 		$dataCommentaires = new CommentModel($argument);
 		if (isset($argument["slug"]))$this->slug = $argument["slug"];
 		if (isset($argument["chapitre"])){
-			$this->listerLesCommentaires($dataCommentaires->data);
+			$this->listerLesCommentaires($dataCommentaires->data, $argument["chapitre"]);
 		}
 		if (isset($argument["listModerate"])) $this->listeModeration($dataCommentaires->data);
 		$this->numberOfComments = count($dataCommentaires->data);
 	}
 
-	private function listerLesCommentaires($data){
+	private function listerLesCommentaires($data, $idPost){
 		$commentaireVue = new CommentView($data, $this->slug);
 		$vue = new View(
 			[
-				"{{ commentaires }}" => $commentaireVue->html
+				"{{ commentaires }}" => $commentaireVue->html,
+        "{{ idPost }}"       => $idPost
 			],
 			"commentaireBase"
 		);
