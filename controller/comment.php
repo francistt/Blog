@@ -34,7 +34,6 @@ class Comment
 			],
 			"commentaireBase"
 		);
-		//die(var_dump($vue));
 		$this->html = $vue->html;
 	}
 	
@@ -45,12 +44,28 @@ class Comment
 
 	private function listeModeration($data){
 		$commentaireVue = new CommentView($data, $this->slug);
-		//die(var_dump($vue));
 		$this->html = $commentaireVue->html;
 	}
 
+
+
+
+
+
+
 	private function insertComment($data){
+		 die("------ insertComment".var_dump($data));
+    $enregistrement = new CommentModel([
+      "save" => [
+        "id" 			 =>	$data["id"], 
+        "author"         => $data["author"],
+        "comment"        => $data["comment"],
+        "idPost"         => $data["idPost"],
+        "state"          => $data[0]
+      ]
+    ]);
     }
+
 	private function moderateComment($data){
 	}
 
