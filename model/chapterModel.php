@@ -67,16 +67,29 @@ function __construct($args){
 		$this->checkSucced($request,"hydrate");
 	}
 
+    private function creatChapter($create){
+	    $req = $this->db->prepare("INSERT INTO `chapters`(`id`, `numeroChapitre`, `title`, `content`, `date`, `slug`) VALUES (:id, :numeroChapitre, :title, :chapitre, NOW(), :slug)");
+	    $req->execute([$create]);
+	}
+
     private function updatePost($update){
-		$sql = "UPDATE `chapters` SET `title` = ':titre',`numeroChapitre` = ':numeroChapitre', `content` = ':chapitre', `date` = NOW(), `slug` = ':slug' WHERE `chapters`.`id` = ':id'";
+		$request = $this->db->prepare("UPDATE `chapters` SET `title` = ':titre',`numeroChapitre` = ':numeroChapitre', `content` = ':chapitre', `date` = NOW(), `slug` = ':slug' WHERE `chapters`.`id` = ':id'");
 
 		try{
-			$request = $this->db->prepare($sql);
-			//$request->bindParam(':titre', $update["titre"]);
+		    //$request = $this->db->prepare($req);
+		    //$request->bindParam(':titre', $update["titre"]);
+			//$request->bindParam(':numeroChapitre', $update["numeroChapitre"]);
 			//$request->bindParam(':slug', $update["slug"]);
+			//$request->bindParam(':chapitre', $update["chapitre"]);
 			//$request->bindParam(':id', $update["id"]);
-			$request->execute();
-			//die(var_dump($request).var_dump($update));
+			$request->execute([
+				'title' 	 	 => $update["titre"],
+				'numeroChapitre' => $update["numeroChapitre"], 
+				'content' 		 => $update["chapitre"],
+				'slug' 			 => $update["slug"]
+			]);
+
+			var_dump($update);
 			$this->succeed = true;
 		}
 		catch (Exception $e) {
@@ -84,15 +97,24 @@ function __construct($args){
 		}
 	}
 
-
-
-
-
-
-    private function creatChapter($create){
-	    $req = $this->db->prepare("INSERT INTO `chapters`(`id`, `numeroChapitre`, `title`, `content`, `date`, `slug`) VALUES (:id, :numeroChapitre, :title, :chapitre, NOW(), :slug)");
-	    $req->execute([$create]);
-	}
 }
 
 //UPDATE `chapters` SET `content` = 'Phasellus in nunc orci. Vivamus ut dui ex. Proin mollis dolor id massa ultricies tempor. Nam quis tortor euismod, aliquet tortor non, porta velit. Vivamus semper euismod nunc, fermentum tempus felis vestibulum a. Suspendisse ac sem rutrum, condimentum lacus semper, interdum ipsum.VVV' WHERE `chapters`.`id` = 3
+
+		//if (isset($args["add"])){
+		//	$newData = [
+
+		//		"titre"	            => $args["add"]["titre"], 
+		//		"numeroChapitre"	=> $args["add"]["numeroChapitre"],
+        //	    "content"	        => $args["add"]["chapitre"],
+		//		"slug"	            => $args["add"]["slug"],
+		//		"id"	            => $args["add"]["id"]
+		//	];
+
+
+	    //$sql = $this->db->prepare ("INSERT INTO `comments` (`author`, `comment`, `date`, `idPost`, `state`) VALUES (:author, :comment, NOW(), :idPost, 0)");
+	    //$sql->execute($newData);
+		//}
+
+//UPDATE `chapters` SET `content` = '&lt;p&gt;DFFFF&lt;/p&gt; vert' WHERE `chapters`.`id` = 24;
+//UPDATE `chapters` SET `numeroChapitre` = '32' WHERE `chapters`.`id` = 24;

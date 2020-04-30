@@ -151,21 +151,14 @@ class Chapter
     $this->title   = "voulez vous supprimer ";    
   }
 
-
-
-
-
-
-
-
   private function makeSlug($title){
     $title = html_entity_decode($title, ENT_QUOTES, "UTF-8");
     $title = trim($title);
     $title = str_replace("'" , "-", $title);
     $title = str_replace(" " , "-", $title);
+    //$title = strip_tags($title);
     $title = preg_replace('#Ç#', 'C', $title);
     $title = preg_replace('#ç#', 'c', $title);
-    //$title = preg_replace('#&egrave;|&eacute;|&ecirc;|&euml;#', 'e', $title);
     $title = preg_replace('#è|é|ê|ë#', 'e', $title);
     $title = preg_replace('#È|É|Ê|Ë#', 'E', $title);
     $title = preg_replace('#à|á|â|ã|ä|å#', 'a', $title);
@@ -177,6 +170,12 @@ class Chapter
     $title = preg_replace('#ù|ú|û|ü#', 'u', $title);
     $title = preg_replace('#Ù|Ú|Û|Ü#', 'U', $title);
     $title = strtolower($title);
+    $title = htmlentities( $title, ENT_NOQUOTES, $charset );
+    
+    //$title = preg_replace( '#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $title );
+    //$title = preg_replace( '#&([A-za-z]{2})(?:lig);#', '\1', $title );
+    //$title = preg_replace( '#&[^;]+;#', '', $title );
+
     return $title;
   }
 
@@ -196,7 +195,8 @@ class Chapter
       ]
     ]);
     global $config;
-    header("Location: ".$config['basePath']."/admin/edit-chapter/".$slug);    
+    header("Location: ".$config['basePath']."/admin/listChapters");
+    //header("Location: ".$config['basePath']."/admin/edit-chapter/".$slug);    
   }
 
   private function deleteChapter(){
@@ -205,6 +205,7 @@ class Chapter
     global $config;
     header("Location: ".$config['basePath']."/admin/listChapters");
   }
+
   private function listOfChaptersFront(){
     $list = new ChapterModel(["list" => 100]);
      //$featured = new ChapterModel(["content" => 100]);

@@ -44,12 +44,6 @@ public $data;
 			$request->execute($newValue);
 		}
 
-
-
-
-
-
-
 		if (isset($args["add"])){
 			$newData = [
 
