@@ -96,7 +96,7 @@ class Chapter
     $dataPost["slug"] = $this->makeSlug($dataPost["titre"]);
     $model = new ChapterModel(["update" => $dataPost]);
     if (!$model->succeed) $this->ack= [
-      "msg" =>"erreur d'enregistrement",
+      "msg" =>"erreur d'enregistrement : ".$model->reason,
       "class" => "error"
     ];
   }
@@ -170,7 +170,7 @@ class Chapter
     $title = preg_replace('#ù|ú|û|ü#', 'u', $title);
     $title = preg_replace('#Ù|Ú|Û|Ü#', 'U', $title);
     $title = strtolower($title);
-    $title = htmlentities( $title, ENT_NOQUOTES, $charset );
+    $title = htmlentities( $title, ENT_NOQUOTES, "UTF-8" );
     
     //$title = preg_replace( '#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $title );
     //$title = preg_replace( '#&([A-za-z]{2})(?:lig);#', '\1', $title );
