@@ -91,6 +91,7 @@ class Chapter
     if ($dataPost["supprimer"] === "supprimer") $this->deleteConfirmation = true;
   }
 
+
   private function updatePostContent($dataPost){
     //die("update".var_dump($dataPost));
     $dataPost["slug"] = $this->makeSlug($dataPost["titre"]);
@@ -186,12 +187,14 @@ class Chapter
   private function insertChapter($dataPost){
    // die("------ insertChapter".var_dump($dataPost));
     $slug = $this->makeSlug($dataPost["titre"]);
+    die(var_dump($dataPost));
     $enregistrement = new ChapterModel([
       "save" => [
         "numeroChapitre" => $dataPost["numeroChapitre"], 
         "title"          => $dataPost["titre"],
         "content"        => $dataPost["chapitre"],
-        "slug"           => $slug
+        "slug"           => $slug,
+        "image"      => $dataPost["image"],
       ]
     ]);
     global $config;

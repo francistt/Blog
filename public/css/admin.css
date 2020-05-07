@@ -60,3 +60,16 @@ ack.success{
 #footer {
     text-align: center;
 }
+
+#uploader {
+    width: 300px; 
+    height: 200px; 
+    background: #f4b342;
+    padding: 10px;
+}
+#uploader.highlight {
+    background:#ff0;
+}
+#uploader.disabled {
+    background:#aaa;
+}

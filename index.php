@@ -14,14 +14,14 @@ require_once "controller/session-manager.php";
  ]; 
 
 //configuration Lionel
-//$config  = [
-//'basePath'        => "",
-//'base'            => "francis-blog",
-//'user'            => "root",
-//'password'        => "root",
-//'sessionDuration' => 1800,
-//'debug'           => true
-//];
+$config  = [
+'basePath'        => "",
+'base'            => "francis-blog",
+'user'            => "root",
+'password'        => "root",
+'sessionDuration' => 1800,
+'debug'           => true
+];
 
 if ($config["debug"]) {
   error_reporting(E_ALL | E_STRICT);
@@ -48,7 +48,8 @@ $secure  = new Security([
     'supprimerConfirmation' => FILTER_SANITIZE_STRING,
     'titre'                 => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
     'user'                  => FILTER_SANITIZE_STRING,
-    'valider'               => FILTER_SANITIZE_STRING
+    'valider'               => FILTER_SANITIZE_STRING,
+    'image'                 => FILTER_SANITIZE_STRING
   ],
   "uri" => $config["basePath"]
 ]);

@@ -57,7 +57,7 @@ function __construct($args){
 
   private function saveContent($dataPost){
       //requete pour enregister les données
-    $req = $this->db->prepare("INSERT INTO `chapters` (`numeroChapitre`, `title`, `content`, `date`, `slug`) VALUES (:numeroChapitre,:title,:content,NOW(),:slug)");
+    $req = $this->db->prepare("INSERT INTO `chapters` (`numeroChapitre`, `title`, `content`, `date`,  `image`, `slug`) VALUES (:numeroChapitre,:title,:content,NOW(), :image, :slug)");
     $req->execute($dataPost);
   }
 
@@ -68,7 +68,7 @@ function __construct($args){
   }
 
   private function createChapter($create){
-    $req = $this->db->prepare("INSERT INTO `chapters`(`id`, `numeroChapitre`, `title`, `content`, `date`, `slug`) VALUES (:id, :numeroChapitre, :title, :chapitre, NOW(), :slug)");
+    $req = $this->db->prepare("INSERT INTO `chapters`(`id`, `image`, `numeroChapitre`, `title`, `content`, `date`, `slug`) VALUES (:id, :image, :numeroChapitre, :title, :chapitre, NOW(), :slug)");
     $req->execute([$create]);
   }
 
