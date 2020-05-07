@@ -74,12 +74,7 @@ function __construct($args){
 
   private function updatePost($update){
     try{
-      $sql = "UPDATE `chapters`   
-              SET    `title`          = :title,
-                     `numeroChapitre` = :numeroChapitre,
-                     `slug`           = :slug,
-                     `content`        = :chapitre 
-              WHERE  `id`             = :id";
+      $sql = "UPDATE `chapters` SET `title` = :title,`numeroChapitre` = :numeroChapitre, `slug` = :slug, `content` = :chapitre WHERE  `id` = :id";
       $req = $this->db->prepare($sql);
       $req->execute($values = [
         "id"=>$update["id"],
