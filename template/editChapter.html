@@ -1,3 +1,4 @@
+  <script src="{{ base }}/public/js/drag-drop-upload.js"></script>
   <h1>modification de chapitre</h1>
 
   <form action="" method="POST">
@@ -7,6 +8,11 @@
       <label for="titre">Titre :</label>
       <input type="text" name="titre" id="titre" value="{{ titre }}" placeholder="Titre">
     </br>
+    <div id="uploader">
+      Drop Files Here
+    </div>
+    <div id="upstat"></div>
+    <input type="text" name="image" id="image" disabled="disabled" placeholder="pas encore d'image">
     <label for="contenu">Contenu :</label>
     <textarea name="chapitre" id="chapitre" cols="150" rows="10">{{ lastChapter }}</textarea>
     <input type="hidden" name="id" id="id" value="{{ id }}" >

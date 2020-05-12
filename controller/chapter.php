@@ -85,6 +85,7 @@ class Chapter
   }
 
   private function saveOrUpdate($dataPost, $args){
+    var_dump($dataPost);
     if ($dataPost["valider"] === "valider") return $this->updatePostContent($dataPost);
     if ($dataPost["valider"] === "ajouter") return $this->insertChapter($dataPost);
     if ($dataPost["supprimerConfirmation"] === "oui") $this->delete = true;
@@ -140,7 +141,11 @@ class Chapter
         "{{ id }}"             => $dataChapter->id,
         "{{ numeroChapitre }}" => $dataChapter->numeroChapitre,
         "{{ titre }}"          => htmlspecialchars_decode($dataChapter->title),
-        "{{ lastChapter }}"    => $dataChapter->content
+        "{{ lastChapter }}"    => $dataChapter->content,
+
+        
+        "{{ image }}"          => $dataChapter->image
+
       ],
       "editChapter"
     );
@@ -157,7 +162,6 @@ class Chapter
     $title = trim($title);
     $title = str_replace("'" , "-", $title);
     $title = str_replace(" " , "-", $title);
-    //$title = strip_tags($title);
     $title = preg_replace('#Ç#', 'C', $title);
     $title = preg_replace('#ç#', 'c', $title);
     $title = preg_replace('#è|é|ê|ë#', 'e', $title);
@@ -194,7 +198,7 @@ class Chapter
         "title"          => $dataPost["titre"],
         "content"        => $dataPost["chapitre"],
         "slug"           => $slug,
-        "image"      => $dataPost["image"],
+        "image"          => $dataPost["image"],
       ]
     ]);
     global $config;
