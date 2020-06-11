@@ -32,7 +32,7 @@ class Front{
     $chapitre = new Chapter(["lastChapter"=>true]);
     $vue = new View(
       [
-        "{{ content }}"     => $this->html,
+        "{{ content }}"     => htmlspecialchars_decode ($this->html),
         "{{ title }}"       => $this->title,
         "{{ lastChapter }}" => $chapitre->lastChapter,
       ],
@@ -62,14 +62,28 @@ class Front{
   }
   private function chapter($uri){
     $slug = $uri[0];
+    $ack = null;
 
     global $secure;
     if ($secure->post !== null){
-      if ($secure->post["commentAction"] === "Ajouter")  $chapitre = new Comment(["add" => $secure->post]);
+      if ($secure->post["commentAction"] === "Ajouter"){
+        $comment = new Comment(["add" => $secure->post]);
+
+      if ($comment->saved) $ack = [
+        "msg"   => "votre commentaire à bien été enregistré. Il est en attente de modération",
+        "class" => "succeed"
+      ];
+      else $ack = [
+        "msg"   => "nous rencontrons un problème technique, veuillez rééssayer plus tard.",
+        "class" => "error"
+      ];
+      $vue = new View( [ "ack" => $ack ], "ackOnly" );
+      $ack = $vue->html;
+    }
       if ($secure->post["commentAction"] === "signaler") $chapitre = new Comment(["moderate" => $secure->post]);
     }
     $chapitre = new Chapter(["slug" => $slug]);
-    $this->html        = $chapitre->html;
+    $this->html  = $chapitre->html;
     $this->title       = $chapitre->title;
     $this->lastChapter = $chapitre->lastChapter;
     $commentData = [
@@ -86,6 +100,8 @@ class Front{
     }
     $commentaire = new Comment($commentData);
     $this->html .= $commentaire->html;
+
+    if ($ack !== null) $this->html .= $ack;
   }
   
   private function bio(){

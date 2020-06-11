@@ -85,7 +85,6 @@ class Chapter
   }
 
   private function saveOrUpdate($dataPost, $args){
-    var_dump($dataPost);
     if ($dataPost["valider"] === "valider") return $this->updatePostContent($dataPost);
     if ($dataPost["valider"] === "ajouter") return $this->insertChapter($dataPost);
     if ($dataPost["supprimerConfirmation"] === "oui") $this->delete = true;

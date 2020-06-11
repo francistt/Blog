@@ -3,7 +3,8 @@
 require_once "model/model.php";
 
 class CommentModel extends Model{
-public $data;
+	public $data;
+	public $succeed = true;
 	function __construct($args){
 		parent::__construct();
 		if (isset($args["moderate"])){
@@ -46,13 +47,17 @@ public $data;
 
 		if (isset($args["add"])){
 			$newData = [
-
 				"idPost"	=> $args["add"]["id"], 
 				"author"	=> $args["add"]["author"],
 				"comment"	=> $args["add"]["comment"]
 			];
-	    $sql = $this->db->prepare ("INSERT INTO `comments` (`author`, `comment`, `date`, `idPost`, `state`) VALUES (:author, :comment, NOW(), :idPost, 0)");
-	    $sql->execute($newData);
+		    try{
+		    	$sql = $this->db->prepare ("INSERT INTO `comments` (`author`, `comment`, `date`, `idPost`, `state`) VALUES (:author, :comment, NOW(), :idPost, 0)");
+		    	$sql->execute($newData);
+		    }
+		    catch(exception $e){
+		    	$this->succeed = false;
+	    	}
 		}
 	}
 }

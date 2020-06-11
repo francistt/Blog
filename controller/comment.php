@@ -23,6 +23,10 @@ class Comment
 			$this->listerLesCommentaires($dataCommentaires->data, $argument["chapitre"]);
 		}
 		if (isset($argument["listModerate"])) $this->listeModeration($dataCommentaires->data);
+		if (isset($argument["add"])){
+			$this->insertComment($argument["add"]);
+			return;
+		}
 		$this->numberOfComments = count($dataCommentaires->data);
 	}
 
@@ -55,16 +59,16 @@ class Comment
 
 
 	private function insertComment($data){
-		 die("------ insertComment".var_dump($data));
-    $enregistrement = new CommentModel([
-      "save" => [
-        "id" 			 =>	$data["id"], 
-        "author"         => $data["author"],
-        "comment"        => $data["comment"],
-        "idPost"         => $data["idPost"],
-        "state"          => $data[0]
-      ]
-    ]);
+	    $enregistrement = new CommentModel([
+	      "save" => [
+	        "id" 			 =>	$data["id"], 
+	        "author"         => $data["author"],
+	        "comment"        => $data["comment"],
+	        "idPost"         => $data["id"],
+	        "state"          => 0
+	      ]
+	    ]);
+	    $this->saved = $enregistrement->succeed;
     }
 
 	private function moderateComment($data){
