@@ -112,8 +112,9 @@ class Front{
   private function home(){
     $chapitre = new Chapter(["featured" => true]);
     $comments = new Comment([
-      "chapitre" => $chapitre->id,
-      "slug"     => $chapitre->slug
+      "chapitre"    => $chapitre->id,
+      "slug"        => $chapitre->slug,
+      "listComment" => true
     ]);
     $chapitre->data["{{ numberOfComments }}"] = $comments->numberOfComments;
     $featuredView = new View($chapitre->data,"home");
@@ -137,8 +138,6 @@ class Front{
     $this->html   = $chapters->html;
     $this->title  = "liste des chapitres";
   } 
-
-
 
 
 

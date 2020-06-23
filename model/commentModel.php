@@ -9,7 +9,6 @@ class CommentModel extends Model{
 		parent::__construct();
 		if (isset($args["moderate"])){
 
-			//die (var_dump($args["moderate"]));
 
 			if (!isset($args["moderate"]['commentState'])) return;
 			if (!isset($args["moderate"]['id'])) return;
@@ -18,8 +17,8 @@ class CommentModel extends Model{
 			if ($state > 3) return;
 
 			$newValue = [
-			"id" => $args["moderate"]['id'],
-			"state" => $state
+				"id" => $args["moderate"]['id'],
+				"state" => $state
 			];
 			$request = $this->db->prepare ("UPDATE comments SET state = :state WHERE id = :id");
 			$request->execute($newValue);
@@ -34,12 +33,17 @@ class CommentModel extends Model{
 			$request = $this->query($sql,TRUE); //fonction dans la classe Model
 			$this->data = $request["data"];
 		}
-
+		if (isset($args["listComment"])){
+			$sql= "SELECT count(*) AS total FROM comments WHERE `state` != 0  AND `state` != 2 AND  idPost=".$args["chapitre"];
+			$request = $this->query($sql,FALSE); //fonction dans la classe Model
+			$this->data = $request["data"];
+			//die(var_dump($request));
+		}
 		if (isset($args["delete"])){
 			if (!isset($args["delete"]['commentState'])) return;
 			if (!isset($args["delete"]['id'])) return;
 			$newValue = [
-			"id" => $args["delete"]['id'],
+				"id" => $args["delete"]['id'],
 			];
 			$request = $this->db->prepare ("DELETE FROM `comments` WHERE id = :id");
 			$request->execute($newValue);
@@ -51,13 +55,13 @@ class CommentModel extends Model{
 				"author"	=> $args["add"]["author"],
 				"comment"	=> $args["add"]["comment"]
 			];
-		    try{
-		    	$sql = $this->db->prepare ("INSERT INTO `comments` (`author`, `comment`, `date`, `idPost`, `state`) VALUES (:author, :comment, NOW(), :idPost, 0)");
-		    	$sql->execute($newData);
-		    }
-		    catch(exception $e){
-		    	$this->succeed = false;
-	    	}
+			try{
+				$sql = $this->db->prepare ("INSERT INTO `comments` (`author`, `comment`, `date`, `idPost`, `state`) VALUES (:author, :comment, NOW(), :idPost, 0)");
+				$sql->execute($newData);
+			}
+			catch(exception $e){
+				$this->succeed = false;
+			}
 		}
 	}
 }

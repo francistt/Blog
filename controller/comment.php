@@ -18,6 +18,10 @@ class Comment
 	 */
 	public function __construct($argument){
 		$dataCommentaires = new CommentModel($argument);
+		if (isset($argument["listComment"])) {
+			$this->numberOfComments = $dataCommentaires->data["total"];
+		return;	
+		}
 		if (isset($argument["slug"]))$this->slug = $argument["slug"];
 		if (isset($argument["chapitre"])){
 			$this->listerLesCommentaires($dataCommentaires->data, $argument["chapitre"]);
@@ -27,8 +31,10 @@ class Comment
 			$this->insertComment($argument["add"]);
 			return;
 		}
-		$this->numberOfComments = count($dataCommentaires->data);
+					
+
 	}
+
 
 	private function listerLesCommentaires($data, $idPost){
 		$commentaireVue = new CommentView($data, $this->slug);
@@ -51,12 +57,6 @@ class Comment
 		$commentaireVue = new CommentView($data, $this->slug);
 		$this->html = $commentaireVue->html;
 	}
-
-
-
-
-
-
 
 	private function insertComment($data){
 	    $enregistrement = new CommentModel([
