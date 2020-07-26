@@ -56,7 +56,7 @@ class Chapter
 
     $dateText = IntlDateFormatter::formatObject(
       new DateTime($this->date), 
-      "dd.MM.yyyy", //UCI standard formatted string
+      "dd-MM-yyyy", //UCI standard formatted string
       'fr_FR'
     );
 
@@ -190,7 +190,7 @@ class Chapter
   private function insertChapter($dataPost){
    // die("------ insertChapter".var_dump($dataPost));
     $slug = $this->makeSlug($dataPost["titre"]);
-    die(var_dump($dataPost));
+    //die(var_dump($dataPost));
     $enregistrement = new ChapterModel([
       "save" => [
         "numeroChapitre" => $dataPost["numeroChapitre"], 

@@ -20,7 +20,7 @@ class Comment
 		$dataCommentaires = new CommentModel($argument);
 		if (isset($argument["listComment"])) {
 			$this->numberOfComments = $dataCommentaires->data["total"];
-		return;	
+			return;	
 		}
 		if (isset($argument["slug"]))$this->slug = $argument["slug"];
 		if (isset($argument["chapitre"])){
@@ -31,17 +31,14 @@ class Comment
 			$this->insertComment($argument["add"]);
 			return;
 		}
-					
-
 	}
-
 
 	private function listerLesCommentaires($data, $idPost){
 		$commentaireVue = new CommentView($data, $this->slug);
 		$vue = new View(
 			[
 				"{{ commentaires }}" => $commentaireVue->html,
-        "{{ idPost }}"       => $idPost
+				"{{ idPost }}"       => $idPost
 			],
 			"commentaireBase"
 		);
@@ -59,17 +56,17 @@ class Comment
 	}
 
 	private function insertComment($data){
-	    $enregistrement = new CommentModel([
-	      "save" => [
-	        "id" 			 =>	$data["id"], 
-	        "author"         => $data["author"],
-	        "comment"        => $data["comment"],
-	        "idPost"         => $data["id"],
-	        "state"          => 0
-	      ]
-	    ]);
-	    $this->saved = $enregistrement->succeed;
-    }
+		$enregistrement = new CommentModel([
+			"save" => [
+				"id" 			 =>	$data["id"], 
+				"author"         => $data["author"],
+				"comment"        => $data["comment"],
+				"idPost"         => $data["id"],
+				"state"          => 0
+			]
+		]);
+		$this->saved = $enregistrement->succeed;
+	}
 
 	private function moderateComment($data){
 	}

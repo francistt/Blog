@@ -6,7 +6,7 @@ require_once "controller/comment.php";
  * 
  */
 class Front{
-  
+
   public $html;
   private $title;
   function __construct($uri)
@@ -69,17 +69,17 @@ class Front{
       if ($secure->post["commentAction"] === "Ajouter"){
         $comment = new Comment(["add" => $secure->post]);
 
-      if ($comment->saved) $ack = [
-        "msg"   => "votre commentaire à bien été enregistré. Il est en attente de modération",
-        "class" => "succeed"
-      ];
-      else $ack = [
-        "msg"   => "nous rencontrons un problème technique, veuillez rééssayer plus tard.",
-        "class" => "error"
-      ];
-      $vue = new View( [ "ack" => $ack ], "ackOnly" );
-      $ack = $vue->html;
-    }
+        if ($comment->saved) $ack = [
+          "msg"   => "votre commentaire à bien été enregistré. Il est en attente de modération",
+          "class" => "succeed"
+        ];
+        else $ack = [
+          "msg"   => "nous rencontrons un problème technique, veuillez rééssayer plus tard.",
+          "class" => "error"
+        ];
+        $vue = new View( [ "ack" => $ack ], "ackOnly" );
+        $ack = $vue->html;
+      }
       if ($secure->post["commentAction"] === "signaler") $chapitre = new Comment(["moderate" => $secure->post]);
     }
     $chapitre = new Chapter(["slug" => $slug]);
@@ -139,17 +139,9 @@ class Front{
     $this->title  = "liste des chapitres";
   } 
 
-
-
-
-
-
-
-
   private function addComment(){
-  $comment     = new Comment(["addComment"=>true]);
-  $this->title = "ajouter un commentaire";
-  $this->html  = file_get_contents("template/commentaireBase.html"); 
+    $comment     = new Comment(["addComment"=>true]);
+    $this->title = "ajouter un commentaire";
+    $this->html  = file_get_contents("template/commentaireBase.html"); 
   }
-
 }

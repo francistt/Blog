@@ -72,10 +72,10 @@ private function listChapters(){
 
 private function listComments(){
   global $secure;
-    if ($secure->post !== null){
+  if ($secure->post !== null){
     if ($secure->post["commentAction"] === "supprimer") $chapitre = new Comment(["delete" => $secure->post]);
     if ($secure->post["commentAction"] === "valider") $chapitre = new Comment(["moderate" => $secure->post]);
-}
+  }
 
   //die(var_dump($id));
   $comments    = new Comment(["listModerate"=>true]);
