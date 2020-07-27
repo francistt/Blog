@@ -27,7 +27,7 @@ var upcontrol = {
     // @TODO - ADD MORE POST DATA IF YOU WANT
     // data.append("foo", "bar");
     
-    xhr.open('POST', '/simple-upload.php', true);
+    xhr.open('POST', '../simple-upload.php', true);
     xhr.onload = function (e) {
       // SHOW UPLOAD STATUS
       var fstat = document.createElement('div'),
