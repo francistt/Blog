@@ -70,5 +70,4 @@ class Comment
 
 	private function moderateComment($data){
 	}
-
 }

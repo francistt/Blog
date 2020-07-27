@@ -24,7 +24,7 @@ function __construct($args){
   if ( isset($save)     ) return $this->saveContent($save);
   if ( isset($slug)     ) return $this->readChapterFromSlug($slug);
   if ( isset($update)   ) return $this->updatePost($update);
-  if ( isset($create)   ) return $this->createChapter($create);
+  //if ( isset($create)   ) return $this->createChapter($create);
   }
 
   private function deletePost($slug){
@@ -67,11 +67,6 @@ function __construct($args){
     $this->checkSucced($request,"hydrate");
   }
 
-  private function createChapter($create){
-    $req = $this->db->prepare("INSERT INTO `chapters`(`id`, `image`, `numeroChapitre`, `title`, `content`, `date`, `slug`) VALUES (:id, :image, :numeroChapitre, :title, :chapitre, NOW(), :slug)");
-    $req->execute([$create]);
-  }
-
   private function updatePost($update){
     try{
       $sql = "UPDATE `chapters` SET `title` = :title,`numeroChapitre` = :numeroChapitre,`date` = NOW(), `slug` = :slug, `content` = :chapitre WHERE  `id` = :id";
@@ -91,3 +86,7 @@ function __construct($args){
     }
   }
 }
+  //private function createChapter($create){
+  //  $req = $this->db->prepare("INSERT INTO `chapters`(`id`, `image`, `numeroChapitre`, `title`, `content`, `date`, `slug`) VALUES (:id, :image, :numeroChapitre, :title, :chapitre, NOW(), :slug)");
+  //  $req->execute([$create]);
+  //}

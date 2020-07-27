@@ -22,10 +22,9 @@ class Back extends Page{
     [
       "ack"            => $this->ack,
       "{{ content }}"  => $this->html,
-        //"{{ commentaires }}"  => $this->comment,
+    //"{{ commentaires }}"  => $this->comment,
       "{{ title }}"    => $this->title,
       "{{ username }}" => $this->user->name,
-
     ],
     $this->template
   );
@@ -82,7 +81,6 @@ private function listComments(){
   $this->title = "choisir le commentaire à modérer";
   $this->html  = $comments->html;
 }
-
 
 //private function moderateComments($data){
     //die(var_dump($data));

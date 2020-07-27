@@ -51,33 +51,3 @@ class View
 	}
 }
 	// $datetime = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
-
-// "j'ai une belle maison"
-// "j'ai une belle voiture"
-
-
-
-// [
-// 	"{{ content }}" => "ljkljklj",
-// 	"{{ date }}"    => "12/05/1986",
-// 	"{{ title }}"   => "kljkljkljkl"
-// ]
-
-
-// [
-// 	[
-// 		"{{ content }}" => "ljkljklj",
-// 		"{{ date }}"    => "12/05/1986",
-// 		"{{ title }}"   => "kljkljkljkl"
-// 	],
-// 	[
-// 		"{{ content }}" => "ljkljklj",
-// 		"{{ date }}"    => "12/05/1986",
-// 		"{{ title }}"   => "kljkljkljkl"
-// 	],
-// 	[
-// 		"{{ content }}" => "ljkljklj",
-// 		"{{ date }}"    => "12/05/1986",
-// 		"{{ title }}"   => "kljkljkljkl"
-// 	],
-// ]

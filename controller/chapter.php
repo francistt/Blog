@@ -39,7 +39,6 @@ class Chapter
     $this->singleChapter($args);
   }
 
-
   private function singleChapter($args){
     $dataChapter = new ChapterModel($args);
     if (isset($dataChapter->error)){
@@ -91,7 +90,6 @@ class Chapter
     if ($dataPost["supprimer"] === "supprimer") $this->deleteConfirmation = true;
   }
 
-
   private function updatePostContent($dataPost){
     //die("update".var_dump($dataPost));
     $dataPost["slug"] = $this->makeSlug($dataPost["titre"]);
@@ -117,15 +115,6 @@ class Chapter
     $this->slug  = $featured->slug;
   }
 
-  // function convertTitleToSlug($title){
-  //  // $title = "la vie est géniale"
-  //  // la-vie-est-geniale
-
-  // $title = implode("-", explode(" ", $title));
-  // $title = implode("e", explode("é", $title));
-  // return $title;
-  // }
-  // 
   private function editChapter($args){
     //var_dump($this);
     if ($this->deleteConfirmation) return $this->deleteConfirm($args);
@@ -140,11 +129,8 @@ class Chapter
         "{{ id }}"             => $dataChapter->id,
         "{{ numeroChapitre }}" => $dataChapter->numeroChapitre,
         "{{ titre }}"          => htmlspecialchars_decode($dataChapter->title),
-        "{{ lastChapter }}"    => $dataChapter->content,
-
-        
+        "{{ lastChapter }}"    => $dataChapter->content,    
         "{{ image }}"          => $dataChapter->image
-
       ],
       "editChapter"
     );
@@ -223,3 +209,12 @@ class Chapter
     $this->html = $vue->html;
   }
 }
+  // function convertTitleToSlug($title){
+  //  // $title = "la vie est géniale"
+  //  // la-vie-est-geniale
+
+  // $title = implode("-", explode(" ", $title));
+  // $title = implode("e", explode("é", $title));
+  // return $title;
+  // }
+  // 
