@@ -3,7 +3,7 @@
 
 // SOURCE + DESTINATION
 $source = $_FILES["file-upload"]["tmp_name"];
-$destination = "public/images/".$_FILES["file-upload"]["name"];
+$destination = "/blog/public/images/".$_FILES["file-upload"]["name"];
 $error = "";
 
 // CHECK IF FILE ALREADY EXIST
@@ -46,6 +46,6 @@ if ($error == "") {
 if ($error == "") {
   echo $_FILES["file-upload"]["name"] . " upload OK";
 } else {
-  echo $error;
+  echo $error." ".$destination;
 }
 ?>

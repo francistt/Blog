@@ -3,6 +3,7 @@
 
 require_once "controller/security.php";
 require_once "controller/session-manager.php";
+date_default_timezone_set("Europe/Paris");
 
  $config  = [
    'basePath'        => "/blog",    // chemin (sous dossier) à inclure dans l'url 
@@ -14,19 +15,19 @@ require_once "controller/session-manager.php";
  ]; 
 
 //configuration Lionel
-//$config  = [
-//'basePath'        => "",
-//'base'            => "francis-blog",
-//'user'            => "root",
-//'password'        => "root",
-//'sessionDuration' => 1800,
-//'debug'           => true
-//];
+// $config  = [
+// 'basePath'        => "",
+// 'base'            => "blog",
+// 'user'            => "root",
+// 'password'        => "root",
+// 'sessionDuration' => 1800,
+// 'debug'           => true
+// ];
 
 if ($config["debug"]) {
   error_reporting(E_ALL | E_STRICT);
   ini_set('display_errors',1);
-}
+} 
 
 $session = new SessionManager($config["sessionDuration"]);
 
