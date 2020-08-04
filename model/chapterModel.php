@@ -37,7 +37,7 @@ function __construct($args){
 
   private function readFeaturedPost($featured){
         // $sql= "SELECT * FROM `chapters` ORDER BY date DESC limit 1";
-    $sql = "SELECT title AS '{{ title }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', slug AS '{{ slug }}', content AS '{{ content }}' FROM `chapters` ORDER BY date DESC limit 1";
+    $sql = "SELECT title AS '{{ title }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', slug AS '{{ slug }}', content AS '{{ content }}', image AS '{{ image }}' FROM `chapters` ORDER BY date DESC limit 1";
     $request = $this->query($sql);
     $this->data = $request["data"];
     $sql = "SELECT title, id, slug FROM `chapters` ORDER BY date DESC limit 1";
@@ -71,14 +71,15 @@ function __construct($args){
 
   private function updatePost($update){
     try{
-      $sql = "UPDATE `chapters` SET `title` = :title,`numeroChapitre` = :numeroChapitre,`date` = NOW(), `slug` = :slug, `content` = :chapitre WHERE  `id` = :id";
+      $sql = "UPDATE `chapters` SET `title` = :title,`numeroChapitre` = :numeroChapitre,`date` = NOW(), `slug` = :slug, `image` = :image, `content` = :chapitre WHERE  `id` = :id";
       $req = $this->db->prepare($sql);
       $req->execute([
         "id"=>$update["id"],
         "title"=>$update["titre"],
         "numeroChapitre"=>$update["numeroChapitre"],
         "slug"=>$update["slug"],
-        "chapitre"=>$update["chapitre"]
+        "chapitre"=>$update["chapitre"],
+        "image"=>$update["image"]
       ]);
       $this->succeed = true;
     }

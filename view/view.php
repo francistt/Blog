@@ -47,7 +47,7 @@ class View
 
 	private function generateAck($ack){
 		if ($ack["msg"] === "") return "";
-		return '<ack class="'.$ack["class"].'">'.$ack['msg'].'</ack>';
+		return '<ack class="'.$ack["class"].'" onclick="this.style.display = \'none\'">'.$ack['msg'].'</ack>';
 	}
 }
 	// $datetime = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);

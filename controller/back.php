@@ -33,7 +33,7 @@ class Back extends Page{
 
 private function accueil(){
   $this->title = "accueil";
-  $this->html  = file_get_contents("template/home.html"); 
+  $this->html  = "";
 }
 
 private function addChapter(){

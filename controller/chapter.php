@@ -65,7 +65,8 @@ class Chapter
         "{{ dateText }}"=> $dateText,
         "{{ dateSEO }}" => $this->date,
         "{{ title }}"   => htmlspecialchars_decode($this->title),
-        "{{ slug }}"    => $this->slug
+        "{{ slug }}"    => $this->slug,
+        "{{ image }}"   => $this->image
       ],
       "singleChapter"
     );
