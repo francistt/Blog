@@ -169,10 +169,6 @@ class Chapter
     return $title;
   }
 
-  private function addChapter(){
-   var_dump("------ addChapter");
-  }
-
   private function insertChapter($dataPost){
    // die("------ insertChapter".var_dump($dataPost));
     $slug = $this->makeSlug($dataPost["titre"]);
@@ -218,3 +214,7 @@ class Chapter
   // return $title;
   // }
   // 
+
+  //private function addChapter(){
+  //var_dump("------ addChapter");
+  //}

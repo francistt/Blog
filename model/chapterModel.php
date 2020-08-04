@@ -10,6 +10,8 @@ class ChapterModel extends Model{
   public $slug;
   public $title;
 
+  public $image;
+
 /**
  * __construct permet de définir quelles sont les actions à faire pour créer une itération unique de la classe en fonction des arguments donnés 
  * @param Array   $args   soit un id, soit un slug, soit un tableau "save" ou "update" contenant les données à enregistrer
