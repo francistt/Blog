@@ -27,14 +27,13 @@ class Chapter
 
   private function defineToDo($args){
     extract($args);
-    global $secure; //a revoir plus tard
+    global $secure;
     if ($secure->post !== null)     $this->saveOrUpdate($secure->post, $args);
     if (isset($list))        return $this->listOfChapters();
     if (isset($listFront))   return $this->listOfChaptersFront();
     if (isset($featured))    return $this->featured();
     if (isset($editChapter)) return $this->editChapter($args);
-    // if (isset($addChapter))  return $this->addChapter();
-
+   
     $this->singleChapter($args);
   }
 
@@ -103,10 +102,8 @@ class Chapter
 
   private function listOfChapters(){
     $list = new ChapterModel(["list" => 100]);
-     //$featured = new ChapterModel(["content" => 100]);
     $vue  = new View(
       $list->slugList,
-      //$content->data,
       "listOfChapters"
     );
     $this->html = $vue->html;
@@ -114,10 +111,8 @@ class Chapter
 
   private function listOfChaptersFront(){
     $list = new ChapterModel(["list" => 100]);
-     //$featured = new ChapterModel(["content" => 100]);
     $vue  = new View(
       $list->slugList,
-      //$content->data,
       "listOfChaptersFront"
     );
     $this->html = $vue->html;
@@ -192,7 +187,6 @@ class Chapter
   }
 
   private function updatePostContent($dataPost){
-    //die("update".var_dump($dataPost));
     $dataPost["slug"] = $this->makeSlug($dataPost["titre"]);
     $model = new ChapterModel(["update" => $dataPost]);
     if (!$model->succeed) $this->ack= [
@@ -201,16 +195,3 @@ class Chapter
     ];
   }
 }
-  // function convertTitleToSlug($title){
-  //  // $title = "la vie est géniale"
-  //  // la-vie-est-geniale
-
-  // $title = implode("-", explode(" ", $title));
-  // $title = implode("e", explode("é", $title));
-  // return $title;
-  // }
-  // 
-
-  //private function addChapter(){
-  //var_dump("------ addChapter");
-  //}

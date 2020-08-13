@@ -1,4 +1,4 @@
-<?php
+  <?php
 //convetions https://www.mediawiki.org/wiki/Manual:Coding_conventions/PHP
 
 require_once "controller/security.php";

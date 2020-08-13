@@ -33,26 +33,9 @@ class Comment
 		}
 	}
 
-	private function listerLesCommentaires($data, $idPost){
-		$commentaireVue = new CommentView($data, $this->slug);
-		$vue = new View(
-			[
-				"{{ commentaires }}" => $commentaireVue->html,
-				"{{ idPost }}"       => $idPost
-			],
-			"commentaireBase"
-		);
-		$this->html = $vue->html;
-	}
-	
 	private function deleteComment($data){
 		if ($this->deleteConfirmation) return $this->deleteConfirm($data);
 		if ($this->delete) return $this->deleteComment();
-	}
-
-	private function listeModeration($data){
-		$commentaireVue = new CommentView($data, $this->slug);
-		$this->html = $commentaireVue->html;
 	}
 
 	private function insertComment($data){
@@ -68,6 +51,20 @@ class Comment
 		$this->saved = $enregistrement->succeed;
 	}
 
-	private function moderateComment($data){
+	private function listerLesCommentaires($data, $idPost){
+		$commentaireVue = new CommentView($data, $this->slug);
+		$vue = new View(
+			[
+				"{{ commentaires }}" => $commentaireVue->html,
+				"{{ idPost }}"       => $idPost
+			],
+			"commentaireBase"
+		);
+		$this->html = $vue->html;
+	}
+
+	private function listeModeration($data){
+		$commentaireVue = new CommentView($data, $this->slug);
+		$this->html = $commentaireVue->html;
 	}
 }

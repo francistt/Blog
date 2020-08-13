@@ -47,7 +47,6 @@ public $data;
 	}
 
 	private function makeButton($id, $text, $state){
-		// return '<a href={{ base }}'.$route.' class="button">'.$text.'</a>';
 		return '
 			<form action="" method="post">
 				<input type="hidden" name="id" value="'.$id.'">

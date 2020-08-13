@@ -38,8 +38,8 @@ class User
   }
 }
 
-public function deconnexion(){
-  global $session;
-  $session->killSession();
-}
+  public function deconnexion(){
+    global $session;
+    $session->killSession();
+  }
 }

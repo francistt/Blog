@@ -4,6 +4,7 @@ class SessionManager
 {
   private $data;
   private $duration;
+  
   public function __construct($duration){
     session_start();
     $this->duration = $duration;
@@ -19,6 +20,12 @@ class SessionManager
   public function get($name = null){
     if ($name === null ) return $this->data;
     return ($this->data[$name]) ? $this->data[$name] : null;
+  }
+
+  public function killSession(){
+    session_unset();
+    session_destroy();
+    session_start();
   }
 
   /**
@@ -76,11 +83,5 @@ class SessionManager
     }
   }
   $this->setOne('lastActivity', $now);
-}
-
-public function killSession(){
-  session_unset();
-  session_destroy();
-  session_start();
 }
 }

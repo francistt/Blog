@@ -40,26 +40,19 @@ class Front{
     );
     $this->html = $vue->html;
   }
-
-  private function contact(){
-    global $secure;
-    if ($secure->post["message"] !== null) {
-      $succeed = $this->sendMail();
-      if ($succeed) $ack = [
-        "msg"   => "votre message à bien été envoyé",
-        "class" => "succeed"
-      ];
-      else $ack = [
-        "msg"   => "nous rencontrons un problème technique, veuillez rééssayer plus tard.",
-        "class" => "error"
-      ];
-      $vue = new View( [ "ack" => $ack ], "ackOnly" );
-      $this->html = $vue->html;
-      return;
-    }
-    $this->html   = file_get_contents("template/contact.html");
-    
+  
+  private function addComment(){
+    $comment     = new Comment(["addComment"=>true]);
+    $this->title = "ajouter un commentaire";
+    $this->html  = file_get_contents("template/commentaireBase.html"); 
   }
+
+  private function bio(){
+    $this->html   = file_get_contents("template/bio.html");
+    $this->title  = "Biographie de Jean Forteroche";
+  }
+
+
   private function chapter($uri){
     $slug = $uri[0];
     $ack = null;
@@ -103,10 +96,30 @@ class Front{
 
     if ($ack !== null) $this->html .= $ack;
   }
-  
-  private function bio(){
-    $this->html   = file_get_contents("template/bio.html");
-    $this->title  = "Biographie de Jean Forteroche";
+
+  private function chapitrelist(){
+    $chapters = new Chapter(["listFront"=>true]);
+    $this->html   = $chapters->html;
+    $this->title  = "liste des chapitres";
+  }
+
+  private function contact(){
+    global $secure;
+    if ($secure->post["message"] !== null) {
+      $succeed = $this->sendMail();
+      if ($succeed) $ack = [
+        "msg"   => "votre message à bien été envoyé",
+        "class" => "succeed"
+      ];
+      else $ack = [
+        "msg"   => "nous rencontrons un problème technique, veuillez rééssayer plus tard.",
+        "class" => "error"
+      ];
+      $vue = new View( [ "ack" => $ack ], "ackOnly" );
+      $this->html = $vue->html;
+      return;
+    }
+    $this->html   = file_get_contents("template/contact.html");  
   }
 
   private function home(){
@@ -131,17 +144,5 @@ class Front{
     catch (Exception $e){
       return false;
     }
-  }
-  private function chapitrelist(){
-    //return $this->getListChapters($list);
-    $chapters = new Chapter(["listFront"=>true]);
-    $this->html   = $chapters->html;
-    $this->title  = "liste des chapitres";
-  } 
-
-  private function addComment(){
-    $comment     = new Comment(["addComment"=>true]);
-    $this->title = "ajouter un commentaire";
-    $this->html  = file_get_contents("template/commentaireBase.html"); 
   }
 }
