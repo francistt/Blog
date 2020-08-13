@@ -58,11 +58,6 @@ private function login(){
   ];
 }
 
-private function logout(){
-  $this->user->deconnexion();
-  header('Location:./login');
-}
-
 private function listChapters(){
   $chapters    = new Chapter(["list"=>true]);
   $this->title = "choisir le chapitre à modifier";
@@ -76,10 +71,14 @@ private function listComments(){
     if ($secure->post["commentAction"] === "valider") $chapitre = new Comment(["moderate" => $secure->post]);
   }
 
-  //die(var_dump($id));
   $comments    = new Comment(["listModerate"=>true]);
   $this->title = "choisir le commentaire à modérer";
   $this->html  = $comments->html;
+}
+
+private function logout(){
+  $this->user->deconnexion();
+  header('Location:./login');
 }
 
 //private function moderateComments($data){
