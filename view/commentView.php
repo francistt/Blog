@@ -13,8 +13,8 @@ public $data;
 		foreach ($data as $key => $value) {
 			/*
 			states :
-				0 : il vient d'être saisi -> donc pas visible sur le front mais visible sur le back
-				1 : il est validé -> visible sur le front mais pas sur le back
+				0 : il vient d'être saisi par l'user -> donc pas visible sur le front mais visible sur le back
+				1 : il est validé par l'admin -> visible sur le front mais pas sur le back
 				2 : il est signalé  -> donc pas visible sur le front mais visible sur le back
 				3 : il est validé définitivement -> visible sur le front mais pas sur le back
 			 */
