@@ -33,10 +33,11 @@ class Comment
 		}
 	}
 
-	private function deleteComment($data){
-		if ($this->deleteConfirmation) return $this->deleteConfirm($data);
-		if ($this->delete) return $this->deleteComment();
-	}
+	//private function deleteComment($data){
+	//            die(var_dump($data));
+	//	if ($this->deleteConfirmation) return $this->deleteConfirm($data);
+	//	if ($this->delete) return $this->deleteComment();
+	//}
 
 	private function insertComment($data){
 		$enregistrement = new CommentModel([

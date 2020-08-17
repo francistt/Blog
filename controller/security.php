@@ -3,17 +3,16 @@
 
 class Security
 {
-	public $cookies = null;
-	public $get     = null;
 	public $post    = null;
-	public $session = null;
 	public $uri     = null;
+	//public $cookies = null;
+	//public $get     = null;
 	
 	public function __construct($args){
-		//if (isset($args["cookies"])) $this->cookies = filter_input_array(INPUT_COOKIE,$args["cookies"]);
 		if (isset($args["post"]))    $this->post    = filter_input_array(INPUT_POST,$args["post"]);
-		//if (isset($args["get"]))     $this->get     = filter_input_array(INPUT_GET,$args["get"]);
 		if (isset($args["uri"]))     $this->uri     = $this->securizeUri($args["uri"]);
+		//if (isset($args["cookies"])) $this->cookies = filter_input_array(INPUT_COOKIE,$args["cookies"]);
+		//if (isset($args["get"]))     $this->get     = filter_input_array(INPUT_GET,$args["get"]);
 	}
 
 	/**

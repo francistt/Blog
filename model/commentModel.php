@@ -3,12 +3,13 @@
 require_once "model/model.php";
 
 class CommentModel extends Model{
+
 	public $data;
 	public $succeed = true;
+
 	function __construct($args){
 		parent::__construct();
 		if (isset($args["moderate"])){
-
 
 			if (!isset($args["moderate"]['commentState'])) return;
 			if (!isset($args["moderate"]['id'])) return;
@@ -30,6 +31,7 @@ class CommentModel extends Model{
 		}
 		if (isset($args["listModerate"])){
 			$sql= "SELECT ID, author AS '{{ author }}', comment AS '{{ comment }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', state FROM comments WHERE  `state` = 2 OR `state` = 0";
+			//$sql = "SELECT title FROM `chapters`";
 			$request = $this->query($sql,TRUE); //fonction dans la classe Model
 			$this->data = $request["data"];
 		}
@@ -37,7 +39,6 @@ class CommentModel extends Model{
 			$sql= "SELECT count(*) AS total FROM comments WHERE `state` != 0  AND `state` != 2 AND  idPost=".$args["chapitre"];
 			$request = $this->query($sql,FALSE); //fonction dans la classe Model
 			$this->data = $request["data"];
-			//die(var_dump($request));
 		}
 		if (isset($args["delete"])){
 			if (!isset($args["delete"]['commentState'])) return;

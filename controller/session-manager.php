@@ -34,7 +34,7 @@ class SessionManager
    * @param [mixed]      $value     optional : the new value only when $newData is a string
    */
 
-  public function set( $newData, $value=null ){
+  public function set($newData, $value=null){
     if (gettype($newData) === "array") return $this->setSeveral($newData);
     $this->setOne($newData, $value);
   }
@@ -53,7 +53,7 @@ class SessionManager
    * @param [type] $array [description]
    */
 
-  private function setSeveral( $array ){
+  private function setSeveral($array){
     foreach ($array as $key => $value) {
       $this->setOne($key, $value);
     }

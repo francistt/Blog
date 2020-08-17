@@ -17,9 +17,9 @@ class Chapter
   
   /**
    * [__construct description]
-   * @param Array $argument soit un tableau avec comme clé un id, un slug, ou list
+   * @param Array $argument is an array with an id, a slug, or a list as a key
    */
-  function __construct($argument)
+  public function __construct($argument)
   {
     $this->defineToDo($argument);    
     $this->lastChapter = $this->lastChapterHtml();
@@ -90,7 +90,6 @@ class Chapter
     ]);
     global $config;
     header("Location: ".$config['basePath']."/admin/listChapters");
-    //header("Location: ".$config['basePath']."/admin/edit-chapter/".$slug);    
   }
 
   private function lastChapterHtml(){
@@ -155,7 +154,7 @@ class Chapter
   private function singleChapter($args){
     $dataChapter = new ChapterModel($args);
     if (isset($dataChapter->error)){
-      die("// a completer");
+      die("erreur serveur ".$dataChapter->error);
 
     }
     foreach ($dataChapter as $key => $value) {

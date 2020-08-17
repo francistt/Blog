@@ -9,6 +9,7 @@ class Front{
 
   public $html;
   private $title;
+
   function __construct($uri)
   {
     global $config;
@@ -51,7 +52,6 @@ class Front{
     $this->html   = file_get_contents("template/bio.html");
     $this->title  = "Biographie de Jean Forteroche";
   }
-
 
   private function chapter($uri){
     $slug = $uri[0];
