@@ -42,7 +42,7 @@
 	$.fn.panel = function(userConfig) {
 
 		// No elements?
-			if (this.length == 0)
+			if (this.length === 0)
 				return $this;
 
 		// Multiple elements?
@@ -287,7 +287,7 @@
 				if (config.hideOnEscape)
 					$window.on('keydown', function(event) {
 
-						if (event.keyCode == 27)
+						if (event.keyCode === 27)
 							$this._hide(event);
 
 					});
@@ -538,7 +538,7 @@
 					$parent = $e.parent();
 
 				// No parent? Bail.
-					if ($parent.length == 0)
+					if ($parent.length === 0)
 						return;
 
 				// Not moved? Move it.
@@ -552,7 +552,7 @@
 							$p = $e.prev();
 
 							// Couldn't find anything? Means this element's already at the top, so bail.
-								if ($p.length == 0)
+								if ($p.length === 0)
 									return;
 
 						// Move element to top of parent.
