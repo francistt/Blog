@@ -10,7 +10,7 @@ class Front{
   public $html;
   private $title;
 
-  function __construct($uri)
+  public function __construct($uri)
   {
     global $config;
     switch ($uri[0]) {

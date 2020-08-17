@@ -9,7 +9,7 @@ class View
 	public $html = "";
 	protected $base;
 	
-	function __construct($data, $template)
+	public function __construct($data, $template)
 
 	{
 		global $config;

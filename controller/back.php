@@ -34,6 +34,11 @@ class Back extends Page{
     $this->html = $vue->html;
   }
 
+  private function accueil(){
+    $this->title = "accueil";
+    $this->html  = "";
+  }
+
   private function addChapter(){
     $chapter     = new Chapter(["addChapter"=>true]);
     $this->title = "ajouter un chapitre";

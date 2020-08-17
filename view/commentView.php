@@ -5,7 +5,7 @@ require_once "view/view.php";
 class CommentView extends View{
 public $data;
 
-	function __construct($data, $slug){
+	public function __construct($data, $slug){
 		global $secure;
 		parent::__construct(null, null);
 		if ($secure->uri[0] === "admin") $slug = null;
