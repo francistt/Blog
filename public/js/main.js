@@ -7,10 +7,10 @@
 (function($) {
 
 	var	$window = $(window),
-		$body = $('body'),
-		$menu = $('#menu'),
-		$sidebar = $('#sidebar'),
-		$main = $('#main');
+		$body = $("body"),
+		$menu = $("#menu"),
+		$sidebar = $("#sidebar"),
+		$main = $("#main");
 
 	// Breakpoints.
 		breakpoints({
@@ -37,9 +37,9 @@
 				hideOnSwipe: true,
 				resetScroll: true,
 				resetForms: true,
-				side: 'right',
+				side: "right",
 				target: $body,
-				visibleClass: 'is-menu-visible'
+				visibleClass: "is-menu-visible"
 			});
 
 	// Search (header).
@@ -68,7 +68,7 @@
 			});
 
 		$search_input
-			.on('keydown', function(event) {
+			.on("keydown", function(event) {
 
 				if (event.keyCode === 27)
 					$search_input.blur();
@@ -88,7 +88,7 @@
 				$intro.prependTo($main);
 			});
 
-			breakpoints.on('>large', function() {
+			breakpoints.on(">large", function() {
 				$intro.prependTo($sidebar);
 			});
 

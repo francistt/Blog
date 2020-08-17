@@ -54,7 +54,7 @@ var upcontrol = {
       else {
         upcontrol.now = 0;
         upcontrol.queue = null;
-        document.getElementById('uploader').classList.remove('disabled');
+        document.getElementById("uploader").classList.remove("disabled");
 
         // @TODO - ADD MESSAGE HERE IF YOU WANT
         console.log("Upload complete");
