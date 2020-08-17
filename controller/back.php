@@ -19,7 +19,7 @@ class Back extends Page{
     $this->login(); //si l'utilisateur n'a pas de nom c'est que l'authentification à échoué alors on affiche la page de login
     else {
       $this->template = "mainAdmin";
-      $todo = $this->defineTodo($uri, "accueil", $this);
+      $todo = $this->defineTodo($uri, "listChapters", $this);
       $this->$todo($uri);
     }
     $vue = new View(
@@ -32,11 +32,6 @@ class Back extends Page{
       $this->template
     );
     $this->html = $vue->html;
-  }
-
-  private function accueil(){
-    $this->title = "accueil";
-    $this->html  = "";
   }
 
   private function addChapter(){
