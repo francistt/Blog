@@ -8,7 +8,7 @@ admin {
 
 main {
     margin: 1rem;
-    background-color: #f4f4f4;
+        background-color: #f4f4f4;
     width: 75%;
     padding: 1rem;
     border: 1px solid #f1f1f1;
@@ -51,10 +51,10 @@ ack {
     padding: 1rem;
     color: white;
 }
-ack.error{
+ack.error {
     background-color: red;
 }
-ack.success{
+ack.success {
     background-color: #CDDC39;
 }
 #footer {
