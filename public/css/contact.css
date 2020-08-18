@@ -3,9 +3,9 @@ body {
     background: #f4f4f4;
 }
 #container{
-    width: 400px;
-    margin: 0 auto;
-    margin-top: 10%;
+    width:400px;
+    margin:0 auto;
+    margin-top:10%;
 }
 main {
     background-color: #f4f4f4;
@@ -17,10 +17,9 @@ a:visited
 {
     color: black;
 }
-
 /* Bordered form */
 form {
-    width: 150%;
+    width:150%;
     padding: 30px;
     border: 1px solid #f1f1f1;
     background: #fff;
