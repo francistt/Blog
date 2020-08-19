@@ -33,7 +33,6 @@ class Chapter
     if (isset($listFront))   return $this->listOfChaptersFront();
     if (isset($featured))    return $this->featured();
     if (isset($editChapter)) return $this->editChapter($args);
-    // if (isset($addChapter))  return $this->addChapter();
 
     $this->singleChapter($args);
   }
@@ -209,8 +208,4 @@ class Chapter
   // $title = implode("e", explode("é", $title));
   // return $title;
   // }
-  // 
-
-  //private function addChapter(){
-  //var_dump("------ addChapter");
-  //}
+  //
