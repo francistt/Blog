@@ -14,7 +14,7 @@ class Comment
 
 	/**
 	 * [__construct description]
-	 * @param Array $argument soit un tableau avec comme clé un id, un slug, ou list
+	 * @param Array $argument is an array with an id, a slug, or a list as a key
 	 */
 	public function __construct($argument){
 		$dataCommentaires = new CommentModel($argument);

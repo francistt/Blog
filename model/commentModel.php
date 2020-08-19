@@ -3,9 +3,11 @@
 require_once "model/model.php";
 
 class CommentModel extends Model{
+	
 	public $data;
 	public $succeed = true;
-	function __construct($args){
+
+	public function __construct($args){
 		parent::__construct();
 		if (isset($args["moderate"])){
 

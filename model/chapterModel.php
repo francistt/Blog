@@ -13,10 +13,10 @@ class ChapterModel extends Model{
   public $image;
 
 /**
- * __construct permet de définir quelles sont les actions à faire pour créer une itération unique de la classe en fonction des arguments donnés 
- * @param Array   $args   soit un id, soit un slug, soit un tableau "save" ou "update" contenant les données à enregistrer
+ * __construct allows you to define what actions to do to create a unique iteration of the class according to the arguments given 
+ * @param Array   $args is an id, or a slug, or an array "save" or "update" with data to record 
  */
-function __construct($args){
+public function __construct($args){
   parent::__construct();
   extract($args);
   if ( isset($delete)   ) return $this->deletePost($delete);

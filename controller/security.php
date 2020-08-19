@@ -9,6 +9,12 @@ class Security
 	public $session = null;
 	public $uri     = null;
 	
+	/** 
+	 * crypt a string 
+	 * @constructor  
+	 * @param  Array  $args  needed data for build a security's iteration 
+	 * @param  Array  [$args->post] rules for filter input post 
+	 */ 
 	public function __construct($args){
 		if (isset($args["cookies"])) $this->cookies = filter_input_array(INPUT_COOKIE,$args["cookies"]);
 		if (isset($args["post"]))    $this->post    = filter_input_array(INPUT_POST,$args["post"]);
