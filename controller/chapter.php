@@ -17,7 +17,7 @@ class Chapter
   
   /**
    * [__construct description]
-   * @param Array $argument soit un tableau avec comme clé un id, un slug, ou list
+   * @param Array $argument is an array with an id, a slug, or a list as a key
    */
   function __construct($argument)
   {
