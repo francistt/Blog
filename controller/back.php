@@ -21,7 +21,6 @@ class Back extends Page{
       [
         "ack"            => $this->ack,
         "{{ content }}"  => $this->html,
-    //"{{ commentaires }}"  => $this->comment,
         "{{ title }}"    => $this->title,
         "{{ username }}" => $this->user->name,
       ],

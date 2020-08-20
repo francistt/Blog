@@ -89,8 +89,7 @@ class Chapter
       ]
     ]);
     global $config;
-    header("Location: ".$config['basePath']."/admin/listChapters");
-    //header("Location: ".$config['basePath']."/admin/edit-chapter/".$slug);    
+    header("Location: ".$config['basePath']."/admin/listChapters");  
   }
 
   private function lastChapterHtml(){
@@ -102,10 +101,8 @@ class Chapter
 
   private function listOfChapters(){
     $list = new ChapterModel(["list" => 100]);
-     //$featured = new ChapterModel(["content" => 100]);
     $vue  = new View(
       $list->slugList,
-      //$content->data,
       "listOfChapters"
     );
     $this->html = $vue->html;
@@ -113,10 +110,8 @@ class Chapter
 
   private function listOfChaptersFront(){
     $list = new ChapterModel(["list" => 100]);
-     //$featured = new ChapterModel(["content" => 100]);
     $vue  = new View(
       $list->slugList,
-      //$content->data,
       "listOfChaptersFront"
     );
     $this->html = $vue->html;
@@ -191,7 +186,6 @@ class Chapter
   }
 
   private function updatePostContent($dataPost){
-    //die("update".var_dump($dataPost));
     $dataPost["slug"] = $this->makeSlug($dataPost["titre"]);
     $model = new ChapterModel(["update" => $dataPost]);
     if (!$model->succeed) $this->ack= [
@@ -200,12 +194,3 @@ class Chapter
     ];
   }
 }
-  // function convertTitleToSlug($title){
-  //  // $title = "la vie est géniale"
-  //  // la-vie-est-geniale
-
-  // $title = implode("-", explode(" ", $title));
-  // $title = implode("e", explode("é", $title));
-  // return $title;
-  // }
-  //

@@ -50,4 +50,3 @@ class View
 		return '<ack class="'.$ack["class"].'" onclick="this.style.display = \'none\'">'.$ack['msg'].'</ack>';
 	}
 }
-	// $datetime = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
