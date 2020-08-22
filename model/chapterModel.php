@@ -35,7 +35,6 @@ public function __construct($args){
   }
 
   private function readFeaturedPost($featured){
-        // $sql= "SELECT * FROM `chapters` ORDER BY date DESC limit 1";
     $sql = "SELECT title AS '{{ title }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', slug AS '{{ slug }}', content AS '{{ content }}', image AS '{{ image }}' FROM `chapters` ORDER BY date DESC limit 1";
     $request = $this->query($sql);
     $this->data = $request["data"];
