@@ -1,4 +1,5 @@
 <?php
+
 require_once "view/view.php";
 require_once "controller/chapter.php";
 require_once "controller/comment.php";
@@ -144,16 +145,5 @@ class Front{
     catch (Exception $e){
       return false;
     }
-  }
-  private function chapitrelist(){
-    $chapters = new Chapter(["listFront"=>true]);
-    $this->html   = $chapters->html;
-    $this->title  = "liste des chapitres";
-  } 
-
-  private function addComment(){
-    $comment     = new Comment(["addComment"=>true]);
-    $this->title = "ajouter un commentaire";
-    $this->html  = file_get_contents("template/commentaireBase.html"); 
   }
 }

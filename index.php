@@ -1,4 +1,4 @@
-  <?php
+<?php
 
 require_once "controller/security.php";
 require_once "controller/session-manager.php";

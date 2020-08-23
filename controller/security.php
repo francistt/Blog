@@ -1,6 +1,5 @@
 <?php
 
-
 class Security
 {
 	public $post    = null;

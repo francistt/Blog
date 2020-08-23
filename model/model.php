@@ -1,6 +1,5 @@
 <?php
 
-
 class model
 {
 	public $db;
