@@ -76,7 +76,7 @@ class Front{
       if ($secure->post["commentAction"] === "signaler") $chapitre = new Comment(["moderate" => $secure->post]);
     }
     $chapitre = new Chapter(["slug" => $slug]);
-    $this->html  = $chapitre->html;
+    $this->html        = $chapitre->html;
     $this->title       = $chapitre->title;
     $this->lastChapter = $chapitre->lastChapter;
     $commentData = [
@@ -144,5 +144,16 @@ class Front{
     catch (Exception $e){
       return false;
     }
+  }
+  private function chapitrelist(){
+    $chapters = new Chapter(["listFront"=>true]);
+    $this->html   = $chapters->html;
+    $this->title  = "liste des chapitres";
+  } 
+
+  private function addComment(){
+    $comment     = new Comment(["addComment"=>true]);
+    $this->title = "ajouter un commentaire";
+    $this->html  = file_get_contents("template/commentaireBase.html"); 
   }
 }

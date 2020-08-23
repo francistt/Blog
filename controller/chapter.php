@@ -33,7 +33,7 @@ class Chapter
     if (isset($listFront))   return $this->listOfChaptersFront();
     if (isset($featured))    return $this->featured();
     if (isset($editChapter)) return $this->editChapter($args);
-   
+
     $this->singleChapter($args);
   }
 
@@ -89,7 +89,7 @@ class Chapter
       ]
     ]);
     global $config;
-    header("Location: ".$config['basePath']."/admin/listChapters");
+    header("Location: ".$config['basePath']."/admin/listChapters");  
   }
 
   private function lastChapterHtml(){

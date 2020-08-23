@@ -12,8 +12,8 @@ class ChapterModel extends Model{
   public $image;
 
 /**
- * __construct allows you to define what actions to do to create a unique iteration of the class according to the arguments given
- * @param Array   $args is an id, or a slug, or an array "save" or "update" with data to record
+ * __construct allows you to define what actions to do to create a unique iteration of the class according to the arguments given 
+ * @param Array   $args is an id, or a slug, or an array "save" or "update" with data to record 
  */
 public function __construct($args){
   parent::__construct();

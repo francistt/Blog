@@ -3,7 +3,7 @@
 require_once "model/model.php";
 
 class CommentModel extends Model{
-
+	
 	public $data;
 	public $succeed = true;
 

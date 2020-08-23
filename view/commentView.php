@@ -3,6 +3,7 @@
 require_once "view/view.php";
 
 class CommentView extends View{
+	
 public $data;
 
 	public function __construct($data, $slug){

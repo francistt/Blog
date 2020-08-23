@@ -15,11 +15,10 @@ class Back extends Page{
    */
   public function __construct($uri){
     $this->user = new User();
-    if ($this->user->name === null) 
-    $this->login(); //si l'utilisateur n'a pas de nom c'est que l'authentification à échoué alors on affiche la page de login
+    if ($this->user->name === null) $this->login(); //si l'utilisateur n'a pas de nom c'est que l'authentification à échoué alors on affiche la page de login
     else {
       $this->template = "mainAdmin";
-      $todo = $this->defineTodo($uri, "listChapters", $this);
+      $todo = $this->defineTodo($uri, "accueil", $this);
       $this->$todo($uri);
     }
     $vue = new View(
@@ -34,6 +33,11 @@ class Back extends Page{
     $this->html = $vue->html;
   }
 
+  private function accueil(){
+    $this->title = "accueil";
+    $this->html  = "";
+  }
+
   private function addChapter(){
     $chapter     = new Chapter(["addChapter"=>true]);
     $this->title = "ajouter un chapitre";
@@ -44,6 +48,16 @@ class Back extends Page{
     $chapter     = new Chapter(["editChapter"=>$uri[1]]);
     $this->html  = $chapter->html;
     $this->title = $chapter->title;
+  }
+
+  private function login(){
+    $this->title    = "interface";
+    $this->template = "login";
+    global $secure;
+    if( $secure->post !== null ) $this->ack = [
+      "msg"   => "Mauvais identifiant ou mot de passe",
+      "class" => "error"
+    ];
   }
 
   private function listChapters(){
@@ -62,16 +76,6 @@ class Back extends Page{
     $comments    = new Comment(["listModerate"=>true]);
     $this->title = "choisir le commentaire à modérer";
     $this->html  = $comments->html;
-  }
-
-  private function login(){
-    $this->title    = "interface";
-    $this->template = "login";
-    global $secure;
-    if( $secure->post !== null ) $this->ack = [
-      "msg"   => "Mauvais identifiant ou mot de passe",
-      "class" => "error"
-    ];
   }
 
   private function logout(){
