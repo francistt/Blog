@@ -27,7 +27,7 @@ class Chapter
 
   private function defineToDo($args){
     extract($args);
-    global $secure; //a revoir plus tard
+    global $secure;
     if ($secure->post !== null)     $this->saveOrUpdate($secure->post, $args);
     if (isset($list))        return $this->listOfChapters();
     if (isset($listFront))   return $this->listOfChaptersFront();
@@ -154,7 +154,7 @@ class Chapter
   private function singleChapter($args){
     $dataChapter = new ChapterModel($args);
     if (isset($dataChapter->error)){
-      die("// a completer");
+      die("erreur serveur ".$dataChapter->error);
 
     }
     foreach ($dataChapter as $key => $value) {

@@ -84,7 +84,7 @@ class Front{
       if ($secure->post["commentAction"] === "signaler") $chapitre = new Comment(["moderate" => $secure->post]);
     }
     $chapitre = new Chapter(["slug" => $slug]);
-    $this->html  = $chapitre->html;
+    $this->html        = $chapitre->html;
     $this->title       = $chapitre->title;
     $this->lastChapter = $chapitre->lastChapter;
     $commentData = [
