@@ -41,11 +41,11 @@ public function __construct($args){
     $this->checkSucced($request,"hydrate");
   }
 
-  private function readChapterFromId($id){
-    $sql = "SELECT * FROM chapters WHERE id = '$id'";
-    $request = $this->query($sql); //fonction dans la classe Model
-    $this->checkSucced($request,"hydrate");
-  }
+  //private function readChapterFromId($id){
+  //  $sql = "SELECT * FROM chapters WHERE id = '$id'";
+  //  $request = $this->query($sql); //fonction dans la classe Model
+  //  $this->checkSucced($request,"hydrate");
+  //}
 
   private function getListChapters($list){
     $sql = "SELECT `numeroChapitre` AS `{{ numeroChapitre }}` ,`slug` AS `{{ slug }}`,`title` AS `{{ titre }}` FROM `chapters` ORDER BY numeroChapitre DESC limit $list";
