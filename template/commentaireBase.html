@@ -1,11 +1,7 @@
-<!DOCTYPE HTML>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>ecrire un commentaire</title>
-</head>
 <div class="comments wrap-post">
+
   {{ commentaires }}
+
   <div class="header-post">
     <h3 class="title-post">Ecrire un commentaire</h3>
   </div>
@@ -19,8 +15,16 @@
       <textarea name="comment"></textarea>
       <br>
       <input type="hidden" name="id" value="{{ idPost }}">
-      <input type="submit" name="commentAction" value="Ajouter">
+      <input id="btValide" type="submit" name="commentAction" value="Ajouter">
     </form>
   </div>
 </div>
-</html>
+
+<script type="text/javascript">
+  document.getElementById("btValide").onclick = function(event){
+    if(document.getElementsByTagName("textarea")[0].value.length === 0) {
+      event.preventDefault();
+      alert("le commentaire ne peut pas être vide")
+    }
+  };
+</script>

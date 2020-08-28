@@ -33,12 +33,6 @@ class Comment
 		}
 	}
 
-	//private function deleteComment($data){
-	//            die(var_dump($data));
-	//	if ($this->deleteConfirmation) return $this->deleteConfirm($data);
-	//	if ($this->delete) return $this->deleteComment();
-	//}
-
 	private function insertComment($data){
 		$enregistrement = new CommentModel([
 			"save" => [
@@ -65,6 +59,7 @@ class Comment
 	}
 
 	private function listeModeration($data){
+		var_dump($data);
 		$commentaireVue = new CommentView($data, $this->slug);
 		$this->html = $commentaireVue->html;
 	}
