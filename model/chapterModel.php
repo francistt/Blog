@@ -20,7 +20,7 @@ public function __construct($args){
   extract($args);
   if ( isset($delete)   ) return $this->deletePost($delete);
   if ( isset($featured) ) return $this->readFeaturedPost($featured);
-  if ( isset($id)       ) return $this->readChapterFromId($id);
+  //if ( isset($id)       ) return $this->readChapterFromId($id);
   if ( isset($list)     ) return $this->getListChapters($list);
   if ( isset($save)     ) return $this->saveContent($save);
   if ( isset($slug)     ) return $this->readChapterFromSlug($slug);
@@ -61,7 +61,7 @@ public function __construct($args){
 
   private function readChapterFromSlug($slug){
     $sql = "SELECT * FROM chapters WHERE slug = '$slug'";
-    $request = $this->query($sql); //fonction dans la classe Model
+    $request = $this->query($sql);
     $this->checkSucced($request,"hydrate");
   }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <title>{{ title }} interface d'administration</title>
   <meta charset="utf-8">
@@ -9,52 +9,51 @@
 </head>
 <body>
   <admin>
-<nav>
-  <p>Bienvenue {{ username }}</p>
-  <h2>Chapitres</h2>
-  <ul>
-    <li>
-      <a href="{{ base }}/admin/add-chapter">ajouter un chapitre</a>
-    </li>
-    <li>
-      <a href="{{ base }}/admin/list-chapters">modifier un chapitre</a>
-    </li>
-  </ul>
-  <h2>Commentaires</h2>
-  <ul>
-    <li>
-      <a href="{{ base }}/admin/list-comments">modérer un commentaire</a>
-    </li>
-  </ul>
-  <a href="{{ base }}/admin/logout"><input type="submit" value="deconnexion"></a>
-</nav>
-<main>
-  <h2>Tableau de bord</h2>
-  {{ content }}
-</main>
-</admin>
-</br>
+    <nav>
+      <p>Bienvenue {{ username }}</p>
+      <h2>Chapitres</h2>
+      <ul>
+        <li>
+          <a href="{{ base }}/admin/add-chapter">ajouter un chapitre</a>
+        </li>
+        <li>
+          <a href="{{ base }}/admin/list-chapters">modifier un chapitre</a>
+        </li>
+      </ul>
+      <h2>Commentaires</h2>
+      <ul>
+        <li>
+          <a href="{{ base }}/admin/list-comments">modérer un commentaire</a>
+        </li>
+      </ul>
+      <a href="{{ base }}/admin/logout"><input type="submit" value="deconnexion"></a>
+    </nav>
+    <main>
+      <h2>Tableau de bord</h2>
+      {{ content }}
+    </main>
+  </admin>
+<br>
 <!-- Footer -->
-          <section id="footer">
-            <a href="/blog/" class="button large">retour à l'accueil</a>
-          </br>
-          </br>
-            <ul class="icons">
-              <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-              <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-              <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-              <li><a href="{{ base }}/contact" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-            </ul>
-            <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
-          </section>
-      </div>
+<section id="footer">
+  <a href="/blog/" class="button large">retour à l'accueil</a>
+  <br>
+  <br>
+  <ul class="icons">
+    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+    <li><a href="{{ base }}/contact" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+  </ul>
+  <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+</section>
 
-    <!-- Scripts -->
-      <script src="{{ base }}/public/js/jquery.min.js"></script>
-      <script src="{{ base }}/public/js/browser.min.js"></script>
-      <script src="{{ base }}/public/js/breakpoints.min.js"></script>
-      <script src="{{ base }}/public/js/util.js"></script>
-      <script src="{{ base }}/public/js/main.js"></script>
+<!-- Scripts -->
+<script src="{{ base }}/public/js/jquery.min.js"></script>
+<script src="{{ base }}/public/js/browser.min.js"></script>
+<script src="{{ base }}/public/js/breakpoints.min.js"></script>
+<script src="{{ base }}/public/js/util.js"></script>
+<script src="{{ base }}/public/js/main.js"></script>
 
-  </body>
+</body>
 </html>

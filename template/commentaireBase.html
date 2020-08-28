@@ -1,3 +1,9 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>ecrire un commentaire</title>
+</head>
 <div class="comments wrap-post">
   {{ commentaires }}
   <div class="header-post">
@@ -7,7 +13,7 @@
     <form method="POST" action="">
       <div class="form-group">
         <label for="user">Nom :</label>
-        <input type="text" class="form-control" id="author" name="author"/>
+        <input type="text" required="required" class="form-control" id="author" name="author"/>
       </div>
       <br>
       <textarea name="comment"></textarea>
@@ -17,3 +23,4 @@
     </form>
   </div>
 </div>
+</html>
