@@ -29,12 +29,12 @@ class Chapter
   private function defineToDo($args){
     extract($args);
     global $secure;
-    if (isset($addChapter))  return $this->addChapter();
     if ($secure->post !== null)     $this->saveOrUpdate($secure->post, $args);
     if (isset($list))        return $this->listOfChapters();
     if (isset($listFront))   return $this->listOfChaptersFront();
     if (isset($featured))    return $this->featured();
     if (isset($editChapter)) return $this->editChapter($args);
+    if (isset($addChapter))  return $this->addChapter();
 
     $this->singleChapter($args);
   }
@@ -196,7 +196,9 @@ class Chapter
     ];
   }
 
-  private function addChapter(){    
+  private function addChapter(){
+    
+    // if ($secure->post !== null) 
     $dataChapter = new ChapterModel(["getNextId"=>true]);
     $this->numeroChapitre = intval($dataChapter->numeroChapitre)+1;
   }

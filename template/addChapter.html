@@ -1,7 +1,7 @@
 <h1>ajout de chapitre</h1>
 <form action="" method="POST" enctype="multipart/form-data">
-	<label for="numeroChapitre">Numero de Chapitre :</label>
-	<input type="number" name="numeroChapitre" id="numeroChapitre" placeholder="Numero de Chapitre" value="{{ idChapter }}" disabled="disabled">
+	<p>Chapitre {{ idChapter }}</p>
+	<input type="hidden" name="numeroChapitre" id="numeroChapitre" value="{{ idChapter }}">
 	<label for="titre">Titre :</label>
 	<input type="text" required="required" name="titre" id="titre" placeholder="Titre">
 </br>
