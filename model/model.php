@@ -37,6 +37,27 @@ class model
 		}
 	}
 
+		public function pae($sql,$args=null, $all=FALSE)
+	{
+		try {
+			$request = $this->db->prepare($sql);
+    	$request->execute($args);
+			if ($all == true) $data = $request->fetchAll();
+			else $data= $request->fetch();
+			$request->closeCursor();
+			return [
+				"succeed" => TRUE,
+				"data" => $data
+			];
+		}
+		catch(Exception $e) {
+			return [
+				"succeed" => FALSE,
+				"data" => $e
+			];
+		}
+	}
+
 	public function hydrate($modelData)
 	{
 		foreach ($modelData as $key => $value) {

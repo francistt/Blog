@@ -41,7 +41,13 @@ class Back extends Page{
   private function addChapter(){
     $chapter     = new Chapter(["addChapter"=>true]);
     $this->title = "ajouter un chapitre";
-    $this->html  = file_get_contents("template/addChapter.html"); 
+    $vue = new View(
+      [
+        "{{ idChapter }}" => $chapter->numeroChapitre
+      ],
+      "addChapter"
+    );
+    $this->html = $vue->html;
   }
 
   private function editChapter($uri){

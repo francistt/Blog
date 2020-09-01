@@ -25,8 +25,14 @@ class CommentModel extends Model{
 			$request->execute($newValue);
 		}
 		if (isset($args["chapitre"])){
-			$sql= "SELECT ID, author AS '{{ author }}', comment AS '{{ comment }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', state FROM comments WHERE idPost= ".$args['chapitre'];
-			$request = $this->query($sql,TRUE); //fonction dans la classe Model
+			$sql= "SELECT ID, author AS '{{ author }}', comment AS '{{ comment }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', state FROM comments WHERE idPost= :idPost";
+			$request = $this->pae(
+				$sql,
+				[
+					"idPost"=>$args['chapitre']
+				],
+				TRUE
+			); //fonction dans la classe Model
 			$this->data = $request["data"];
 		}
 		if (isset($args["listModerate"])){
@@ -35,8 +41,13 @@ class CommentModel extends Model{
 			$this->data = $request["data"];
 		}
 		if (isset($args["listComment"])){
-			$sql= "SELECT count(*) AS total FROM comments WHERE `state` != 0  AND `state` != 2 AND  idPost=".$args["chapitre"];
-			$request = $this->query($sql,FALSE); //fonction dans la classe Model
+			$request = $this->pae(
+				"SELECT count(*) AS total FROM comments WHERE `state` != 0  AND `state` != 2 AND  idPost=:idPost",
+				[
+					"idPost"=>$args['chapitre']
+				],
+				FALSE
+			); //fonction dans la classe Model
 			$this->data = $request["data"];
 		}
 		if (isset($args["delete"])){

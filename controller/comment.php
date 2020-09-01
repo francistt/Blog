@@ -60,7 +60,6 @@ class Comment
 	}
 
 	private function listeModeration($data){
-		var_dump($data);
 		$commentaireVue = new CommentView($data, $this->slug);
 		$this->html = $commentaireVue->html;
 	}

@@ -14,6 +14,7 @@ class Chapter
   public  $lastChapter;
   public  $slug;
   public  $title;
+  public  $numeroChapitre;
   
   /**
    * [__construct description]
@@ -28,6 +29,7 @@ class Chapter
   private function defineToDo($args){
     extract($args);
     global $secure;
+    if (isset($addChapter))  return $this->addChapter();
     if ($secure->post !== null)     $this->saveOrUpdate($secure->post, $args);
     if (isset($list))        return $this->listOfChapters();
     if (isset($listFront))   return $this->listOfChaptersFront();
@@ -192,5 +194,10 @@ class Chapter
       "msg" =>"erreur d'enregistrement : ".$model->reason,
       "class" => "error"
     ];
+  }
+
+  private function addChapter(){    
+    $dataChapter = new ChapterModel(["getNextId"=>true]);
+    $this->numeroChapitre = intval($dataChapter->numeroChapitre)+1;
   }
 }

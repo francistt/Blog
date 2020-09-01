@@ -18,12 +18,13 @@ class ChapterModel extends Model{
 public function __construct($args){
   parent::__construct();
   extract($args);
-  if ( isset($delete)   ) return $this->deletePost($delete);
-  if ( isset($featured) ) return $this->readFeaturedPost($featured);
-  if ( isset($list)     ) return $this->getListChapters($list);
-  if ( isset($save)     ) return $this->saveContent($save);
-  if ( isset($slug)     ) return $this->readChapterFromSlug($slug);
-  if ( isset($update)   ) return $this->updatePost($update);
+  if ( isset($delete)    ) return $this->deletePost($delete);
+  if ( isset($featured)  ) return $this->readFeaturedPost($featured);
+  if ( isset($list)      ) return $this->getListChapters($list);
+  if ( isset($save)      ) return $this->saveContent($save);
+  if ( isset($slug)      ) return $this->readChapterFromSlug($slug);
+  if ( isset($update)    ) return $this->updatePost($update);
+  if ( isset($getNextId) ) return $this->getNextId();
   }
 
   private function deletePost($slug){
@@ -31,7 +32,7 @@ public function __construct($args){
     $req->execute([$slug]);
   }
 
-  private function readFeaturedPost($featured){
+  private function readFeaturedPost(){
     $sql = "SELECT title AS '{{ title }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', slug AS '{{ slug }}', content AS '{{ content }}', image AS '{{ image }}' FROM `chapters` ORDER BY date DESC limit 1";
     $request = $this->query($sql);
     $this->data = $request["data"];
@@ -55,8 +56,8 @@ public function __construct($args){
   }
 
   private function readChapterFromSlug($slug){
-    $sql = "SELECT * FROM chapters WHERE slug = '$slug'";
-    $request = $this->query($sql);
+    $sql = "SELECT * FROM chapters WHERE slug = :slug";
+    $request = $this->pae($sql, ["slug"=>$slug]);
     $this->checkSucced($request,"hydrate");
   }
 
@@ -78,5 +79,11 @@ public function __construct($args){
       $this->reason  = $e;
       $this->succeed = false;
     }
+  }
+
+  private function getNextId(){
+    $sql = "SELECT numeroChapitre FROM `chapters` ORDER BY numeroChapitre DESC limit 1";
+    $request = $this->query($sql);
+    $this->checkSucced($request,"hydrate");
   }
 }

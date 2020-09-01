@@ -31,7 +31,9 @@ public $data;
 				}
 			}
 			$data[$key]["{{ button }}"] = $this->generateButton($value['state'], $value['ID'], $slug);
+			$data[$key]["{{ comment }}"] = nl2br($data[$key]["{{ comment }}"]);
 			array_push($newData, $data[$key]);
+
 		}
 		if (count($newData) === 0)return;
 		//faire boucle  sur les données recu de la view (idPost, etat)
