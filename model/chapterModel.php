@@ -48,8 +48,10 @@ public function __construct($args){
 
   private function saveContent($dataPost){
       //requete pour enregister les données
-    $req = $this->db->prepare("INSERT INTO `chapters` (`numeroChapitre`, `title`, `content`, `date`,  `image`, `slug`) VALUES (:numeroChapitre,:title,:content,NOW(), :image, :slug)");
+    $req = $this->db->prepare("INSERT IGNORE INTO `chapters` (`numeroChapitre`, `title`, `content`, `date`,  `image`, `slug`) VALUES (:numeroChapitre,:title,:content,NOW(), :image, :slug)");
+    $count = $req->rowCount();
     $req->execute($dataPost);
+    //(var_dump($count));
   }
 
   private function readChapterFromSlug($slug){

@@ -11,7 +11,7 @@ class Back extends Page{
 
     /**
    * [__construct description]
-   * @param a voir
+   * @param
    */
   public function __construct($uri){
     $this->user = new User();

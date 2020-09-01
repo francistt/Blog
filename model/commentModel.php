@@ -31,7 +31,6 @@ class CommentModel extends Model{
 		}
 		if (isset($args["listModerate"])){
 			$sql= "SELECT ID, author AS '{{ author }}', comment AS '{{ comment }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', state FROM comments WHERE  `state` = 2 OR `state` = 0";
-			//$sql = "SELECT title FROM `chapters`";
 			$request = $this->query($sql,TRUE); //fonction dans la classe Model
 			$this->data = $request["data"];
 		}
