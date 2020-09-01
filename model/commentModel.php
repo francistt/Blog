@@ -41,6 +41,7 @@ class CommentModel extends Model{
 			$this->data = $request["data"];
 		}
 		if (isset($args["listComment"])){
+<<<<<<< Updated upstream
 			$request = $this->pae(
 				"SELECT count(*) AS total FROM comments WHERE `state` != 0  AND `state` != 2 AND  idPost=:idPost",
 				[
@@ -48,6 +49,11 @@ class CommentModel extends Model{
 				],
 				FALSE
 			); //fonction dans la classe Model
+=======
+			$sql= $this->db->prepare ("SELECT count(*) AS total FROM comments WHERE `state` != 0  AND `state` != 2 AND  idPost=".$args["chapitre"]);
+			$sql->execute();
+			$request = $this->query($sql,FALSE); //fonction dans la classe Model
+>>>>>>> Stashed changes
 			$this->data = $request["data"];
 		}
 		if (isset($args["delete"])){
