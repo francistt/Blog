@@ -34,7 +34,6 @@ class Comment
 	}
 
 	private function insertComment($data){
-		var_dump($data);
 		$enregistrement = new CommentModel([
 			"save" => [
 				"id" 			 =>	$data["id"], 
