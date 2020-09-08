@@ -25,9 +25,8 @@ class CommentModel extends Model{
 			$request->execute($newValue);
 		}
 		if (isset($args["chapitre"])){
-			$sql= "SELECT ID, author AS '{{ author }}', comment AS '{{ comment }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', state FROM comments WHERE idPost= :idPost";
 			$request = $this->pae(
-				$sql,
+				"SELECT ID, author AS '{{ author }}', comment AS '{{ comment }}', DATE_FORMAT(date, '%d-%m-%Y') AS '{{ date }}', state FROM comments WHERE idPost= :idPost",
 				[
 					"idPost"=>$args['chapitre']
 				],
