@@ -31,7 +31,7 @@ public $data;
 				}
 			}
 			$data[$key]["{{ button }}"] = $this->generateButton($value['state'], $value['ID'], $slug);
-			$data[$key]["{{ comment }}"] = nl2br($data[$key]["{{ comment }}"]);
+			//$data[$key]["{{ comment }}"] = nl2br($data[$key]["{{ comment }}"]);
 			array_push($newData, $data[$key]);
 
 		}

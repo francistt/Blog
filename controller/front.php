@@ -43,11 +43,11 @@ class Front{
     $this->html = $vue->html;
   }
   
-  private function addComment(){
-    $comment     = new Comment(["addComment"=>true]);
-    $this->title = "ajouter un commentaire";
-    $this->html  = file_get_contents("template/commentaireBase.html"); 
-  }
+  //private function addComment(){
+  //  $comment     = new Comment(["addComment"=>true]);
+  //  $this->title = "ajouter un commentaire";
+  //  $this->html  = file_get_contents("template/commentaireBase.html"); 
+  //}
 
   private function bio(){
     $this->html   = file_get_contents("template/bio.html");

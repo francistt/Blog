@@ -56,7 +56,7 @@ class Chapter
     if ($this->delete) return $this->deleteChapter();
 
     $dataChapter = new ChapterModel(["slug"=>$args["editChapter"]]);
-    $this->title   = "edition du chapite ".$dataChapter->title;
+    $this->title   = "edition du chapitre ".$dataChapter->title;
     $vue = new View(
       [
         "{{ ack }}"            => $this->ack,
@@ -195,9 +195,7 @@ class Chapter
     ];
   }
 
-  private function addChapter(){
-    
-    // if ($secure->post !== null) 
+  private function addChapter(){ 
     $dataChapter = new ChapterModel(["getNextId"=>true]);
     $this->numeroChapitre = intval($dataChapter->numeroChapitre)+1;
   }

@@ -19,7 +19,7 @@ public function __construct($args){
   parent::__construct();
   extract($args);
   if ( isset($delete)    ) return $this->deletePost($delete);
-  if ( isset($featured)  ) return $this->readFeaturedPost($featured);
+  if ( isset($featured)  ) return $this->readFeaturedPost();
   if ( isset($list)      ) return $this->getListChapters($list);
   if ( isset($save)      ) return $this->saveContent($save);
   if ( isset($slug)      ) return $this->readChapterFromSlug($slug);
