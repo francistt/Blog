@@ -1,18 +1,14 @@
 <?php
 
+require_once "./vendor/htmlpurifier/HTMLPurifier.standalone.php";
+
 class Security
 {
 	public $post    = null;
 	public $uri     = null;
 	//public $cookies = null;
 	//public $get     = null;
-	private $customRules = [
-		"safeString" =>[
-			'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
-			'flag'   => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_BACKTICK | FILTER_FLAG_ENCODE_HIGH
-		  ]
-	  ];
-	
+
 	/** 
 	 * crypt a string 
 	 * @constructor  
@@ -20,7 +16,9 @@ class Security
 	 * @param  Array  [$args->post] rules for filter input post 
 	 */ 
 	public function __construct($args){
-		if (isset($args["post"]))  $this->post    = $this->securize($args["post"]);
+		$config = HTMLPurifier_Config::createDefault();
+		$this->purifier = new HTMLPurifier($config);
+		if (isset($args["post"]))  $this->post    = $this->securize(INPUT_POST, $args["post"]);
 		if (isset($args["uri"]))     $this->uri     = $this->securizeUri($args["uri"]);
 
 		var_dump($this->post);
@@ -55,26 +53,21 @@ class Security
 	/**
 	 * [securize description]
 	 *
-	 * @param   array $arr    [ description]
+	 * @param   int $src    [ description]
+	 * @param   array $rules    [ description]
 	 *
-	 * @return  [type] [return description]
+	 * @return  array 
 	 */
-	private function securize($arr){
-		$securized = filter_input_array(INPUT_POST, $this->transcode($arr));
-	return $securized;
-	}
-
-	private function transcode($rules){
-		// $tmp = [];
+	private function securize($src, $rules){
+		$securized = [];
 		foreach ($rules as $key => $value){
-		  if(isset($this->customRules[$value])) {
-			$rules[$key] = $this->customRules[$value];
-		  }
-	
-		  // else $tmp[$key] = $value;
+			if( $value === "purify") $securized[$key] = $purifier->purify(filter_input ( $src , $key, FILTER_UNSAFE_RAW));
+
+
+		  if(isset($this->customRules[$value])) $securized[$key] = filter_input ( $src , $key, $value)):
 		}
 	
-		return $rules;
+		return $securized;
 	  }
 	
 }
