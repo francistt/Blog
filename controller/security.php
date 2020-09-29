@@ -18,9 +18,8 @@ class Security
 	public function __construct($args){
 		$config = HTMLPurifier_Config::createDefault();
 		$this->purifier = new HTMLPurifier($config);
-		if (isset($args["post"]))  $this->post    = $this->securize(INPUT_POST, $args["post"]);
-		if (isset($args["uri"]))     $this->uri     = $this->securizeUri($args["uri"]);
-
+		if (isset($args["post"])) $this->post = $this->securize(INPUT_POST, $args["post"]);
+		if (isset($args["uri"]))  $this->uri  = $this->securizeUri($args["uri"]);
 		var_dump($this->post);
 		//if (isset($args["cookies"])) $this->cookies = filter_input_array(INPUT_COOKIE,$args["cookies"]);
 		//if (isset($args["get"]))     $this->get     = filter_input_array(INPUT_GET,$args["get"]);
@@ -53,21 +52,20 @@ class Security
 	/**
 	 * [securize description]
 	 *
-	 * @param   int $src    [ description]
-	 * @param   array $rules    [ description]
+	 * @param   int $src       [ description]
+	 * @param   array $rules   [ description]
 	 *
 	 * @return  array 
 	 */
 	private function securize($src, $rules){
 		$securized = [];
 		foreach ($rules as $key => $value){
-			if( $value === "purify") $securized[$key] = $this->purify(filter_input ( $src , $key, FILTER_UNSAFE_RAW));
-
-
-		  if(isset($this->customRules[$value])) $securized[$key] = filter_input ( $src , $key, $value);
-		}
-	
+			if( $value === "purify") {
+				$securized[$key] = $this->purifier->purify(filter_input ( $src , $key, FILTER_UNSAFE_RAW));
+				continue;
+			}
+			$securized[$key] = filter_input ( $src , $key, $value);
+		}	
 		return $securized;
-	  }
-	
+	}	
 }
