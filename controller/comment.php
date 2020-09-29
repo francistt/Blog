@@ -38,7 +38,7 @@ class Comment
 			"save" => [
 				"id" 			 =>	$data["id"], 
 				"author"         => $data["author"],
-				"comment"        => htmlspecialchars($data["comment"]),
+				"comment"        => $data["comment"],
 				"idPost"         => $data["id"],
 				"state"          => 0
 			]
