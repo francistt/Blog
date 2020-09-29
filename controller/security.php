@@ -23,7 +23,7 @@ class Security
 		if (isset($args["post"]))  $this->post    = $this->securize($args["post"]);
 		if (isset($args["uri"]))     $this->uri     = $this->securizeUri($args["uri"]);
 
-		die(var_dump($this->post ));
+		var_dump($this->post);
 		//if (isset($args["cookies"])) $this->cookies = filter_input_array(INPUT_COOKIE,$args["cookies"]);
 		//if (isset($args["get"]))     $this->get     = filter_input_array(INPUT_GET,$args["get"]);
 	}
@@ -59,22 +59,22 @@ class Security
 	 *
 	 * @return  [type] [return description]
 	 */
-	private function securize($arr){		
-		$secrized = filter_input_array(INPUT_POST, filter_input_array(INPUT_POST, $this->transcode($arr));
-		}
-
+	private function securize($arr){
+		$securized = filter_input_array(INPUT_POST, $this->transcode($arr));
+	return $securized;
 	}
+
 	private function transcode($rules){
-		$tmp = [];
+		// $tmp = [];
 		foreach ($rules as $key => $value){
 		  if(isset($this->customRules[$value])) {
-			$tmp[$key] = $this->customRules[$value];
+			$rules[$key] = $this->customRules[$value];
 		  }
 	
-		  else $tmp[$key] = $value;
+		  // else $tmp[$key] = $value;
 		}
 	
-		return $tmp;
+		return $rules;
 	  }
 	
 }
