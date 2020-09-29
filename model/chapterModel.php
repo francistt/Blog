@@ -52,7 +52,6 @@ public function __construct($args){
     $req = $this->db->prepare("INSERT IGNORE INTO `chapters` (`numeroChapitre`, `title`, `content`, `date`,  `image`, `slug`) VALUES (:numeroChapitre,:title,:content,NOW(), :image, :slug)");
     $count = $req->rowCount();
     $req->execute($dataPost);
-    //(var_dump($count));
   }
 
   private function readChapterFromSlug($slug){
