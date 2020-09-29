@@ -6,6 +6,12 @@ class Security
 	public $uri     = null;
 	//public $cookies = null;
 	//public $get     = null;
+	private $customRules = [
+		"safeString" =>[
+			'filter' => FILTER_SANITIZE_SPECIAL_CHARS,
+			'flag'   => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_BACKTICK | FILTER_FLAG_ENCODE_HIGH
+		  ]
+	  ];
 	
 	/** 
 	 * crypt a string 
@@ -14,8 +20,10 @@ class Security
 	 * @param  Array  [$args->post] rules for filter input post 
 	 */ 
 	public function __construct($args){
-		if (isset($args["post"]))    $this->post    = filter_input_array(INPUT_POST,$args["post"]);
+		if (isset($args["post"]))  $this->post    = $this->securize($args["post"]);
 		if (isset($args["uri"]))     $this->uri     = $this->securizeUri($args["uri"]);
+
+		die(var_dump($this->post ));
 		//if (isset($args["cookies"])) $this->cookies = filter_input_array(INPUT_COOKIE,$args["cookies"]);
 		//if (isset($args["get"]))     $this->get     = filter_input_array(INPUT_GET,$args["get"]);
 	}
@@ -43,4 +51,30 @@ class Security
 		$this->uri = explode ( "/", $this->uri);
 		return array_slice($this->uri, 1);
 	}
+
+	/**
+	 * [securize description]
+	 *
+	 * @param   array $arr    [ description]
+	 *
+	 * @return  [type] [return description]
+	 */
+	private function securize($arr){		
+		$secrized = filter_input_array(INPUT_POST, filter_input_array(INPUT_POST, $this->transcode($arr));
+		}
+
+	}
+	private function transcode($rules){
+		$tmp = [];
+		foreach ($rules as $key => $value){
+		  if(isset($this->customRules[$value])) {
+			$tmp[$key] = $this->customRules[$value];
+		  }
+	
+		  else $tmp[$key] = $value;
+		}
+	
+		return $tmp;
+	  }
+	
 }
