@@ -61,10 +61,10 @@ class Security
 	private function securize($src, $rules){
 		$securized = [];
 		foreach ($rules as $key => $value){
-			if( $value === "purify") $securized[$key] = $purifier->purify(filter_input ( $src , $key, FILTER_UNSAFE_RAW));
+			if( $value === "purify") $securized[$key] = $this->purify(filter_input ( $src , $key, FILTER_UNSAFE_RAW));
 
 
-		  if(isset($this->customRules[$value])) $securized[$key] = filter_input ( $src , $key, $value)):
+		  if(isset($this->customRules[$value])) $securized[$key] = filter_input ( $src , $key, $value);
 		}
 	
 		return $securized;
