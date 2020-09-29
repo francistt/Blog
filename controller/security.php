@@ -20,7 +20,6 @@ class Security
 		$this->purifier = new HTMLPurifier($config);
 		if (isset($args["post"])) $this->post = $this->securize(INPUT_POST, $args["post"]);
 		if (isset($args["uri"]))  $this->uri  = $this->securizeUri($args["uri"]);
-		var_dump($this->post);
 		//if (isset($args["cookies"])) $this->cookies = filter_input_array(INPUT_COOKIE,$args["cookies"]);
 		//if (isset($args["get"]))     $this->get     = filter_input_array(INPUT_GET,$args["get"]);
 	}
@@ -54,7 +53,6 @@ class Security
 	 *
 	 * @param   int $src       [ description]
 	 * @param   array $rules   [ description]
-	 *
 	 * @return  array 
 	 */
 	private function securize($src, $rules){
